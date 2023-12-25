@@ -1,7 +1,46 @@
-.App {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  font-size: 1.2rem;
+
+
+.extension-content {
+/* 포스트1 */
+
+box-sizing: border-box;
+
+position: fixed;
+top: 0;
+right: 0;
+width: 295px;
+height: 100vh;
+display: flex;
+justify-content: center;
+z-index: 999;
+background: #FFFFFF;
+/* main color */
+border: 1px solid #AAB3FF;
+box-shadow: 0px 0px 25px 7px rgba(170, 179, 255, 0.3);
+border-radius: 16px;
+transition: opacity 0.3s ease-in-out;
+opacity: 1;
+
+}
+.scrab-box{
+  /* 포스트1 */
+box-sizing: border-box;
+
+position: absolute;
+top: 10%;
+width: 250px;
+height: 207px;
+
+
+background: rgba(233, 233, 233, 0.5);
+opacity: 0.5;
+/* main color */
+border: 1px dashed #AAB3FF;
+box-shadow: 0px 0px 25px rgba(170, 179, 255, 0.3);
+border-radius: 16px;
+
+}
+.extension-content.hidden {
+  opacity: 0;
+  pointer-events: none; /* 클릭 이벤트 비활성화 */
 }

@@ -1,9 +1,22 @@
-import React from "react";
+// App.js
+import React, { useState } from "react";
+import "./App.css";
 
 function App() {
+  const [isContainerVisible, setIsContainerVisible] = useState(true);
+
+  const toggleContainerVisibility = () => {
+    setIsContainerVisible((prev) => !prev);
+  };
+
   return (
     <div>
-      <h1>Hello from React!</h1>
+      {isContainerVisible && (
+        <div className="extension-content">
+          <button onClick={toggleContainerVisibility}>보이기</button>
+          <div className="scrab-box"></div>
+        </div>
+      )}
     </div>
   );
 }
