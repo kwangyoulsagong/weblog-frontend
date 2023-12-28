@@ -34,21 +34,21 @@ function App() {
 
   const handleSelectionChange = () => {
     if (isDragging) return;
-
+    //드래그 할 위치
     const selection = window.getSelection();
     const selectedRange = selection.getRangeAt(0);
 
-    // Create a temporary div to extract HTML content with styles
+    // temp div 생성 스크랩 할 내용의 스타일을 추출하는 div
     const tempDiv = document.createElement("div");
     tempDiv.style.maxWidth = "100%";
     tempDiv.appendChild(selectedRange.cloneContents());
 
-    // Get the computed styles for the selected content
+    // 선택된 영역 스타일 가져옴
     const computedStyles = window.getComputedStyle(
       selection.anchorNode.parentElement
     );
 
-    // Extract the styles you need from the computedStyles object
+    // 추출한 스타일들을 정의
     const styles = {
       color: computedStyles.color,
       fontSize: computedStyles.fontSize,
@@ -56,10 +56,10 @@ function App() {
       // Add other styles you are interested in
     };
 
-    // Update computedStyles state
+    // 스타일 상태 업데이트
     setComputedStyles(styles);
 
-    // Update selectedHtml state with the selected HTML content
+    // tempDiv에 적용
     setSelectedHtml(tempDiv.innerHTML);
   };
 
@@ -68,7 +68,6 @@ function App() {
       color: computedStyles.color,
       fontSize: computedStyles.fontSize * 0.5,
       fontWeight: computedStyles.fontWeight,
-      // Add other styles as needed
     };
 
     return (
