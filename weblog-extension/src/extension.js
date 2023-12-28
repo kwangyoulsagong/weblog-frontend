@@ -1,6 +1,7 @@
 // App.js
 import React, { useEffect, useState } from "react";
 import "./App.css";
+import Profile from "./components/profile";
 
 function App() {
   const [isContainerVisible, setIsContainerVisible] = useState(true);
@@ -82,6 +83,7 @@ function App() {
     <div>
       {isContainerVisible && (
         <div className="extension-content">
+          <Profile />
           {/* <button onClick={toggleContainerVisibility}>보이기</button> */}
           <div className="scrab-box">{getStyledContent()}</div>
         </div>
