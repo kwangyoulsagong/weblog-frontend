@@ -30,15 +30,34 @@ position: absolute;
 top: 10%;
 width: 250px;
 height: 207px;
-
+display: flex;
+justify-content: center;
 
 background: rgba(233, 233, 233, 0.5);
-opacity: 0.5;
 /* main color */
 border: 1px dashed #AAB3FF;
 box-shadow: 0px 0px 25px rgba(170, 179, 255, 0.3);
 border-radius: 16px;
+overflow-x: hidden;
+overflow-y: auto;
 
+
+}
+.scrab-box div{
+  max-width: 100%; /* Set the maximum width for inner divs */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */ 
+  font-size: 15px;
+  font-weight: 0;
+}
+.scrab-box h1{
+  font-size: 18px;
+  font-weight: bold;
+}
+.scrab-box h2 , .scrab-box a, .scrab-box li, .scrab-box button, .scrab-box p, .scrab-box span{
+  font-size: 12px;
+}
+.scrab-box img, .scrab-box svg{
+  width: 100%;
 }
 .extension-content.hidden {
   opacity: 0;
