@@ -28,7 +28,7 @@ box-sizing: border-box;
 
 position: absolute;
 top: 10%;
-width: 250px;
+width: 95%;
 height: 207px;
 display: flex;
 justify-content: center;
@@ -38,12 +38,12 @@ background: rgba(233, 233, 233, 0.5);
 border: 1px dashed #AAB3FF;
 box-shadow: 0px 0px 25px rgba(170, 179, 255, 0.3);
 border-radius: 16px;
-overflow-x: hidden;
+overflow-x: auto;
 overflow-y: auto;
 
 
 }
-.scrab-box div{
+.scrab-box div, .scrab-box pre, .scrab-box td, .scrab-box tr, .scrab-box tbody, .scrab-box code{
   max-width: 100%; /* Set the maximum width for inner divs */
   box-sizing: border-box; /* Include padding and border in the element's total width and height */ 
   font-size: 15px;
