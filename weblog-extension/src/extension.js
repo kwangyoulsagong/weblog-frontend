@@ -6,6 +6,7 @@ import useSelectionChange from "./hooks/useSelectionChange";
 import useStyledContent from "./module/useStyledContent";
 import closeBtnImg from "../src/images/closeBtn.png";
 import openBtnImg from "../src/images/profile.png";
+import Scrab from "./components/scrab";
 
 function App() {
   const [isContainerVisible, setIsContainerVisible] = useState(true);
@@ -42,7 +43,7 @@ function App() {
       {isContainerVisible && (
         <div className="extension-content">
           <Profile />
-          <div className="scrab-box">{getStyledContent()}</div>
+          <Scrab getStyledContent={getStyledContent} />
         </div>
       )}
     </div>

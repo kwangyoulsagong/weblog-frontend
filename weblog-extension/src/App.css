@@ -130,7 +130,7 @@ color: #B5B7B8;
 .closeBtn{
   /* close-button 1 */
 
-position: absolute;
+position: fixed;
 top: 2%;
 right: 18%;
 width: 16px;
@@ -141,7 +141,7 @@ z-index: 9999;
 .openBtn{
   /* close-button 1 */
 
-position: absolute;
+position: fixed;
 top: 2%;
 right: 2%;
 width: 16px;
