@@ -156,10 +156,48 @@ z-index: 9999;
   position: absolute;
   top: 2.5%;
   left: -25%;
+  display: flex;
   width: 48px;
   height: 22px;
   
   background: #FFFFFF;
   border: 1px solid #AAB3FF;
   border-radius: 30px;
+  }
+  .E{
+    /* E */
+
+position: absolute;
+width: 17px;
+height: 9px;
+left: 1.5%;
+font-family: 'Acme';
+font-style: normal;
+font-weight: 400;
+font-size: 15px;
+line-height: 22px;
+align-items: center;
+text-align: center;
+color: #AAB3FF;
+
+
+  }
+  .V{
+    /* v */
+
+position: absolute;
+right: 1%;
+width: 17px;
+height: 9px;
+font-family: 'Actor';
+font-style: normal;
+font-weight: 400;
+font-size: 15px;
+line-height: 22px;
+align-items: center;
+text-align: center;
+
+color: #AAB3FF;
+
+
   }
