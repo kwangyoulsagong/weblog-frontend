@@ -131,9 +131,21 @@ color: #B5B7B8;
   /* close-button 1 */
 
 position: absolute;
-top: 30%;
-left: 2%;
+top: 2%;
+right: 18%;
 width: 16px;
 height: 12px;
+z-index: 9999;
+
+}
+.openBtn{
+  /* close-button 1 */
+
+position: absolute;
+top: 2%;
+right: 2%;
+width: 16px;
+height: 12px;
+z-index: 9999;
 
 }
