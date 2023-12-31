@@ -4,7 +4,7 @@ import useSelectionChange from "../hooks/useSelectionChange";
 import useStyledContent from "../module/useStyledContent";
 import Scrab from "../components/scrab";
 import View from "./view";
-
+import Post from "./post";
 const Menu = () => {
   const [selectedHtml, setSelectedHtml] = useState("");
   const [computedStyles, setComputedStyles] = useState({});
@@ -55,8 +55,12 @@ const Menu = () => {
         ))}
       </div>
       {selectedComponent === "E" && (
-        <Scrab getStyledContent={getStyledContent} />
+        <>
+          <Scrab getStyledContent={getStyledContent} />
+          <Post />
+        </>
       )}
+
       {selectedComponent === "V" && <View />}
     </div>
   );
