@@ -5,6 +5,7 @@ import useStyledContent from "../module/useStyledContent";
 import Scrab from "../components/scrab";
 import View from "./view";
 import Post from "./post";
+
 const Menu = () => {
   const [selectedHtml, setSelectedHtml] = useState("");
   const [computedStyles, setComputedStyles] = useState({});
@@ -60,7 +61,6 @@ const Menu = () => {
           <Post />
         </>
       )}
-
       {selectedComponent === "V" && <View />}
     </div>
   );
