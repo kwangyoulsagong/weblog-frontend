@@ -22,6 +22,11 @@ transition: opacity 0.3s ease-in-out;
 opacity: 1;
 
 }
+.Container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 .scrab-box{
   /* 포스트1 */
 box-sizing: border-box;
