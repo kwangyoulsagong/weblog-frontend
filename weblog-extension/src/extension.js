@@ -4,6 +4,7 @@ import Profile from "./components/profile";
 import closeBtnImg from "../src/images/closeBtn.png";
 import openBtnImg from "../src/images/profile.png";
 import Menu from "./components/menu";
+import Header from "./components/header";
 function App() {
   const [isContainerVisible, setIsContainerVisible] = useState(false);
 
@@ -29,6 +30,7 @@ function App() {
         <div className="extension-content">
           <Menu />
           <Profile />
+          <Header />
         </div>
       )}
     </div>
