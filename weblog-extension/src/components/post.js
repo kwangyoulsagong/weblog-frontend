@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import { ChromePicker } from "react-color";
+import "../components/Post.css";
 
 const Post = () => {
   const editorRef = useRef(null);
@@ -54,7 +55,7 @@ const Post = () => {
           UL
         </button>
         <select id="select-font-size" onChange={handleFontSizeChange}>
-          <option value="">폰트 사이즈</option>
+          <option value="">크기</option>
           <option value="1">10px</option>
           <option value="2">13px</option>
           <option value="3">16px</option>
@@ -63,7 +64,7 @@ const Post = () => {
           <option value="6">32px</option>
           <option value="7">48px</option>
         </select>
-        <div className="color-picker-wrapper">
+        <button className="color-picker-wrapper">
           <button onClick={toggleColorPicker} id="btn-color">
             <span role="img" aria-label="color-picker-icon">
               🎨
@@ -72,7 +73,7 @@ const Post = () => {
           {showColorPicker && (
             <ChromePicker color={color} onChange={handleColorChange} />
           )}
-        </div>
+        </button>
         {/* Add other buttons as needed */}
       </div>
       <div id="editor" ref={editorRef} contentEditable="true"></div>
