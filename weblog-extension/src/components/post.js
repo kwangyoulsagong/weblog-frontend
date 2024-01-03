@@ -1,12 +1,24 @@
-import React, { useState, useRef } from "react";
+import React, {
+  useState,
+  useRef,
+  forwardRef,
+  useImperativeHandle,
+} from "react";
 import { ChromePicker } from "react-color";
 import "../components/Post.css";
 
-const Post = () => {
+const Post = forwardRef((props, ref) => {
   const editorRef = useRef(null);
   const [color, setColor] = useState("#000000");
   const [showColorPicker, setShowColorPicker] = useState(false);
-
+  const [activeStyles, setActiveStyles] = useState({
+    bold: false,
+    italic: false,
+    underline: false,
+    strikeThrough: false,
+    insertOrderedList: false,
+    insertUnorderedList: false,
+  });
   const setStyle = (style, value = null) => {
     document.execCommand(style, false, value);
     focusEditor();
@@ -27,30 +39,60 @@ const Post = () => {
   const toggleColorPicker = () => {
     setShowColorPicker(!showColorPicker);
   };
+  const handleStyleClick = (style) => {
+    setStyle(style);
+    setActiveStyles((prevActiveStyles) => ({
+      ...prevActiveStyles,
+      [style]: !prevActiveStyles[style],
+    }));
+  };
+  useImperativeHandle(ref, () => ({
+    getInnerHTML: () => {
+      return editorRef.current.innerHTML;
+    },
+  }));
   return (
     <div className="post-box">
       <div className="editor-menu">
-        <button onClick={() => setStyle("bold")} id="btn-bold">
+        <button
+          onClick={() => handleStyleClick("bold")}
+          id="btn-bold"
+          className={activeStyles.bold ? "active" : ""}
+        >
           <b>B</b>
         </button>
-        <button onClick={() => setStyle("italic")} id="btn-italic">
+        <button
+          onClick={() => handleStyleClick("italic")}
+          id="btn-italic"
+          className={activeStyles.italic ? "active" : ""}
+        >
           <i>I</i>
         </button>
-        <button onClick={() => setStyle("underline")} id="btn-underline">
+        <button
+          onClick={() => handleStyleClick("underline")}
+          id="btn-underline"
+          className={activeStyles.underline ? "active" : ""}
+        >
           <u>U</u>
         </button>
-        <button onClick={() => setStyle("strikeThrough")} id="btn-strike">
+        <button
+          onClick={() => handleStyleClick("strikeThrough")}
+          id="btn-strike"
+          className={activeStyles.strikeThrough ? "active" : ""}
+        >
           <s>S</s>
         </button>
         <button
-          onClick={() => setStyle("insertOrderedList")}
+          onClick={() => handleStyleClick("insertOrderedList")}
           id="btn-ordered-list"
+          className={activeStyles.insertOrderedList ? "active" : ""}
         >
           OL
         </button>
         <button
-          onClick={() => setStyle("insertUnorderedList")}
+          onClick={() => handleStyleClick("insertUnorderedList")}
           id="btn-unordered-list"
+          className={activeStyles.insertUnorderedList ? "active" : ""}
         >
           UL
         </button>
@@ -64,7 +106,7 @@ const Post = () => {
           <option value="6">32px</option>
           <option value="7">48px</option>
         </select>
-        <button className="color-picker-wrapper">
+        <span className="color-picker-wrapper">
           <button onClick={toggleColorPicker} id="btn-color">
             <span role="img" aria-label="color-picker-icon">
               🎨
@@ -73,12 +115,12 @@ const Post = () => {
           {showColorPicker && (
             <ChromePicker color={color} onChange={handleColorChange} />
           )}
-        </button>
+        </span>
         {/* Add other buttons as needed */}
       </div>
       <div id="editor" ref={editorRef} contentEditable="true"></div>
     </div>
   );
-};
+});
 
 export default Post;

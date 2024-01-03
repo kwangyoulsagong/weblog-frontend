@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import useDragDetect from "../hooks/useDragDetect";
 import useSelectionChange from "../hooks/useSelectionChange";
 import useStyledContent from "../module/useStyledContent";
@@ -41,6 +41,27 @@ const Menu = () => {
   useDragDetect(handleSelectionChange, setIsDragging);
 
   const getStyledContent = useStyledContent(computedStyles, selectedHtml);
+  const scrabRef = useRef();
+  const postRef = useRef();
+
+  const getScrabHtml = () => {
+    if (scrabRef && scrabRef.current) {
+      return scrabRef.current.getInnerHTML();
+    }
+    return "";
+  };
+  const getPostHtml = () => {
+    if (postRef && postRef.current) {
+      return postRef.current.getInnerHTML();
+    }
+    return "";
+  };
+  const saveMemo = () => {
+    const scrabHtml = getScrabHtml();
+    const postHtml = getPostHtml();
+    console.log(scrabHtml);
+    console.log(postHtml);
+  };
   return (
     <div className="Container">
       <div className="Menu-Container">
@@ -57,8 +78,11 @@ const Menu = () => {
       </div>
       {selectedComponent === "E" && (
         <>
-          <Scrab getStyledContent={getStyledContent} />
-          <Post />
+          <Scrab ref={scrabRef} getStyledContent={getStyledContent} />
+          <Post ref={postRef} />
+          <button className="saveBtn" onClick={saveMemo}>
+            저장
+          </button>
         </>
       )}
       {selectedComponent === "V" && <View />}
