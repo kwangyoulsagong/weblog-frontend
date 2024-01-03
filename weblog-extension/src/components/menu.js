@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
-import useDragDetect from "../hooks/useDragDetect";
-import useSelectionChange from "../hooks/useSelectionChange";
+import useDragDetect from "../module/useDragDetect";
+import useSelectionChange from "../module/useSelectionChange";
 import useStyledContent from "../module/useStyledContent";
 import Scrab from "../components/scrab";
 import View from "./view";
