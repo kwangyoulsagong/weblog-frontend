@@ -1,7 +1,7 @@
 import React, { forwardRef, useImperativeHandle } from "react";
 import "../components/Post.css";
 import EditorMenu from "./editormenu";
-import useMemoEditor from "../module/useMemoEditor";
+import useMemoEditor from "../hooks/useMemoEditor";
 
 const Post = forwardRef((props, ref) => {
   const {

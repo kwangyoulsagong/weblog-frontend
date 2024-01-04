@@ -1,10 +1,12 @@
 import React, { useState, useRef } from "react";
-import useDragDetect from "../module/useDragDetect";
-import useSelectionChange from "../module/useSelectionChange";
-import useStyledContent from "../module/useStyledContent";
+import useDragDetect from "../hooks/useDragDetect";
+import useSelectionChange from "../hooks/useSelectionChange";
+import useStyledContent from "../hooks/useStyledContent";
 import Scrab from "../components/scrab";
 import View from "./view";
 import Post from "./post";
+import Tag from "./tag";
+import Title from "./title";
 
 const Menu = () => {
   const [selectedHtml, setSelectedHtml] = useState("");
@@ -78,6 +80,8 @@ const Menu = () => {
       </div>
       {selectedComponent === "E" && (
         <>
+          <Title />
+          <Tag />
           <Scrab ref={scrabRef} getStyledContent={getStyledContent} />
           <Post ref={postRef} />
           <button className="saveBtn" onClick={saveMemo}>

@@ -32,7 +32,7 @@ opacity: 1;
 box-sizing: border-box;
 
 position: relative;
-top: 12.5%;
+top:175px;
 width: 95%;
 height: 207px;
 display: flex;
@@ -209,7 +209,7 @@ color: #AAB3FF;
   box-sizing: border-box;
   
   position: absolute;
-  top: 45%;
+  top: 435px;
   width: 95%;
   height: 207px;
   display: flex;
@@ -240,7 +240,7 @@ color: #AAB3FF;
   }
 .but{
     position: fixed;
-    top: 8.5%;
+    top: 150px;
     right: 2.5%;
     width: 50px;
     height: 15px;
@@ -286,7 +286,7 @@ height: 78px;
 .saveBtn{
   position: absolute;
   background: black;
-  bottom: 180px;
+  bottom: 90px;
   right: 40px;
   width: 50px;
   height: 15px;
