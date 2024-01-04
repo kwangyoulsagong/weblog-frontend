@@ -10,7 +10,14 @@ button {
   color: #333; /* Text color */
   cursor: pointer;
   border-radius: 4px;
+  width: 30px;
+  height: 20px;
 
+}
+button img{
+  
+  width: 70%;
+  height: 70%;
 }
 
 button:hover {

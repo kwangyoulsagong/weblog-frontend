@@ -1,5 +1,8 @@
 import React from "react";
 import { ChromePicker } from "react-color";
+import List from "../images/list.png";
+import Blist from "../images/bullet-list.png";
+import Colorimg from "../images/color.png";
 const EditorMenu = ({
   activeStyles,
   handleStyleClick,
@@ -44,14 +47,14 @@ const EditorMenu = ({
         id="btn-ordered-list"
         className={activeStyles.insertOrderedList ? "active" : ""}
       >
-        OL
+        <img src={List} />
       </button>
       <button
         onClick={() => handleStyleClick("insertUnorderedList")}
         id="btn-unordered-list"
         className={activeStyles.insertUnorderedList ? "active" : ""}
       >
-        UL
+        <img src={Blist} />
       </button>
       <select id="select-font-size" onChange={handleFontSizeChange}>
         <option value="">크기</option>
@@ -66,7 +69,7 @@ const EditorMenu = ({
       <span className="color-picker-wrapper">
         <button onClick={toggleColorPicker} id="btn-color">
           <span role="img" aria-label="color-picker-icon">
-            🎨
+            <img src={Colorimg} />
           </span>
         </button>
         {showColorPicker && (
