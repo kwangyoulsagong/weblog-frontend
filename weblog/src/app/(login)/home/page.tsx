@@ -3,6 +3,8 @@ import styles from './page.module.css'
 
 export default function Home() {
   return (
-    <div>home</div>
+    <main>
+      홈페이지
+    </main>
   )
 }
