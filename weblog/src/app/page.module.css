@@ -58,6 +58,9 @@
     justify-content: center;
     text-decoration: none;
 }
+.signup:hover {
+    background-color: rgb(26, 140, 216);
+}
 .login{
     width: 300px;
     height: 40px;
@@ -70,4 +73,7 @@
     justify-content: center;
     align-items: center;
     text-decoration: none;
+}
+.login:hover {
+    background-color: rgba(29,155,240,0.1);
 }
