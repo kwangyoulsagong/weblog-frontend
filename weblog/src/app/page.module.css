@@ -59,7 +59,7 @@
     text-decoration: none;
 }
 .signup:hover {
-    background-color: rgb(26, 140, 216);
+    background-color: #b0b5de;
 }
 .login{
     width: 300px;
@@ -67,7 +67,7 @@
     border-radius: 20px;
     padding: 0 16px;
     font-size: 15px;
-    color: rgb(29, 155, 240);
+    color: #AAB3FF;
     border: 1px solid rgb(207, 217, 222);
     display: flex;
     justify-content: center;
@@ -75,5 +75,6 @@
     text-decoration: none;
 }
 .login:hover {
-    background-color: rgba(29,155,240,0.1);
+    background-color: #cdcdcd;
+    color: #ffffff;
 }
