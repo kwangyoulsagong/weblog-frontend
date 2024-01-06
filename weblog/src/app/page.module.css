@@ -11,8 +11,8 @@
 }
 .logo{
     position: absolute;
-    width: 400px;
-    height: 400px;
+    width: 50dvw;
+    height: 50dvw;
 }
 .left{
     flex: 1;
@@ -29,7 +29,7 @@
 }
 .right h1{
     font-weight: bold;
-    font-size: 64px;
+    font-size: 3rem;
     margin: 48px 0;
 }
 .right h2{

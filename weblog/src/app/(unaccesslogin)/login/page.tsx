@@ -1,6 +1,12 @@
-import { redirect } from "next/navigation";
+"use client"
+
+import { useRouter } from "next/navigation";
+import Main from "../_component/Main";
 
 export default function Login(){
-    //리다이렉트로 이 라우팅 주소로 이동
-    redirect('/account/login');
+    const router = useRouter()
+    router.replace("/account/login")
+    return(
+        <Main />
+    )
 }
