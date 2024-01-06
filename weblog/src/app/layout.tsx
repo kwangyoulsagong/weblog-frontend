@@ -2,8 +2,11 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import styles from './page.module.css'
+import Link from 'next/link'
+import { ReactNode } from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
+type Props={children: ReactNode}
 
 export const metadata: Metadata = {
   title: 'Weblog',
@@ -11,14 +14,15 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+  children
+}: Props) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className={styles.container}>{children}</div></body>
+        <div className={styles.container}>루트 레이아웃
+        <Link href="/"> 홈</Link>
+        {children}</div>
+        </body>
     </html>
   )
 }

@@ -11,8 +11,8 @@
 }
 .logo{
     position: absolute;
-    width: 800px;
-    height: 800px;
+    width: 400px;
+    height: 400px;
 }
 .left{
     flex: 1;
