@@ -14,7 +14,7 @@ export default function Home() {
         <h1>지금 궁금한게 있으신가요?</h1>
         <h2>지금 가입하세요.</h2>
         <Link href="/account/signup" className={styles.signup}>회원가입</Link>
-        <h3>이미 weblog에 가입 하셨나요?</h3>
+        <h4>이미 weblog에 가입 하셨나요?</h4>
         <Link href="/login" className={styles.login}>로그인</Link>
       </div>
     </>
