@@ -7,9 +7,10 @@
 }
 .collectionMenu{
     position: fixed;    
-    width: 100%;
+    width: 99%;
     height: 25px;
     background: #FFFFFF;
+    border-top: 1px solid #AAB3FF;
     border-bottom: 1px solid #AAB3FF;
     z-index: 999;
 }
