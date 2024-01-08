@@ -1,19 +1,32 @@
 import "./login.css";
+import CloseBtn from "../images/closeBtn.png";
 import React, { useState } from "react";
-const Login = () => {
+import Extensions from "./Loginextentions";
+const Login = ({ onClose, onLoginSuccess }) => {
   const [id, setId] = useState();
   const [password, setPassword] = useState();
   const [message, setMessage] = useState();
 
-  const onSubmit = () => {};
-  const onCLose = () => {};
-  const handleChangeId = () => {};
-  const handleChangePassword = () => {};
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (id === "sgky0511" && password === "ky4400") {
+      onLoginSuccess();
+      alert("로그인 성공");
+    } else {
+      alert("로그인 실패");
+    }
+  };
+  const handleChangeId = (e) => {
+    setId(e.target.value);
+  };
+  const handleChangePassword = (e) => {
+    setPassword(e.target.value);
+  };
   return (
     <div className="LoginBackground">
       <div className="loginModal">
         <div className="loginHeader">
-          <button className="logincloseBtn" onClick={onCLose}></button>
+          <img src={CloseBtn} className="logincloseBtn" onClick={onClose}></img>
           <div>로그인하세요.</div>
         </div>
         <form onSubmit={onSubmit}>

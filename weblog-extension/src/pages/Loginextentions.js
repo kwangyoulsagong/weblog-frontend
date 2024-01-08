@@ -5,7 +5,7 @@ import closeBtnImg from "../../src/images/closeBtn.png";
 import openBtnImg from "../../src/images/profile.png";
 import Menu from "../components/menu";
 import Header from "../components/header";
-const Extensions = () => {
+const Extensions = ({ onLogout }) => {
   const [isContainerVisible, setIsContainerVisible] = useState(false);
 
   const [btnClass, setBtnClass] = useState("openBtn");
@@ -29,7 +29,7 @@ const Extensions = () => {
       {isContainerVisible && (
         <div className="extension-content">
           <Menu />
-          <Profile />
+          <Profile onLogout={onLogout} />
           <Header />
         </div>
       )}

@@ -5,7 +5,7 @@ import openBtnImg from "../../src/images/profile.png";
 import Header from "../components/header";
 import Account from "./Account";
 import UnloginMenu from "../components/unloginmenu";
-const Extensions = () => {
+const Extensions = ({ onLoginSuccess }) => {
   const [isContainerVisible, setIsContainerVisible] = useState(false);
 
   const [btnClass, setBtnClass] = useState("openBtn");
@@ -29,7 +29,7 @@ const Extensions = () => {
       {isContainerVisible && (
         <div className="extension-content">
           <UnloginMenu />
-          <Account />
+          <Account onLoginSuccess={onLoginSuccess} />
           <Header />
         </div>
       )}
