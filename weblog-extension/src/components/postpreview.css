@@ -3,6 +3,7 @@
     top: 50px;
     width: 100%;
     height: 86%;
+    overflow: hidden;
     overflow-y: auto;
 }
 .collectionMenu{
@@ -64,7 +65,7 @@
 .hello{
 position: absolute;
 margin-top: -100px; 
-width: 275px;
+width: 261px;
 height: 105px;
 
 border-radius: 16px 16px 0px 0px;

@@ -1,48 +1,56 @@
-.modalBackground {
-    width: 100vw;
-    height: 100%;
+.LoginBackground {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
     display: flex;
     justify-content: center;
+    align-items: center;
     background-color: rgba(0, 0, 0, 0.4);
     left: 0;
-    z-index: 99999999;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 999;
 }
 
-.modal {
+.loginModal {
     background: #ffffff;
-    position: relative;
-    top: 5%;
-    max-width: 80vw;
-    min-width: 600px;
+    max-width: 15vw;
+    min-width: 200px;
     border-radius: 16px;
     display: flex;
+    align-items: center;
     flex-direction: column;
-    height: 450px;
+    height: 380px;
+    border: 2px solid #AAB3FF
 }
 
-.modalHeader {
-    padding: 36px 80px 20px;
-    font-size: 31px;
+.loginHeader {
+    padding-top: 30px;
+    font-size: 16px;
     font-weight: bold;
 }
 
-.modal form {
+.loginModal form {
+    width: 100%;
     display: flex;
     flex-direction: column;
     flex: 1;
 }
 
 .modalBody {
+    margin-top: 30px;
     flex: 1;
-    padding: 0 80px;
+    padding: 0 20px;
 }
 
 .inputDiv {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    height: 56px;
+    height: 60px;
     position: relative;
-    margin: 12px 0;
+    margin: 1px 0;
 }
 .inputLabel {
     width: 100%;
@@ -52,8 +60,7 @@
     border: 1px solid rgb(207, 217, 222);
     border-radius: 4px;
     font-size: 13px;
-    height: 56px;
-    padding: 8px 8px 0;
+    height: 50px;
     color: rgb(83, 100, 113);
 }
 .inputLabel:focus-within {
@@ -62,23 +69,28 @@
 .input {
     width: 100%;
     border: none;
-    font-size: 17px;
-    margin-top: 16px;
+    font-size: 13px;
+    margin-top: 13px;
     padding: 12px 8px 8px;
     outline: none;
 }
 
 .modalFooter {
-    padding: 24px 80px;
+    justify-content: center;
+    display: flex;
 }
 
 .actionBtn {
-    width: 100%;
-    height: 50px;
-    border-radius: 25px;
+    position: absolute;
+    bottom: 300px;
+    width: 80px;
+    height: 30px;
+    border-radius: 15px;
     background-color: rgb(15, 20, 25);
     color: white;
-    font-size: 17px;
+    font-size: 13px;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
     border: none;
 }
@@ -89,7 +101,7 @@
     background-color: rgb(39,44,48);
 }
 
-.closeBtn {
+.logincloseBtn {
     width: 34px;
     height: 34px;
     border-radius: 17px;
@@ -103,6 +115,6 @@
     align-items: center;
     justify-content: center;
 }
-.closeBtn:hover {
+.logincloseBtn:hover {
     background-color: rgba(15,20,25, 0.1);
 }

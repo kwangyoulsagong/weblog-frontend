@@ -10,10 +10,10 @@ const Login = () => {
   const handleChangeId = () => {};
   const handleChangePassword = () => {};
   return (
-    <div className="modalBackground">
-      <div className="modal">
-        <div className="modalHeader">
-          <button className="closeBtn" onClick={onCLose}></button>
+    <div className="LoginBackground">
+      <div className="loginModal">
+        <div className="loginHeader">
+          <button className="logincloseBtn" onClick={onCLose}></button>
           <div>로그인하세요.</div>
         </div>
         <form onSubmit={onSubmit}>
@@ -37,7 +37,7 @@ const Login = () => {
               </label>
               <input
                 id="password"
-                className=".input"
+                className="input"
                 value={password}
                 onChange={handleChangePassword}
                 type="text"
