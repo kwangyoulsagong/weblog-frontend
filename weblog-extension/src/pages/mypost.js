@@ -9,10 +9,12 @@ const MyPost = ({ contenti }) => {
   return (
     <div className="myPostBackground">
       <div className="myPostDetailContainer">
-        <div
-          className="myPostScrabBox"
-          dangerouslySetInnerHTML={{ __html: Scrab }}
-        ></div>
+        <div className="myPostScrabBox">
+          <div
+            className="PostScrabBox"
+            dangerouslySetInnerHTML={{ __html: Scrab }}
+          ></div>
+        </div>
         <div className="myPostDetailBox" contentEditable={updateBtn}>
           hello
         </div>
