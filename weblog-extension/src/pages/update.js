@@ -1,10 +1,26 @@
 import React from "react";
-import Mypostrpeview from "../components/mypostpreview";
+import Mypostrpreview from "../components/mypostpreview";
 import "./update.css";
+import axios from "axios";
 const Update = () => {
+  axios
+    .get("//api/post/mine", {
+      params: {
+        url: window.location.href,
+      },
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+    .then((response) => {
+      console.log(response.data);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
   return (
     <div className="updateBackground">
-      <Mypostrpeview />
+      <Mypostrpreview />
     </div>
   );
 };
