@@ -15,8 +15,10 @@ const MyPost = ({ contenti }) => {
             dangerouslySetInnerHTML={{ __html: Scrab }}
           ></div>
         </div>
-        <div className="myPostDetailBox" contentEditable={updateBtn}>
-          hello
+        <div className="myPostDetailBox">
+          <div id="myPostEditor" contentEditable={updateBtn}>
+            hello
+          </div>
         </div>
         <button className="updateBtn" onClick={onHandleUpdateBtn}>
           수정

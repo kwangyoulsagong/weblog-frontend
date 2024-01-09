@@ -79,3 +79,8 @@
   .myPostScrabBox img, .myPostScrabBox svg{
     width: 100%;
   }
+  #myPostEditor{
+    width: 100%;
+    height: 100%;
+    text-align: left;
+  }
