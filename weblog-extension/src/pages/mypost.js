@@ -29,7 +29,7 @@ const MyPost = ({ contenti }) => {
         </div>
 
         <header className="myPostHeader">
-          <button className="saveBtn" onClick={onHandleSaveBtn}>
+          <button className="saveMemoBtn" onClick={onHandleSaveBtn}>
             저장
           </button>
           <button className="updateBtn" onClick={onHandleUpdateBtn}>

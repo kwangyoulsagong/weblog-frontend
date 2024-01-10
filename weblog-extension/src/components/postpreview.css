@@ -1,3 +1,7 @@
+.postBackground{
+    overflow-y: auto;
+    height: 100%;
+}
 .postContainer{
     position: relative;
     top: 50px;
