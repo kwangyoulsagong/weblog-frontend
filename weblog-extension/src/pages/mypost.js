@@ -3,6 +3,7 @@ import "./mypost.css";
 import Comment from "../components/comment";
 const MyPost = ({ contenti }) => {
   const [updateBtn, setUpdateBtn] = useState(false);
+  const tags = ["태그들", "태그2"];
   const onHandleSaveBtn = () => {
     console.log("저장");
   };
@@ -16,6 +17,17 @@ const MyPost = ({ contenti }) => {
   return (
     <div className="myPostBackground">
       <div className="myPostDetailContainer">
+        <h1 className="myPostTitle">타이틀</h1>
+        <div className="myPostTagContainer">
+          <span>
+            {tags.map((tag, index) => (
+              <span key={index} className="tag">
+                {tag}
+              </span>
+            ))}
+          </span>
+        </div>
+
         <div className="myPostScrabBox">
           <div
             className="PostScrabBox"

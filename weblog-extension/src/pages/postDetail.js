@@ -3,9 +3,20 @@ import "./postDetail.css";
 import Comment from "../components/comment";
 const PostDetail = ({ contenti }) => {
   const Scrab = contenti;
+  const tags = ["태그들", "태그2"];
   return (
     <div className="postDetailBackground">
       <div className="postDetailContainer">
+        <h1 className="postTitle">타이틀</h1>
+        <div className="postTagContainer">
+          <span>
+            {tags.map((tag, index) => (
+              <span key={index} className="tag">
+                {tag}
+              </span>
+            ))}
+          </span>
+        </div>
         <div className="myPostScrabBox">
           <div
             className="PostScrabBox"

@@ -7,13 +7,13 @@ const profile = ({ onLogout }) => {
   };
   return (
     <div className="porfile-container">
-      <button className="logoutBtn" onClick={handleLogout}>
-        로그아웃
-      </button>
       <circle className="profile-circle">
         <img src={profileImg} alt="profile" />
       </circle>
       <div className="extension-username">Tkrhdrhkdduf</div>
+      <button className="logoutBtn" onClick={handleLogout}>
+        로그아웃
+      </button>
     </div>
   );
 };

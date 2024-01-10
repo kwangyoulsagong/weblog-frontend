@@ -16,6 +16,7 @@ const Account = ({ onLoginSuccess }) => {
 
   return (
     <div className="unLogginedBar">
+      <span>로그인해주세요...</span>
       <button onClick={onHandleLogin}>로그인</button>
       <button onClick={onHandleSignup}>회원가입</button>
       {showLogin && (

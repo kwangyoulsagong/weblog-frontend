@@ -13,6 +13,17 @@
     border-radius: 16px;
     overflow-y: auto;
 }
+.postTitle{
+  position: absolute;
+  left: 0;
+  margin-left: 25px;
+}
+.postTagContainer{
+  position: absolute;
+  left: 0;
+  margin-top: 75px;
+  margin-left: 25px;
+}
 .postDetailContainer{
 
     width: 100%;
@@ -23,7 +34,7 @@
 }
 .myPostScrabBox{
     position: absolute;
-    margin-top: 50px;
+    margin-top: 120px;
     justify-content: center;
     box-sizing: border-box;
     display: flex;
@@ -44,7 +55,7 @@
 }
 .postDetailBox{
     position: absolute;
-    margin-top: 500px;
+    margin-top: 550px;
     justify-content: center;
     box-sizing: border-box;
     display: flex;
