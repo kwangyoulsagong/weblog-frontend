@@ -31,15 +31,12 @@ const Comment = () => {
 
   return (
     <div className="comment-container">
-      <div className="user-avatar">
-        <img src={Chul} alt="User Avatar" />
-      </div>
       <div className="comment-content">
         {/* Comment Input */}
         <div className="comment-input">
           <input
             type="text"
-            placeholder="Add a comment"
+            placeholder="댓글을 남겨주세요..."
             value={commentText}
             onChange={(e) => setCommentText(e.target.value)}
           />
@@ -56,7 +53,7 @@ const Comment = () => {
               <div className="reply-input">
                 <input
                   type="text"
-                  placeholder="Reply to this comment"
+                  placeholder="답글을 남겨주세요..."
                   value={replyText}
                   onChange={(e) => setReplyText(e.target.value)}
                 />
@@ -75,17 +72,16 @@ const Comment = () => {
 
             {/* "답글 달기" Button */}
             <button
+              className="replyBtn"
               onClick={() => {
                 setShowReplyInput(!showReplyInput);
                 setReplyIndex(commentIndex);
               }}
             >
-              답글 달기
+              답글달기
             </button>
           </div>
         ))}
-
-        {/* "댓글 달기" Button */}
       </div>
     </div>
   );

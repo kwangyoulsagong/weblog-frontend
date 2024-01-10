@@ -2,12 +2,9 @@
   position: absolute;
   box-sizing: border-box;
   width: 90%;
-  background: #ffffff;
-  border: 1px solid #aab3ff;
-  box-shadow: 0px 0px 10px 3px rgba(170, 179, 255, 0.3);
-  border-radius: 16px;
-  padding: 10px;
- bottom: 20px;
+  height: 50px;
+ 
+ bottom: 40px;
 }
 .user-avatar img {
   width: 50px;
@@ -17,18 +14,23 @@
 }
 
 .comment-content {
+  background: #ffffff;
+  border: 1px solid #aab3ff;
+  box-shadow: 0px 0px 10px 3px rgba(170, 179, 255, 0.3);
+  border-radius: 16px;
+  padding: 10px;
   flex: 1;
-  overflow: auto;
 }
 
 .comment {
-  background-color: #e0f7fa;
+  background-color: #ffffff;
   padding: 10px;
   margin-top: 10px;
+  border: 1px solid #aab3ff;
+  border-radius: 16px;
 }
 
 .reply {
-  background-color: #f2f2f2;
   padding: 5px;
   margin-top: 5px;
 }
@@ -36,6 +38,7 @@
 .comment-input,
 .reply-input {
   display: flex;
+  align-items: center;
   margin-top: 10px;
 }
 
@@ -48,10 +51,16 @@
 
 .comment-input button,
 .reply-input button {
-  background-color: #4caf50;
+  background-color: #aab3ff;
   color: white;
-  padding: 5px 10px;
+  font-size: 10px;
+  width: 50px;
   border: none;
   cursor: pointer;
+}
+.replyBtn{
+  width: 50px;
+  font-size: 10px;
+  margin-left: 10px;
 }
 
