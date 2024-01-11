@@ -1,5 +1,11 @@
 .moduleBackground{
-    width: 100%;
-    height: 100%;
+    width: inherit;
+    height: inherit;
     background: #F6F6F6;
+    display: flex;
+}
+
+.popularTab{
+    margin-top: 100px;
+    margin-left: 100px
 }

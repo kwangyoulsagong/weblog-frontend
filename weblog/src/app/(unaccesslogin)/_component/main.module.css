@@ -7,7 +7,7 @@
     background-color: #fff;
     width: 100dvw;
     height: 100dvh;
-    overflow: hidden;
+    scroll-behavior: smooth;
 }
 .logo{
     position: absolute;

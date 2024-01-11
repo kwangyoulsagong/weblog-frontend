@@ -1,32 +1,44 @@
-import { ReactNode } from "react";
+"use client"
+import { ReactNode, useRef, useState } from "react";
 import styles from "./dashboard.module.css"
 import Image from "next/image";
 import Logo from "@/asset/images/logo.svg"
+import Link from "next/link";
 type props = {children:ReactNode}
 export default function MenuBar({children}:props){
+  const [menubar , setMenubar]=useState(false)
+  const [logoimg,setLogo]=useState(true)
+  const onHandleMenubar = () => {
+    setMenubar(!menubar);
+    setLogo(!logoimg)
+  };
+  
     return(
         <div className={styles.container}>
-            <header className={styles.moduleLeftWrapper}>
-                <section className={styles.moduleLeftSection}>
-                  <div className={styles.moduleLeftFixedSection}></div>
-                </section>
-            {/* <Image className={styles.logo} src={Logo} alt='logo' />
-            <line className={styles.moduleLine}></line> */}
-            </header>
-            <div className={styles.moduleRightWrapper}>
-                <div className={styles.moduleRightSectionInner}>
-                  <main className={styles.moduleMain}>{children}</main>
-                  <section className={styles.moduleRightSection}>
-                    <form className={styles.moduleSearch}>
-                    <svg width={20} viewBox="0 0 24 24" aria-hidden="true">
-                  <g>
-                    <path
-                      d="M10.25 3.75c-3.59 0-6.5 2.91-6.5 6.5s2.91 6.5 6.5 6.5c1.795 0 3.419-.726 4.596-1.904 1.178-1.177 1.904-2.801 1.904-4.596 0-3.59-2.91-6.5-6.5-6.5zm-8.5 6.5c0-4.694 3.806-8.5 8.5-8.5s8.5 3.806 8.5 8.5c0 1.986-.682 3.815-1.824 5.262l4.781 4.781-1.414 1.414-4.781-4.781c-1.447 1.142-3.276 1.824-5.262 1.824-4.694 0-8.5-3.806-8.5-8.5z"></path>
-                  </g>
-                </svg>
-                <input type="search" />
-                    </form>
-                  </section>
+            {menubar&&(
+              <header className={styles.leftWrapper}>
+              <section className={styles.leftSection}>
+                <div className={styles.leftFixedSection}>
+                   <Link href="/dashboard/home"><Image className={styles.logo} src={Logo} alt='logo' /></Link>
+                   <div className={styles.moduleLine}></div>
+                   <Link href="/dashboard/myprofile">내 정보</Link>
+                   <Link href="/dashboard/namu">지식 나무</Link>
+                </div>
+              </section>
+         
+          </header>
+            )}
+            <div className={styles.mainWrapper} >
+                <div className={styles.mainSectionInner}>
+                <div className={styles.meuBarSection}>
+                    <div className={styles.menuBarFixedSection}>
+                     <span onClick={onHandleMenubar}>메뉴바</span>
+                      {logoimg&& <Image className={styles.LogoImg} src={Logo} alt="Logo"></Image>}
+                    </div>
+                  </div>
+                <main className={styles.main}>
+                
+                  {children}</main>
                 </div>
             </div>
             </div>
