@@ -8,7 +8,7 @@ export default function Home(){
     return(
         <div className={styles.moduleBackground}>
             <div className={styles.innerContents}>
-                <div className={styles.popularTab}> <Image className={styles.popularIcon} src={PopularIcon} alt="popularIcon"></Image>인기포스트</div>
+                <div className={styles.postTab}></div>
                 <ul className={styles.collection}>
                     <div className={styles.wrapper}>
                     <li className={styles.previewBox}>
