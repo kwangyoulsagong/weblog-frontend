@@ -1,11 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@300&family=Noto+Sans+KR&display=swap');
 .moduleBackground{
     width: inherit;
     height: inherit;
     background: #F6F6F6;
     display: flex;
+    overflow-x: hidden;
+
 }
 
 .popularTab{
     margin-top: 100px;
-    margin-left: 100px
+    margin-left: 100px;
+    font-family: 'Noto Sans KR', sans-serif;
+color: #212529;
+font-size: 18px;
+display: flex;
+align-items: center;
+gap: 10px;
+
+
+}
+.popularIcon{
+    width: 30px;
+    height: 30px;
+    margin: 0 0 16px;
+}
+.collection{
+    margin-top: 50px;
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    width: 100%;
+    height: 100%;
+
+}
+.previewBox{
+    /* 포스트1 */
+
+box-sizing: border-box;
+align-items: center;
+display: flex;
+flex-direction: column;
+width: 319px;
+height: 400px;
+
+background: #FFFFFF;
+/* main color */
+box-shadow: 0px 0px 25px 7px rgba(170, 179, 255, 0.3);
+border-radius: 16px;
+list-style: none;
+
+}
+.previewBox img{
+width: 100%;
+height: 45%;
+border-radius: 16px 16px 0px 0px;
+
+
+}
+.previewBox h3{
+    font-size: 18px;
+    font-weight: 600;
+    line-height:1.5;
+    width: 85%;
+    font-family: 'Gaegu', sans-serif;
+}
+.previewBox p{
+    color: #495057;
+    width: 85%;
+    height: 5px;
+    font-size: 11px;
+    margin: 0 0 50px;
+    font-family: 'Noto Sans KR', sans-serif;
 }
