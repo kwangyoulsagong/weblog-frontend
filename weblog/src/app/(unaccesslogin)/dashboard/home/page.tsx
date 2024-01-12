@@ -72,7 +72,7 @@ export default function Home(){
                         </div></div>  
                     </li>
                     </div>
-                    <div className={styles.wrapper}>
+                    <div className={styles.wrapper} onClick={onHandlePost}>
                     <li className={styles.previewBox}>
                         <div className={styles.front}>
                         <img  src="https://velog.velcdn.com/images/greencloud/post/4ad0de67-bbaa-46af-8630-0f0d947791b5/image.GIF" alt="image"></img>
