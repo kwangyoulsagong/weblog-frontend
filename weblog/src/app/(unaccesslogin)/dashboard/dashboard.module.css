@@ -9,53 +9,6 @@
     background-color: #fff;
 
 }
-.postTabContainer{
-    width: 100vw;
-    display: flex;
-    background: transparent;
-    justify-content: center;
-    background: #F6F6F6;
-
-}
-.postTab{
-    position: relative;
-    z-index: 1;
-    margin-top: 70px;
-    width: 200px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 30px;
-    gap: 20px;
-    background: #1a1a1b; 
-
-}
-.postTab section{
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 30px;
-    text-align: center;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    color: #ffffff;
-}
-.tabActive{
-    position: absolute;
-    left: 0;
-    width: 100px;
-    height: 50px;
-    background: #868e96;
-    border-radius: 30px;
-    
-}
-.postTab section:hover{
-    font-size: 14px;
-
-}
 
 .leftWrapper{
     display: flex;

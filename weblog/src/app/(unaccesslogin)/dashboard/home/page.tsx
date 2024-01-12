@@ -5,26 +5,45 @@ import likesIcon from "@/asset/images/likestar.png"
 import { useEffect, useRef, useState } from "react"
 
 export default function Home(){
+    const tabRef=useRef<HTMLDivElement>(null)
     const slideRef = useRef<HTMLDivElement>(null);
-
-    const onHandleClick =()=>{
+    const [tabMenu, setTabMenu]=useState("popularTab")
+    const onHandleTab=(prev:any)=>{
+        setTabMenu(prev);
         if (slideRef.current) {
-
-            slideRef.current.scrollLeft= 3000
-            slideRef.current.style.scale="0.75"
-            slideRef.current.style.transition="0.5s"
-            setInterval(()=>{
-                if(slideRef.current){
-                    slideRef.current.style.scale="1"
-                }
-            },500)
+            slideRef.current.scrollLeft = tabMenu === "recommendTab" ? 0 : 3000;
+            slideRef.current.style.scale = "0.75";
+            slideRef.current.style.transition = "0.5s";
+          
+            const intervalId = setInterval(() => {
+              if (slideRef.current) {
+                slideRef.current.style.scale = "1";
+              }
+            }, 500);
+          
+            setTimeout(() => {
+              clearInterval(intervalId);
+            }, 500);
 
           }
     }
+    useEffect(()=>{
+      if(tabRef.current){
+        tabRef.current.style.left=tabMenu==="recommendTab"? '100px':'0'
+        tabRef.current.style.transition="0.5s"
+      }
+    },[tabMenu])
     return(
         <div className={styles.moduleBackground} >
             <div className={styles.innerContents}>
-            <button onClick={onHandleClick}>재밌는 버튼</button>
+            <div className={styles.postTabContainer}>
+                    <div className={styles.postTab}>
+                      <div ref={tabRef} className={styles.tabActive}>
+                      </div>
+                      <section className={styles.popularTab}  onClick={()=> onHandleTab("popularTab")}> 인기포스트</section>
+                        <section className={styles.recommendTab } onClick={()=>onHandleTab("recommendTab")}> 추천순</section>
+                    </div>
+                </div>
                 <div className={styles.collectionWrapper } ref={slideRef}>
                 <ul className={styles.collection} >
                     
@@ -184,7 +203,6 @@ export default function Home(){
                 {/* 다른 컴포넌트 */}
 
                 <ul className={styles.collection}>
-                    <button>재밌는 버튼</button>
                     <div className={styles.wrapper}>
                     <li className={styles.previewBox}>
                         <div className={styles.front}>
