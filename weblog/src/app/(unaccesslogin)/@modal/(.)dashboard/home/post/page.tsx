@@ -26,7 +26,7 @@ export default function Post(){
     },[])
 
     return(
-        <div className={styles.background} ref={postRef}>포스트
+        <div className={styles.background} ref={postRef}>
         <button onClick={onHandleClose}>닫기</button></div>
     )
 }

@@ -116,13 +116,16 @@ const Menu = () => {
       </div>
       {selectedComponent === "E" && (
         <>
-          <Title ref={titleRef} />
-          <Tag ref={tagRef} />
-          <Scrab ref={scrabRef} getStyledContent={getStyledContent} />
-          <Post ref={postRef} />
-          <button className="saveBtn" onClick={saveMemo}>
-            저장
-          </button>
+          <div className="postEditContainer">
+            {" "}
+            <Title ref={titleRef} />
+            <Tag ref={tagRef} />
+            <Scrab ref={scrabRef} getStyledContent={getStyledContent} />
+            <Post ref={postRef} />
+            <button className="saveBtn" onClick={saveMemo}>
+              저장
+            </button>
+          </div>
         </>
       )}
       {selectedComponent === "V" && <View />}
