@@ -8,10 +8,10 @@ export default function Home(){
     const tabRef=useRef<HTMLDivElement>(null)
     const slideRef = useRef<HTMLDivElement>(null);
     const [tabMenu, setTabMenu]=useState("popularTab")
-    const onHandleTab=(prev:any)=>{
+    const onHandleTab=(prev:string)=>{
         setTabMenu(prev);
         if (slideRef.current) {
-            slideRef.current.scrollLeft = tabMenu === "recommendTab" ? 0 : 3000;
+            slideRef.current.scrollLeft = tabMenu === "recommendTab" ? 0: 3000;
             slideRef.current.style.scale = "0.75";
             slideRef.current.style.transition = "0.5s";
           
