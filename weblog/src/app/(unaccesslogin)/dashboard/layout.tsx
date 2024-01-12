@@ -16,7 +16,6 @@ export default function MenuBar({children}:props){
       menuRef.current.style.scrollBehavior = "smooth";
       menuRef.current.scrollTop = !menubar ? 3000 : 0;
     }
-
   };
     return(
         <div className={styles.container}>
@@ -47,7 +46,8 @@ export default function MenuBar({children}:props){
                     </div>
                   </div>
                 <main className={styles.main}>
-                  {children}</main>
+                  {children}
+                </main>
                 </div>
             </div>
             </div>

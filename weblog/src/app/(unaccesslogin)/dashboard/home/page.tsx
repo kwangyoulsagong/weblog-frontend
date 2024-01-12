@@ -2,12 +2,14 @@
 import Image from "next/image"
 import styles from "./home.module.css"
 import likesIcon from "@/asset/images/likestar.png"
-import { useEffect, useRef, useState } from "react"
-
+import { ReactNode, useEffect, useRef, useState } from "react"
+import Link from "next/link"
+import { useRouter } from "next/navigation"
 export default function Home(){
     const tabRef=useRef<HTMLDivElement>(null)
     const slideRef = useRef<HTMLDivElement>(null);
     const [tabMenu, setTabMenu]=useState("popularTab")
+    const router=useRouter()
     const onHandleTab=(prev:string)=>{
         setTabMenu(prev);
         if (slideRef.current) {
@@ -33,6 +35,10 @@ export default function Home(){
         tabRef.current.style.transition="0.5s"
       }
     },[tabMenu])
+
+    const onHandlePost =()=>{
+        router.push('/dashboard/home/post')
+    }
     return(
         <div className={styles.moduleBackground} >
             <div className={styles.innerContents}>
@@ -47,7 +53,7 @@ export default function Home(){
                 <div className={styles.collectionWrapper } ref={slideRef}>
                 <ul className={styles.collection} >
                     
-                    <div className={styles.wrapper}>
+                    <div className={styles.wrapper} onClick={onHandlePost}>
                     <li className={styles.previewBox}>
                         <div className={styles.front}>
                         <img  src="https://velog.velcdn.com/images/hmmhmmhm/post/f6cb929e-4552-4955-83ee-5d861225bc45/image.gif" alt="image"></img>
