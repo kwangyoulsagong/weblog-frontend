@@ -105,7 +105,6 @@ const Menu = () => {
       console.log(error);
     }
   };
-  const content = getScrabHtml();
 
   return (
     <div className="Container">
@@ -136,7 +135,7 @@ const Menu = () => {
         </>
       )}
       {selectedComponent === "V" && <View />}
-      {selectedComponent === "U" && <Update contenti={content} />}
+      {selectedComponent === "U" && <Update />}
     </div>
   );
 };

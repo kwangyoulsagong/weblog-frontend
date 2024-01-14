@@ -3,8 +3,7 @@ import "./postpreview.css";
 import Collection2 from "../images/multiple.png";
 import PostDetail from "../pages/postDetail";
 
-const PostPreview = ({ data }) => {
-  console.log(data);
+const PostPreview = ({ dataPost }) => {
   const collection1Ref = useRef();
   const collection2Ref = useRef();
   const [collection, selectCollection] = useState("collect1column");
@@ -73,7 +72,7 @@ const PostPreview = ({ data }) => {
           ></img>
         </div>
         <div className={collection}>
-          {data.map((value, index) => (
+          {dataPost.map((value, index) => (
             <div
               key={index}
               className="previewBox"

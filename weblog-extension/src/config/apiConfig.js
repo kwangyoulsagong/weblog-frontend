@@ -32,7 +32,7 @@ api.interceptors.response.use(
       originalRequest._retry = true;
 
       try {
-        const response = await axios.post("/api/user/refresh-token", {
+        const response = await axios.post("/api/v1/auth/reissue", {
           refreshToken: localStorage.getItem("refreshtoken"),
         });
 

@@ -7,7 +7,7 @@ import api from "../config/apiConfig";
 const View = () => {
   const url = window.location.href;
   const accessToken = localStorage.getItem("accesstoken");
-  const [data, setData] = useState(null);
+  const [dataPost, setDataPost] = useState(null);
   //get 방식
 
   useEffect(() => {
@@ -42,7 +42,7 @@ const View = () => {
         },
       ],
     };
-    setData(responseDat.data);
+    setDataPost(responseDat.data);
     // api
     //   .get("/api/post/preview", {
     //     params: {
@@ -55,6 +55,7 @@ const View = () => {
     //   })
     //   .then((response) => {
     //     console.log(response.data);
+    //     setDataPost(response.data);
     //   })
     //   .catch((error) => {
     //     console.error(error);
@@ -62,7 +63,9 @@ const View = () => {
   }, []);
 
   return (
-    <div className="viewBackground">{data && <PostPreview data={data} />}</div>
+    <div className="viewBackground">
+      {dataPost && <PostPreview dataPost={dataPost} />}
+    </div>
   );
 };
 export default View;

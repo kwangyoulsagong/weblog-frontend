@@ -3,7 +3,7 @@ import "./updatepreview.css";
 import Collection2 from "../images/multiple.png";
 import MyPost from "../pages/mypost";
 
-const MyPostPreview = ({ contenti }) => {
+const MyPostPreview = ({ dataMyPost }) => {
   const collection1Ref = useRef();
   const collection2Ref = useRef();
   const [collection, selectCollection] = useState("collect1column");
@@ -73,61 +73,28 @@ const MyPostPreview = ({ contenti }) => {
           ></img>
         </div>
         <div className={collection}>
-          <div
-            className="myPreviewBox"
-            style={getPreviewBoxStyle()}
-            onClick={onHandleMyPost}
-          >
-            <img
-              className="myBox"
-              src="https://velog.velcdn.com/images/tkrhdrhkdduf/post/ce17cd00-1ad0-4f83-89d4-fdadbcf640e3/image.gif"
-              style={getImageBox()}
-            ></img>
-            <h3 style={getTitleBox()}>next.js default.tsx, 인터셉팅 라우트</h3>
-            <button
-              className="recommendIcon"
-              style={getRecommendBox()}
-            ></button>
-          </div>
-          <div className="myPreviewBox" style={getPreviewBoxStyle()}>
-            <img
-              className="myBox"
-              src="https://velog.velcdn.com/images/tkrhdrhkdduf/post/46a0c82e-b91c-4fa8-82dc-34c877b37c15/image.gif"
-              style={getImageBox()}
-            ></img>
-            <h3 style={getTitleBox()}>Vue.js로 만드는 웹사이트</h3>
-            <button
-              className="recommendIcon"
-              style={getRecommendBox()}
-            ></button>
-          </div>
-          <div className="myPreviewBox" style={getPreviewBoxStyle()}>
-            <img
-              className="myBox"
-              src="https://velog.velcdn.com/images/tkrhdrhkdduf/post/76d413b5-9774-4947-9034-d939adb572f2/image.png"
-              style={getImageBox()}
-            ></img>
-            <h3 style={getTitleBox()}>테스터 코드 작성하기</h3>
-            <button
-              className="recommendIcon"
-              style={getRecommendBox()}
-            ></button>
-          </div>
-          <div className="myPreviewBox" style={getPreviewBoxStyle()}>
-            <img
-              className="myBox"
-              src="https://velog.velcdn.com/images/tkrhdrhkdduf/post/298a37f5-e225-409d-85e0-bb677a0cba24/image.jpg"
-              style={getImageBox()}
-            ></img>
-            <h3 style={getTitleBox()}>Next.js 14</h3>
-            <button
-              className="recommendIcon"
-              style={getRecommendBox()}
-            ></button>
-          </div>
+          {dataMyPost.map((value, index) => (
+            <div
+              key={index}
+              className="myPreviewBox"
+              style={getPreviewBoxStyle()}
+              onClick={onHandleMyPost}
+            >
+              <img
+                className="myBox"
+                src={value.image_url}
+                style={getImageBox()}
+              ></img>
+              <h3 style={getTitleBox()}>{value.title}</h3>
+              <button
+                className="recommendIcon"
+                style={getRecommendBox()}
+              ></button>
+            </div>
+          ))}
         </div>
       </div>
-      {showMyPost && <MyPost contenti={contenti} />}
+      {showMyPost && <MyPost />}
     </div>
   );
 };
