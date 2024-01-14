@@ -8,10 +8,13 @@ const Login = ({ onClose, onLoginSuccess }) => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [message, setMessage] = useState();
+  const [getUserId, setGetUserId] = useState();
+  const [getNickname, setGetNickname] = useState();
+  const [getEmail, setGetEmail] = useState();
   const onSubmit = async (e) => {
     e.preventDefault();
     if (email === "sgky0511" && password === "ky4400") {
-      onLoginSuccess();
+      onLoginSuccess(getUserId, getNickname, getEmail);
       alert("로그인 성공");
     } else {
       alert("로그인 실패");
@@ -46,6 +49,9 @@ const Login = ({ onClose, onLoginSuccess }) => {
       if (data.accessToken && data.refreshToken) {
         localStorage.setItem("accestoken", data.accessToken);
         localStorage.setItem("refreshtoken", data.refreshToken);
+        setGetUserId(data.userId);
+        setGetNickname(data.nickname);
+        setGetEmail(data.email);
       }
     } catch (error) {
       console.log(error);

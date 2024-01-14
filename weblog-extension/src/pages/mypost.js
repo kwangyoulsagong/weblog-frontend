@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./mypost.css";
 import Comment from "../components/comment";
-const MyPost = ({ contenti }) => {
+const MyPost = ({ dataMyPostDetail }) => {
   const [updateBtn, setUpdateBtn] = useState(false);
-  const tags = ["태그들", "태그2"];
+  useEffect(() => {
+    document.querySelector(".but").style.visibility = "hidden";
+  }, []);
   const onHandleSaveBtn = () => {
     console.log("저장");
   };
@@ -13,46 +15,49 @@ const MyPost = ({ contenti }) => {
   const onHandleDeleteBtn = () => {
     alert("현재 포스트가 삭제되었습니다.");
   };
-  const Scrab = contenti;
   return (
     <div className="myPostBackground">
-      <div className="myPostDetailContainer">
-        <h1 className="myPostTitle">타이틀</h1>
-        <div className="myPostTagContainer">
-          <span>
-            {tags.map((tag, index) => (
-              <span key={index} className="tag">
-                {tag}
-              </span>
-            ))}
-          </span>
-        </div>
-
-        <div className="myPostScrabBox">
-          <div
-            className="PostScrabBox"
-            dangerouslySetInnerHTML={{ __html: Scrab }}
-          ></div>
-        </div>
-        <div className="myPostDetailBox">
-          <div id="myPostEditor" contentEditable={updateBtn}>
-            hello
+      {dataMyPostDetail.map((value, index) => (
+        <div key={index} className="myPostDetailContainer">
+          <h1 className="myPostTitle">{value.title}</h1>
+          <div className="myPostTagContainer">
+            <span>
+              {value.tags.map((tag, index) => (
+                <span key={index} className="tag">
+                  {tag}
+                </span>
+              ))}
+            </span>
           </div>
-        </div>
 
-        <header className="myPostHeader">
-          <button className="saveMemoBtn" onClick={onHandleSaveBtn}>
-            저장
-          </button>
-          <button className="updateBtn" onClick={onHandleUpdateBtn}>
-            수정
-          </button>
-          <button className="deleteBtn" onClick={onHandleDeleteBtn}>
-            삭제
-          </button>
-          <Comment />
-        </header>
-      </div>
+          <div className="myPostScrabBox">
+            <div
+              className="PostScrabBox"
+              dangerouslySetInnerHTML={{ __html: value.content }}
+            ></div>
+          </div>
+          <div className="myPostDetailBox">
+            <div
+              id="myPostEditor"
+              contentEditable={updateBtn}
+              dangerouslySetInnerHTML={{ __html: value.memo }}
+            ></div>
+          </div>
+
+          <header className="myPostHeader">
+            <button className="saveMemoBtn" onClick={onHandleSaveBtn}>
+              저장
+            </button>
+            <button className="updateBtn" onClick={onHandleUpdateBtn}>
+              수정
+            </button>
+            <button className="deleteBtn" onClick={onHandleDeleteBtn}>
+              삭제
+            </button>
+            <Comment />
+          </header>
+        </div>
+      ))}
     </div>
   );
 };

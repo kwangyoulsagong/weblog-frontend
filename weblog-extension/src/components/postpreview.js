@@ -10,6 +10,7 @@ const PostPreview = ({ dataPost }) => {
   const [collection, selectCollection] = useState("collect1column");
   const [showPost, setShowPost] = useState(false);
   const [dataPostDetail, setDataPostDetail] = useState();
+  const accessToken = localStorage.getItem("accesstoken");
 
   const handleCollection = (prev) => {
     selectCollection((prevCollection) =>
@@ -71,11 +72,18 @@ const PostPreview = ({ dataPost }) => {
       ],
     };
     setDataPostDetail(responseData.data);
+    // try {
     //   const response = await api.get("/api/post", {
     //     params: {
     //       postId: postId,
     //     },
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //       Authorization: `Bearer ${accessToken}`,
+    //     },
     //   });
+    //   console.log(response.data);
+    //   setDataPostDetail(response.data);
     // } catch (error) {
     //   console.log(error);
     // }
