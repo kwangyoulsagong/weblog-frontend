@@ -4,37 +4,54 @@ import React, { useState } from "react";
 import Extensions from "./Loginextentions";
 import axios from "axios";
 const Login = ({ onClose, onLoginSuccess }) => {
-  const [id, setId] = useState();
+  const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [message, setMessage] = useState();
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    if (id === "sgky0511" && password === "ky4400") {
+    if (email === "sgky0511" && password === "ky4400") {
       onLoginSuccess();
       alert("로그인 성공");
     } else {
       alert("로그인 실패");
     }
-    axios
-      .get("/api/users/login", {
+    // axios
+    //   .get("/api/users/login", {
+    //     params: {
+    //       loginId: id,
+    //       password: password,
+    //     },
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //   })
+    //   .then((response) => {
+    //     console.log(response.data);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   }); 동기 처리
+    try {
+      const response = await axios.get("/api/user/login", {
         params: {
-          loginId: id,
+          logindId: email,
           password: password,
         },
         headers: {
           "Content-Type": "application/json",
         },
-      })
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
       });
+      const data = response.data;
+      if (data.accessToken && data.refreshToken) {
+        localStorage.setItem("accestoken", data.accessToken);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
-  const handleChangeId = (e) => {
-    setId(e.target.value);
+  const handleChangeEmail = (e) => {
+    setEmail(e.target.value);
   };
   const handleChangePassword = (e) => {
     setPassword(e.target.value);
@@ -49,14 +66,14 @@ const Login = ({ onClose, onLoginSuccess }) => {
         <form onSubmit={onSubmit}>
           <div className="modalBody">
             <div className="inputDiv">
-              <label className="inputLabel" htmlFor="id">
+              <label className="inputLabel" htmlFor="email">
                 아이디
               </label>
               <input
-                id="id"
+                id="email"
                 className="input"
-                value={id}
-                onChange={handleChangeId}
+                value={email}
+                onChange={handleChangeEmail}
                 type="text"
                 placeholder=""
               />
@@ -77,7 +94,7 @@ const Login = ({ onClose, onLoginSuccess }) => {
           </div>
           <div className="message">{message}</div>
           <div className="modalFooter">
-            <button className="loginActionBtn" disabled={!id && !password}>
+            <button className="loginActionBtn" disabled={!email && !password}>
               로그인하기
             </button>
           </div>

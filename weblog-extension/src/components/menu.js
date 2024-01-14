@@ -81,7 +81,7 @@ const Menu = () => {
       data: [
         {
           title: titleHtml,
-          tag: tagHtml,
+          tags: tagHtml,
           content: scrabHtml,
           memo: postHtml,
           url: window.location.href,
