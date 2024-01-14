@@ -9,8 +9,10 @@ import Tag from "./tag";
 import Title from "./title";
 import axios from "axios";
 import Update from "../pages/update";
+import api from "../config/apiConfig";
 
 const Menu = () => {
+  const accessToken = localStorage.getItem("accesstoken");
   const [selectedHtml, setSelectedHtml] = useState("");
   const [computedStyles, setComputedStyles] = useState({});
   const [isDragging, setIsDragging] = useState(false);
@@ -91,9 +93,10 @@ const Menu = () => {
       ],
     };
     console.log(requestData);
-    const response = axios.post("/api/post", requestData, {
+    const response = api.post("/api/post", requestData, {
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
       },
     });
     console.log(response.data);

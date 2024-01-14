@@ -17,7 +17,8 @@ const Extensions = ({ onLogout }) => {
       prevClass === "openBtn" ? "closeBtn" : "openBtn"
     );
   };
-
+  const accessToken = localStorage.getItem("accesstoken");
+  console.log(accessToken);
   return (
     <div>
       <div className={btnClass} onClick={toggleContainerVisibility}>

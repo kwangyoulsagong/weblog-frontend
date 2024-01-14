@@ -3,11 +3,11 @@ import CloseBtn from "../images/closeBtn.png";
 import React, { useState } from "react";
 import Extensions from "./Loginextentions";
 import axios from "axios";
+import api from "../config/apiConfig";
 const Login = ({ onClose, onLoginSuccess }) => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [message, setMessage] = useState();
-
   const onSubmit = async (e) => {
     e.preventDefault();
     if (email === "sgky0511" && password === "ky4400") {
@@ -33,7 +33,7 @@ const Login = ({ onClose, onLoginSuccess }) => {
     //     console.log(error);
     //   }); 동기 처리
     try {
-      const response = await axios.get("/api/user/login", {
+      const response = await api.get("/api/user/login", {
         params: {
           logindId: email,
           password: password,
@@ -45,6 +45,7 @@ const Login = ({ onClose, onLoginSuccess }) => {
       const data = response.data;
       if (data.accessToken && data.refreshToken) {
         localStorage.setItem("accestoken", data.accessToken);
+        localStorage.setItem("refreshtoken", data.refreshToken);
       }
     } catch (error) {
       console.log(error);
