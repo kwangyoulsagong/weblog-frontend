@@ -74,7 +74,7 @@ const Menu = () => {
     }
     return "";
   };
-  const saveMemo = () => {
+  const saveMemo = async () => {
     const titleHtml = getTitleHtml();
     const tagHtml = getTagHtml();
     const scrabHtml = getScrabHtml();
@@ -93,13 +93,17 @@ const Menu = () => {
       ],
     };
     console.log(requestData);
-    const response = api.post("/api/post", requestData, {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${accessToken}`,
-      },
-    });
-    console.log(response.data);
+    try {
+      const response = await api.post("/api/post", requestData, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
   const content = getScrabHtml();
 
