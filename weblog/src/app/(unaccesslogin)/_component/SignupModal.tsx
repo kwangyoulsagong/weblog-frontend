@@ -104,7 +104,7 @@ export default function SignupModal() {
               </div>
             </div>
             <div className={style.modalFooter}>
-              <button className={style.actionButton} onClick={onSubmit}>가입하기</button>
+              <button className={style.actionButton} onClick={onSubmit} disabled={!email && !password}>가입하기</button>
             </div>
           </form>
         </div>
