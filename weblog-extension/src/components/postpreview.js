@@ -69,6 +69,8 @@ const PostPreview = ({ dataPost }) => {
           tags: ["javascript", "web", "프론트"],
           title: "javascript 실행되기 까지",
           url: "https://velog.io/@qlgks1/javascript-node-%EB%8F%99%EC%9E%91-%EC%9B%90%EB%A6%AC",
+          like_count: 3,
+          is_like: false,
         },
       ],
     };
