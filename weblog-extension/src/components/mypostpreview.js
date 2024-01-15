@@ -69,6 +69,7 @@ const MyPostPreview = ({ dataMyPost }) => {
           title: "next.js layout",
           like_count: 5,
           url: "https://velog.io/@tkrhdrhkdduf/Next.js",
+          is_like: false,
         },
       ],
     };
