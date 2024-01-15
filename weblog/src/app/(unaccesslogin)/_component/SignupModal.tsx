@@ -5,11 +5,11 @@ import {useRouter} from "next/navigation";
 import {ChangeEventHandler, FormEventHandler, useState} from "react";
 
 export default function SignupModal() {
-  const [id, setId] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [nickname, setNickname] = useState('');
-  const [image, setImage] = useState('');
-  const [imageFile, setImageFile] = useState<File>();
+  const [phoneNumber, setPhoneNumber]=useState('');
+  const [birthDate,setBirthDate]=useState('');
 
   const router = useRouter();
   const onClickClose = () => {
@@ -17,23 +17,26 @@ export default function SignupModal() {
     // TODO: 뒤로가기가 /home이 아니면 /home으로 보내기
   }
 
-  const onChangeId: ChangeEventHandler<HTMLInputElement> = (e) => { setId(e.target.value) };
+  const onChangeEmail: ChangeEventHandler<HTMLInputElement> = (e) => { setEmail(e.target.value) };
 
   const onChangePassword: ChangeEventHandler<HTMLInputElement> = (e) => { setPassword(e.target.value) };
   const onChangeNickname: ChangeEventHandler<HTMLInputElement> = (e) => { setNickname(e.target.value) };
-  const onChangeImageFile: ChangeEventHandler<HTMLInputElement> = (e) => {
-    e.target.files && setImageFile(e.target.files[0])
-  };
+  const onChangePhone: ChangeEventHandler<HTMLInputElement> = (e)=>{setPhoneNumber(e.target.value)}
+  const onChangeBirth: ChangeEventHandler<HTMLInputElement> = (e)=>{setBirthDate(e.target.value)}
+  
+
 
   const onSubmit: FormEventHandler = (e) => {
     e.preventDefault();
+    console.log([email,password,nickname,phoneNumber,birthDate])
     fetch('http://localhost:9090/api/users', {
       method: 'post',
       body: JSON.stringify({
-        id,
-        nickname,
-        image,
-        password,
+        email:email,
+        password:password,
+        phoneNumber:phoneNumber,
+        nickname:nickname,
+        birthDate:birthDate
       }),
       credentials: 'include',
     }).then((response: Response) => {
@@ -65,17 +68,10 @@ export default function SignupModal() {
           <form>
             <div className={style.modalBody}>
               <div className={style.inputDiv}>
-                <label className={style.inputLabel} htmlFor="id">아이디</label>
-                <input id="id" className={style.input} type="text" placeholder=""
-                       value={id}
-                       onChange={onChangeId}
-                />
-              </div>
-              <div className={style.inputDiv}>
-                <label className={style.inputLabel} htmlFor="name">닉네임</label>
-                <input id="name" className={style.input} type="text" placeholder=""
-                       value={nickname}
-                       onChange={onChangeNickname}
+                <label className={style.inputLabel} htmlFor="email">이메일</label>
+                <input id="email" className={style.input} type="text" placeholder=""
+                       value={email}
+                       onChange={onChangeEmail}
                 />
               </div>
               <div className={style.inputDiv}>
@@ -86,14 +82,29 @@ export default function SignupModal() {
                 />
               </div>
               <div className={style.inputDiv}>
-                <label className={style.inputLabel} htmlFor="image">프로필</label>
-                <input id="image" className={style.input} type="file" accept="image/*"
-                       onChange={onChangeImageFile}
+                <label className={style.inputLabel} htmlFor="name">닉네임</label>
+                <input id="name" className={style.input} type="text" placeholder=""
+                       value={nickname}
+                       onChange={onChangeNickname}
+                />
+              </div>
+              <div className={style.inputDiv}>
+                <label className={style.inputLabel} htmlFor="phoneNumber">전화번호</label>
+                <input id="phoneNumber" className={style.input} type="text" placeholder=""
+                       value={phoneNumber}
+                       onChange={onChangePhone}
+                />
+              </div>
+              <div className={style.inputDiv}>
+                <label className={style.inputLabel} htmlFor="birthDate">생년월일</label>
+                <input id="birthDate" className={style.input} type="text" placeholder=""
+                       value={birthDate}
+                       onChange={onChangeBirth}
                 />
               </div>
             </div>
             <div className={style.modalFooter}>
-              <button className={style.actionButton} disabled>가입하기</button>
+              <button className={style.actionButton} onClick={onSubmit}>가입하기</button>
             </div>
           </form>
         </div>
