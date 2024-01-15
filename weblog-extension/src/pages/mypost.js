@@ -1,13 +1,46 @@
 import React, { useState, useEffect } from "react";
 import "./mypost.css";
 import Comment from "../components/comment";
+import api from "../config/apiConfig";
 const MyPost = ({ dataMyPostDetail }) => {
+  const accessToken = localStorage.getItem("accesstoken");
   const [updateBtn, setUpdateBtn] = useState(false);
   useEffect(() => {
     document.querySelector(".but").style.visibility = "hidden";
   }, []);
-  const onHandleSaveBtn = () => {
+  const onHandleSaveBtn = async (post_id, tag) => {
     console.log("저장");
+    const title = document.querySelector(".myPostTitle").innerHTML;
+    const tags = tag;
+    const scrab = document.querySelector(".PostScrabBox").innerHTML;
+    const memo = document.getElementById("myPostEditor").innerHTML;
+
+    const requestData = {
+      data: [
+        {
+          title: title,
+          tags: tags,
+          content: scrab,
+          memo: memo,
+        },
+      ],
+    };
+    console.log(requestData);
+
+    // try {
+    //   const response = await api.put("/api/post", requestData, {
+    //     params: {
+    //       postId: post_id,
+    //     },
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //       Authorization: `Bearer ${accessToken}`,
+    //     },
+    //   });
+    //   console.log(response.data);
+    // } catch (error) {
+    //   console.log(error);
+    // }
   };
   const onHandleUpdateBtn = () => {
     setUpdateBtn(true);
@@ -45,7 +78,10 @@ const MyPost = ({ dataMyPostDetail }) => {
           </div>
 
           <header className="myPostHeader">
-            <button className="saveMemoBtn" onClick={onHandleSaveBtn}>
+            <button
+              className="saveMemoBtn"
+              onClick={() => onHandleSaveBtn(value.post_id, value.tags)}
+            >
               저장
             </button>
             <button className="updateBtn" onClick={onHandleUpdateBtn}>
