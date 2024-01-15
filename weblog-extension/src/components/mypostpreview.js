@@ -3,7 +3,7 @@ import "./updatepreview.css";
 import Collection2 from "../images/multiple.png";
 import MyPost from "../pages/mypost";
 import api from "../config/apiConfig";
-
+import likeImg from "../images/likestar.png";
 const MyPostPreview = ({ dataMyPost }) => {
   const collection1Ref = useRef();
   const collection2Ref = useRef();
@@ -121,10 +121,10 @@ const MyPostPreview = ({ dataMyPost }) => {
                 style={getImageBox()}
               ></img>
               <h3 style={getTitleBox()}>{value.title}</h3>
-              <button
-                className="recommendIcon"
-                style={getRecommendBox()}
-              ></button>
+              <button className="recommendIcon" style={getRecommendBox()}>
+                <img src={likeImg}></img>
+              </button>
+              <span className="likeCount">{value.like_count}</span>
             </div>
           ))}
         </div>
