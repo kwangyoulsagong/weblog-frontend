@@ -2,10 +2,14 @@
 import { ChangeEventHandler, FormEventHandler, useState } from "react"
 import styles from "./login.module.css"
 import { useRouter } from "next/navigation"
+import axios from "axios"
 export default function LoginModal(){
     const [email, setEmail]=useState('')
     const [password, setPassword]=useState('')
     const [message, setMessage]=useState()
+    const [getUserId, setGetUserId] = useState();
+  const [getNickname, setGetNickname] = useState();
+  const [getEmail, setGetEmail] = useState();
     const router=useRouter()
 
     
@@ -18,10 +22,30 @@ export default function LoginModal(){
     const handleChangePassword:ChangeEventHandler<HTMLInputElement>=(e)=>{
         setPassword(e.target.value)
     }
-    const onSubmit:FormEventHandler=(e)=>{
+    const onSubmit:FormEventHandler= async(e)=>{
         e.preventDefault()
-
-    }
+      try{
+        const response = await axios.get("/api/v1/auth/login",{
+            params:{
+                email:email,
+                password:password,
+            },
+            headers:{
+                "Content-Type":"application/json"
+            }
+      })
+      const data = response.data;
+      console.log(data);
+      if (data.accessToken && data.refreshToken) {
+        localStorage.setItem("accestoken", data.accessToken);
+        localStorage.setItem("refreshtoken", data.refreshToken);
+        setGetUserId(data.user.userId);
+        setGetNickname(data.user.nickname);
+        setGetEmail(data.user.email);
+      }
+    }catch(error){
+        console.log(error)
+    }}
     return(
         <div className={styles.modalBackground}>
             <div className={styles.modal}>
@@ -44,7 +68,7 @@ export default function LoginModal(){
                 </div>
                 <div className={styles.message}>{message}</div>
                 <div className={styles.modalFooter}>
-                    <button className={styles.actionBtn} disabled={!email && !password}>로그인하기</button>
+                    <button className={styles.actionBtn} onClick={onSubmit} disabled={!email && !password}>로그인하기</button>
                 </div>
             </form>
             </div>
