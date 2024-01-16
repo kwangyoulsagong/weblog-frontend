@@ -43,7 +43,7 @@ const View = () => {
         },
         {
           post_id: 3,
-          nickname: "하민",
+          nickname: "김영은",
           title: "인터랙티브 3D web으로 만든 눈내리는",
           tags: [
             {

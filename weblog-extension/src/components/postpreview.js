@@ -4,6 +4,37 @@ import Collection2 from "../images/multiple.png";
 import PostDetail from "../pages/postDetail";
 import api from "../config/apiConfig";
 import likeImg from "../images/likestar.png";
+const formatDate = (dateString) => {
+  const options = { year: "numeric", month: "long", day: "numeric" };
+  const formattedDate = new Date(dateString).toLocaleDateString(
+    "ko-KR",
+    options
+  );
+  return formattedDate;
+};
+
+const formatRelativeTime = (dateString) => {
+  const now = new Date();
+  const date = new Date(dateString);
+  const diff = now - date;
+
+  // 분, 시간, 일로 계산
+  const minutes = Math.floor(diff / 60000);
+  const hours = Math.floor(diff / 3600000);
+  const days = Math.floor(diff / 86400000);
+
+  if (minutes < 1) {
+    return "방금 전";
+  } else if (minutes < 60) {
+    return `${minutes}분 전`;
+  } else if (hours < 24) {
+    return `${hours}시간 전`;
+  } else if (days < 7) {
+    return `${days}일 전`;
+  } else {
+    return formatDate(dateString);
+  }
+};
 
 const PostPreview = ({ dataPost }) => {
   const collection1Ref = useRef();
@@ -52,6 +83,33 @@ const PostPreview = ({ dataPost }) => {
       return {
         marginTop: "50px",
         fontSize: "7.5px",
+      };
+    }
+  };
+  const getLikeBox = () => {
+    if (collection === "collect2coloumn") {
+      return {
+        fontSize: "8px",
+        marginTop: "-65px",
+        marginLeft: "10px",
+      };
+    }
+  };
+  const getDateBox = () => {
+    if (collection === "collect2coloumn") {
+      return {
+        fontSize: "7px",
+        marginTop: "30px",
+        marginLeft: "5px",
+      };
+    }
+  };
+  const getPostWho = () => {
+    if (collection === "collect2coloumn") {
+      return {
+        fontSize: "7.5px",
+        marginTop: "45px",
+        marginLeft: "5px",
       };
     }
   };
@@ -144,10 +202,28 @@ const PostPreview = ({ dataPost }) => {
               />
               <h3 style={getTitleBox()}>{value.title}</h3>{" "}
               {/* Use value.title */}
+              <div className="datePreview">
+                <div style={getDateBox()}>
+                  {" "}
+                  <span>
+                    {value.modifiedDate
+                      ? `수정됨: ${formatRelativeTime(value.modifiedDate)}`
+                      : `작성됨: ${formatRelativeTime(value.createdDate)}`}
+                  </span>
+                </div>
+              </div>
+              <div className="postWhoPreview">
+                <div style={getPostWho()}>
+                  <span>post</span>
+                  <b>{value.nickname}</b>
+                </div>
+              </div>
               <button className="recommendIcon" style={getRecommendBox()}>
                 <img src={likeImg}></img>
               </button>
-              <span className="likeCount">{value.like_count}</span>
+              <span className="likeCount" style={getLikeBox()}>
+                {value.like_count}
+              </span>
             </div>
           ))}
         </div>
