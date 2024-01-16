@@ -2,13 +2,16 @@
 import { ChangeEventHandler, FormEventHandler, useState } from "react"
 import styles from "./login.module.css"
 import { useRouter } from "next/navigation"
-import axios from "axios"
+import api from "@/app/config/apiConfig"
 export default function LoginModal(){
     const [email, setEmail]=useState('')
     const [password, setPassword]=useState('')
     const [message, setMessage]=useState()
     const router=useRouter()
-
+    const requestData={
+        email:email,
+        password:password
+    }
     
     const onCLose=()=>{
         router.back()
@@ -21,13 +24,9 @@ export default function LoginModal(){
     }
     const onSubmit:FormEventHandler= async(e)=>{
         e.preventDefault()
-        router.push("/dashboard/home")
+       
       try{
-        const response = await axios.get("/api/v1/auth/login",{
-            params:{
-                email:email,
-                password:password,
-            },
+        const response = await api.post("/api/v1/auth/login",requestData,{
             headers:{
                 "Content-Type":"application/json"
             }
@@ -37,6 +36,7 @@ export default function LoginModal(){
       if (data.accessToken && data.refreshToken) {
         localStorage.setItem("accestoken", data.accessToken);
         localStorage.setItem("refreshtoken", data.refreshToken);
+        router.push("/dashboard/home")
         
       }
     }catch(error){
