@@ -23,10 +23,11 @@ export default function MenuBar({children}:props){
               <header className={styles.leftWrapper}>
               <section className={styles.leftSection}>
                 <div className={styles.leftFixedSection}>
-                   <a href="/dashboard/home"><Image className={styles.logo} src={Logo} alt='logo' /></a>
+                   <Link href="/dashboard/home"><Image className={styles.logo} src={Logo} alt='logo' /></Link>
                    <div className={styles.moduleLine}></div>
                    <a href="/dashboard/home">홈</a>
                    <a href="/dashboard/myprofile">내 정보</a>
+                   <Link href="/dashboard/mypost">내 포스트</Link>
                    <a href="/dashboard/namu">지식 나무</a>
                 </div>
               </section>

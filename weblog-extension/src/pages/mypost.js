@@ -71,14 +71,10 @@ const MyPost = ({ dataMyPostDetail }) => {
     const memo = document.getElementById("myPostEditor").innerHTML;
 
     const requestData = {
-      data: [
-        {
-          title: title,
-          tags: tags,
-          content: scrab,
-          memo: memo,
-        },
-      ],
+      title: title,
+      tags: tags,
+      content: scrab,
+      memo: memo,
     };
     console.log(requestData);
 

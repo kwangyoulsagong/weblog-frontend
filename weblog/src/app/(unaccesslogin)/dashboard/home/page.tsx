@@ -60,7 +60,7 @@ export default function Home(){
                         <h3>하루 만에 혼자 3D 로 신년카드 웹앱을?</h3>
                         <div className={styles.contentHeader}>
                         <div className={styles.profileCircle}>
-                            <img src="https://velog.velcdn.com/images/hmmhmmhm/profile/352c0d2c-9f4d-4489-a5c5-64d789a66a4b/image.webp"></img>  
+                            <img src="https://velog.velcdn.com/images/hmmhmmhm/profile/352c0d2c-9f4d-4489-a5c5-64d789a66a4b/image.webp" alt=''></img>  
                         </div>
                         <div className={styles.likes}><Image src={likesIcon} alt="like"></Image></div>
                         <div className={styles.postBy}> <span>post</span> <b>하민</b></div> 
@@ -79,7 +79,7 @@ export default function Home(){
                         <h3>api 와장창 호출하지 않는 법 (Feat. 디바운스)</h3>
                         <div className={styles.contentHeader}>
                         <div className={styles.profileCircle}>
-                            <img src="https://velog.velcdn.com/images/greencloud/profile/0c3223ce-47f4-4e04-b9ce-1a75949c73f4/image.PNG"></img>  
+                            <img src="https://velog.velcdn.com/images/greencloud/profile/0c3223ce-47f4-4e04-b9ce-1a75949c73f4/image.PNG" alt=''></img>  
                         </div>
                         <div className={styles.likes}><Image src={likesIcon} alt="like"></Image></div>
                         <div className={styles.postBy}> <span>post</span> <b>가은</b></div> 
@@ -87,7 +87,7 @@ export default function Home(){
                         </div>
                         </div>
                         <div className={styles.back}> <div className={styles.content}>
-                        <p>'일부러 거절당하기'</p>
+                        <p>일부러 거절당하기</p>
                         </div></div>  
                     </li>
                     </div>
@@ -98,7 +98,7 @@ export default function Home(){
                         <h3>나를 프로그래밍 해보자.</h3>
                         <div className={styles.contentHeader}>
                         <div className={styles.profileCircle}>
-                            <img src="https://velog.velcdn.com/images/teo/profile/392ec036-5070-4c97-aabe-100969716dd9/image.jpg"></img>  
+                            <img src="https://velog.velcdn.com/images/teo/profile/392ec036-5070-4c97-aabe-100969716dd9/image.jpg" alt=''></img>  
                         </div>
                         <div className={styles.likes}><Image src={likesIcon} alt="like"></Image></div>
                         <div className={styles.postBy}> <span>post</span> <b>teo.yu</b></div> 
@@ -117,7 +117,7 @@ export default function Home(){
                         <h3>[1편] .env 파일 관리, 환경변수 공유 쉽게 하</h3>
                         <div className={styles.contentHeader}>
                         <div className={styles.profileCircle}>
-                            <img src="https://velog.velcdn.com/images/medistream/profile/d09ac64a-c557-47fa-a6e4-61a7e796cc3b/image.webp"></img>  
+                            <img src="https://velog.velcdn.com/images/medistream/profile/d09ac64a-c557-47fa-a6e4-61a7e796cc3b/image.webp" alt=''></img>  
                         </div>
                         <div className={styles.likes}><Image src={likesIcon} alt="like"></Image></div>
                         <div className={styles.postBy}> <span>post</span> <b>메디스트림</b></div> 
@@ -136,7 +136,7 @@ export default function Home(){
                         <h3>2년차 개발자의 2023년 회고</h3>
                         <div className={styles.contentHeader}>
                         <div className={styles.profileCircle}>
-                            <img src="https://images.velog.io/images/redjen/profile/69c8ece6-4212-4155-bde8-72cd3c8789f6/SW%EC%95%84%EC%9D%B4%EC%BD%98.jpg"></img>  
+                            <img src="https://images.velog.io/images/redjen/profile/69c8ece6-4212-4155-bde8-72cd3c8789f6/SW%EC%95%84%EC%9D%B4%EC%BD%98.jpg" alt=''></img>  
                         </div>
                         <div className={styles.likes}><Image src={likesIcon} alt="like"></Image></div>
                         <div className={styles.postBy}> <span>post</span> <b>redjen</b></div> 
@@ -155,7 +155,7 @@ export default function Home(){
                         <h3>개발자가 퇴사하고 컨설턴트가 되었지만 복학했습니다</h3>
                         <div className={styles.contentHeader}>
                         <div className={styles.profileCircle}>
-                            <img src="https://images.velog.io/images/yongtae923/profile/a7f26053-bebc-4b47-a2e6-a620f86e89d3/yongtae_logo.jpg"></img>  
+                            <img src="https://images.velog.io/images/yongtae923/profile/a7f26053-bebc-4b47-a2e6-a620f86e89d3/yongtae_logo.jpg" alt=''></img>  
                         </div>
                         <div className={styles.likes}><Image src={likesIcon} alt="like"></Image></div>
                         <div className={styles.postBy}> <span>post</span> <b>Tate 김용태</b></div> 
@@ -170,11 +170,11 @@ export default function Home(){
                     <div className={styles.wrapper}>
                     <li className={styles.previewBox}>
                         <div className={styles.front}>
-                        <img  src="https://velog.velcdn.com/images/sksmsfbrjs/post/1823393c-ae5f-4bfd-b1d7-bc69f8dbbb2b/image.png" alt="image"></img>
+                        <img  src="https://velog.velcdn.com/images/sksmsfbrjs/post/1823393c-ae5f-4bfd-b1d7-bc69f8dbbb2b/image.png" alt="image" ></img>
                         <h3>[Express.js] EC2 인스턴스와 S3 연결하기</h3>
                         <div className={styles.contentHeader}>
                         <div className={styles.profileCircle}>
-                            <img src="https://velog.velcdn.com/images/sksmsfbrjs/profile/ae158442-2852-4bfd-b970-a48f0f830c19/social_profile.png"></img>  
+                            <img src="https://velog.velcdn.com/images/sksmsfbrjs/profile/ae158442-2852-4bfd-b970-a48f0f830c19/social_profile.png" alt=''></img>  
                         </div>
                         <div className={styles.likes}><Image src={likesIcon} alt="like"></Image></div>
                         <div className={styles.postBy}> <span>post</span> <b>유건</b></div> 
@@ -193,7 +193,7 @@ export default function Home(){
                         <h3>Figma 단축키 모음 (in Mac)</h3>
                         <div className={styles.contentHeader}>
                         <div className={styles.profileCircle}>
-                            <img src="https://velog.velcdn.com/images/aksen5240/profile/50fb3f0d-ad03-47eb-b410-5c1c046ffe0e/social_profile.png"></img>  
+                            <img src="https://velog.velcdn.com/images/aksen5240/profile/50fb3f0d-ad03-47eb-b410-5c1c046ffe0e/social_profile.png" alt=''></img>  
                         </div>
                         <div className={styles.likes}><Image src={likesIcon} alt="like"></Image></div>
                         <div className={styles.postBy}> <span>post</span> <b>aksen5240</b></div> 
@@ -216,7 +216,7 @@ export default function Home(){
                         <h3>하루 만에 혼자 3D 로 신년카드 웹앱을?</h3>
                         <div className={styles.contentHeader}>
                         <div className={styles.profileCircle}>
-                            <img src="https://velog.velcdn.com/images/hmmhmmhm/profile/352c0d2c-9f4d-4489-a5c5-64d789a66a4b/image.webp"></img>  
+                            <img src="https://velog.velcdn.com/images/hmmhmmhm/profile/352c0d2c-9f4d-4489-a5c5-64d789a66a4b/image.webp" alt=''></img>  
                         </div>
                         <div className={styles.likes}><Image src={likesIcon} alt="like"></Image></div>
                         <div className={styles.postBy}> <span>post</span> <b>하민</b></div> 
@@ -235,7 +235,7 @@ export default function Home(){
                         <h3>api 와장창 호출하지 않는 법 (Feat. 디바운스)</h3>
                         <div className={styles.contentHeader}>
                         <div className={styles.profileCircle}>
-                            <img src="https://velog.velcdn.com/images/greencloud/profile/0c3223ce-47f4-4e04-b9ce-1a75949c73f4/image.PNG"></img>  
+                            <img src="https://velog.velcdn.com/images/greencloud/profile/0c3223ce-47f4-4e04-b9ce-1a75949c73f4/image.PNG" alt=''></img>  
                         </div>
                         <div className={styles.likes}><Image src={likesIcon} alt="like"></Image></div>
                         <div className={styles.postBy}> <span>post</span> <b>가은</b></div> 
@@ -243,7 +243,7 @@ export default function Home(){
                         </div>
                         </div>
                         <div className={styles.back}> <div className={styles.content}>
-                        <p>'일부러 거절당하기'</p>
+                        <p>일부러 거절당하기</p>
                         </div></div>  
                     </li>
                     </div>
@@ -254,7 +254,7 @@ export default function Home(){
                         <h3>나를 프로그래밍 해보자.</h3>
                         <div className={styles.contentHeader}>
                         <div className={styles.profileCircle}>
-                            <img src="https://velog.velcdn.com/images/teo/profile/392ec036-5070-4c97-aabe-100969716dd9/image.jpg"></img>  
+                            <img src="https://velog.velcdn.com/images/teo/profile/392ec036-5070-4c97-aabe-100969716dd9/image.jpg" alt=''></img>  
                         </div>
                         <div className={styles.likes}><Image src={likesIcon} alt="like"></Image></div>
                         <div className={styles.postBy}> <span>post</span> <b>teo.yu</b></div> 
@@ -273,7 +273,7 @@ export default function Home(){
                         <h3>[1편] .env 파일 관리, 환경변수 공유 쉽게 하</h3>
                         <div className={styles.contentHeader}>
                         <div className={styles.profileCircle}>
-                            <img src="https://velog.velcdn.com/images/medistream/profile/d09ac64a-c557-47fa-a6e4-61a7e796cc3b/image.webp"></img>  
+                            <img src="https://velog.velcdn.com/images/medistream/profile/d09ac64a-c557-47fa-a6e4-61a7e796cc3b/image.webp" alt=''></img>  
                         </div>
                         <div className={styles.likes}><Image src={likesIcon} alt="like"></Image></div>
                         <div className={styles.postBy}> <span>post</span> <b>메디스트림</b></div> 
@@ -292,7 +292,7 @@ export default function Home(){
                         <h3>2년차 개발자의 2023년 회고</h3>
                         <div className={styles.contentHeader}>
                         <div className={styles.profileCircle}>
-                            <img src="https://images.velog.io/images/redjen/profile/69c8ece6-4212-4155-bde8-72cd3c8789f6/SW%EC%95%84%EC%9D%B4%EC%BD%98.jpg"></img>  
+                            <img src="https://images.velog.io/images/redjen/profile/69c8ece6-4212-4155-bde8-72cd3c8789f6/SW%EC%95%84%EC%9D%B4%EC%BD%98.jpg" alt=''></img>  
                         </div>
                         <div className={styles.likes}><Image src={likesIcon} alt="like"></Image></div>
                         <div className={styles.postBy}> <span>post</span> <b>redjen</b></div> 
@@ -311,7 +311,7 @@ export default function Home(){
                         <h3>개발자가 퇴사하고 컨설턴트가 되었지만 복학했습니다</h3>
                         <div className={styles.contentHeader}>
                         <div className={styles.profileCircle}>
-                            <img src="https://images.velog.io/images/yongtae923/profile/a7f26053-bebc-4b47-a2e6-a620f86e89d3/yongtae_logo.jpg"></img>  
+                            <img src="https://images.velog.io/images/yongtae923/profile/a7f26053-bebc-4b47-a2e6-a620f86e89d3/yongtae_logo.jpg" alt=''></img>  
                         </div>
                         <div className={styles.likes}><Image src={likesIcon} alt="like"></Image></div>
                         <div className={styles.postBy}> <span>post</span> <b>Tate 김용태</b></div> 
@@ -330,7 +330,7 @@ export default function Home(){
                         <h3>[Express.js] EC2 인스턴스와 S3 연결하기</h3>
                         <div className={styles.contentHeader}>
                         <div className={styles.profileCircle}>
-                            <img src="https://velog.velcdn.com/images/sksmsfbrjs/profile/ae158442-2852-4bfd-b970-a48f0f830c19/social_profile.png"></img>  
+                            <img src="https://velog.velcdn.com/images/sksmsfbrjs/profile/ae158442-2852-4bfd-b970-a48f0f830c19/social_profile.png" alt=''></img>  
                         </div>
                         <div className={styles.likes}><Image src={likesIcon} alt="like"></Image></div>
                         <div className={styles.postBy}> <span>post</span> <b>유건</b></div> 
@@ -349,7 +349,7 @@ export default function Home(){
                         <h3>Figma 단축키 모음 (in Mac)</h3>
                         <div className={styles.contentHeader}>
                         <div className={styles.profileCircle}>
-                            <img src="https://velog.velcdn.com/images/aksen5240/profile/50fb3f0d-ad03-47eb-b410-5c1c046ffe0e/social_profile.png"></img>  
+                            <img src="https://velog.velcdn.com/images/aksen5240/profile/50fb3f0d-ad03-47eb-b410-5c1c046ffe0e/social_profile.png" alt=''></img>  
                         </div>
                         <div className={styles.likes}><Image src={likesIcon} alt="like"></Image></div>
                         <div className={styles.postBy}> <span>post</span> <b>aksen5240</b></div> 

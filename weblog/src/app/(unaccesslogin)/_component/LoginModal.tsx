@@ -7,9 +7,6 @@ export default function LoginModal(){
     const [email, setEmail]=useState('')
     const [password, setPassword]=useState('')
     const [message, setMessage]=useState()
-    const [getUserId, setGetUserId] = useState();
-  const [getNickname, setGetNickname] = useState();
-  const [getEmail, setGetEmail] = useState();
     const router=useRouter()
 
     
@@ -24,6 +21,7 @@ export default function LoginModal(){
     }
     const onSubmit:FormEventHandler= async(e)=>{
         e.preventDefault()
+        router.push("/dashboard/home")
       try{
         const response = await axios.get("/api/v1/auth/login",{
             params:{
@@ -39,9 +37,7 @@ export default function LoginModal(){
       if (data.accessToken && data.refreshToken) {
         localStorage.setItem("accestoken", data.accessToken);
         localStorage.setItem("refreshtoken", data.refreshToken);
-        setGetUserId(data.user.userId);
-        setGetNickname(data.user.nickname);
-        setGetEmail(data.user.email);
+        
       }
     }catch(error){
         console.log(error)

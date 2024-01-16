@@ -15,7 +15,7 @@ export default function Main() {
         <h2>지금 가입하세요.</h2>
         <Link href="/account/signup" className={styles.signup}>회원가입</Link>
         <h4>이미 Weblog에 가입 하셨나요?</h4>
-        <Link href="/login" className={styles.login}>로그인</Link>
+        <Link href="/account/login" className={styles.login}>로그인</Link>
       </div>
     </>
   )
