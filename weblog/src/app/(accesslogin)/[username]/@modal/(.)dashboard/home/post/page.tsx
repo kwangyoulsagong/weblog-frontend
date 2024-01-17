@@ -140,9 +140,9 @@ export default function Post(){
                       : `작성됨: ${formatRelativeTime(dataPostDetail.createdDate)}`}
                   </span>
                 </div>
+                <div className={styles.ScrabContainer}></div>
                 </div>}
-           
-            
+
         </div>
     )
 }
