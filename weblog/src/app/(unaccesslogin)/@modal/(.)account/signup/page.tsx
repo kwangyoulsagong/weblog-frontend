@@ -1,4 +1,4 @@
-import SignupModal from "@/app/(unaccesslogin)/_component/SignupModal";
+import SignupModal from "@/app/_component/SignupModal";
 
 export default function Signup(){
     return(

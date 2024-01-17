@@ -1,8 +1,15 @@
 "use client"
-import { ChangeEventHandler, FormEventHandler, useState } from "react"
+import { ChangeEventHandler, FormEventHandler, useState, useEffect } from "react"
 import styles from "./login.module.css"
 import { useRouter } from "next/navigation"
 import api from "@/app/config/apiConfig"
+interface authData{
+    accessToken: string,
+    refreshToken: string,
+    userId:number,
+    nickname: string,
+    email:string
+}
 export default function LoginModal(){
     const [email, setEmail]=useState('')
     const [password, setPassword]=useState('')
@@ -24,24 +31,29 @@ export default function LoginModal(){
     }
     const onSubmit:FormEventHandler= async(e)=>{
         e.preventDefault()
+        const nickname="광열"
+        router.push(`/${nickname}/dashboard/home`)
        
-      try{
-        const response = await api.post("/api/v1/auth/login",requestData,{
-            headers:{
-                "Content-Type":"application/json"
-            }
-      })
-      const data = response.data;
-      console.log(data);
-      if (data.accessToken && data.refreshToken) {
-        localStorage.setItem("accestoken", data.accessToken);
-        localStorage.setItem("refreshtoken", data.refreshToken);
-        router.push("/dashboard/home")
+    //   try{
+    //     const response = await api.post("/api/v1/auth/login",requestData,{
+    //         headers:{
+    //             "Content-Type":"application/json"
+    //         }
+    //   })
+    //   const data:authData= response.data;
+    //   console.log(data);
+    //   if (data.accessToken && data.refreshToken) {
+    //     localStorage.setItem("accestoken", data.accessToken);
+    //     localStorage.setItem("refreshtoken", data.refreshToken);
+    //     router.push(`/${data.nickname}/dashboard/home`)
+      
         
-      }
-    }catch(error){
-        console.log(error)
-    }}
+    //   }
+    // }catch(error){
+    //     console.log(error)
+    // }
+    }
+    
     return(
         <div className={styles.modalBackground}>
             <div className={styles.modal}>
@@ -64,7 +76,7 @@ export default function LoginModal(){
                 </div>
                 <div className={styles.message}>{message}</div>
                 <div className={styles.modalFooter}>
-                    <button className={styles.actionBtn} onClick={onSubmit} disabled={!email && !password}>로그인하기</button>
+                    <button className={styles.actionBtn} onClick={onSubmit}  disabled={!email && !password}>로그인하기</button>
                 </div>
             </form>
             </div>

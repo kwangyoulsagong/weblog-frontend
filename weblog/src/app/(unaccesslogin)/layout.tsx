@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import styles from "@/app/(unaccesslogin)/_component/main.module.css"
+import styles from "@/app/_component/main.module.css"
 type Props ={children:ReactNode, modal:ReactNode}
 
 export default function Layout({children, modal}: Props){
