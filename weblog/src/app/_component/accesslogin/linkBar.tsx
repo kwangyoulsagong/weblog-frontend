@@ -9,7 +9,7 @@ export default function LinkBar(){
         <div className={styles.moduleLine}></div>
         <a href="/dashboard/home">홈</a>
         <a href="/dashboard/myprofile">내 정보</a>
-        <Link href="/dashboard/mypost">내 포스트</Link>
+        <Link href="/광열/dashboard/mypost">내 포스트</Link>
         <a href="/dashboard/namu">지식 나무</a>
      </div>
     )

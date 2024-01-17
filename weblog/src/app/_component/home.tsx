@@ -2,11 +2,12 @@
 import Image from "next/image"
 import styles from "./home.module.css"
 import likesIcon from "@/asset/images/likestar.png"
-import { ReactNode, useEffect, useRef, useState } from "react"
+import { ReactNode, useContext, useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { HydrationBoundary, QueryClient, dehydrate } from "@tanstack/react-query"
 import { revalidatePath, revalidateTag } from "next/cache"
+import { AuthContext } from "./Provider/authProvider"
 async function getPostsRecommends() {
     const response = await fetch("/api/v1/user",{
         next:{
@@ -24,6 +25,7 @@ async function getPostsRecommends() {
     return response.json() //서버에서 받아온 데이터 기본적으로 자동 저장 
 }
 export default  function Home(){
+    const {isLogin,nickname}=useContext(AuthContext)
     // const queryClient=new QueryClient()
     // //querykey가 있으면 queryFN 함수를 실행 해라 이런 뜻이다 
     // //posts 와 recommends는 한 쌍 
@@ -64,7 +66,13 @@ export default  function Home(){
     },[tabMenu])
 
     const onHandlePost =()=>{
-        router.push('/광열/dashboard/home/post')
+        if(isLogin){
+            router.push(`/${nickname}/dashboard/home/post`)
+        }
+        else{
+            router.push(`/dashboard/home/post`)
+        }
+        
     }
     return(
         <div className={styles.moduleBackground} >
