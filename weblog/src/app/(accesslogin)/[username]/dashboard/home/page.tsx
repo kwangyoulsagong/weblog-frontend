@@ -6,28 +6,32 @@ import { ReactNode, useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { HydrationBoundary, QueryClient, dehydrate } from "@tanstack/react-query"
+import { revalidatePath, revalidateTag } from "next/cache"
 async function getPostsRecommends() {
     const response = await fetch("/api/v1/user",{
         next:{
             tags:['posts','recommends']//넥스트에서 태그를 지원
-        }
+        },
+        cache:'no-store'// 저장을 안하려면 
     })
 
     if (!response.ok){
         throw new Error('데이터 가져오기 실패')
     }
+    // revalidateTag('recommends') 캐시 초기화 하기 위한 태그 
+    //revalidatePath('/home') 현재 페이지 데이터를 새로고침
     
-    return response.json()
+    return response.json() //서버에서 받아온 데이터 기본적으로 자동 저장 
 }
-export default async function Home(){
-    const queryClient=new QueryClient()
-    //querykey가 있으면 queryFN 함수를 실행 해라 이런 뜻이다 
-    //posts 와 recommends는 한 쌍 
-    await queryClient.prefetchQuery({queryKey:['posts','recommends'],queryFn: getPostsRecommends})
-    const dehydratedState=dehydrate(queryClient)// hydrated는 서버에서온 데이터를 클라이언트에서 형식 맞추어서 물려받음
+export default  function Home(){
+    // const queryClient=new QueryClient()
+    // //querykey가 있으면 queryFN 함수를 실행 해라 이런 뜻이다 
+    // //posts 와 recommends는 한 쌍 
+    // await queryClient.prefetchQuery({queryKey:['posts','recommends'],queryFn: getPostsRecommends})
+    // const dehydratedState=dehydrate(queryClient)// hydrated는 서버에서온 데이터를 클라이언트에서 형식 맞추어서 물려받음
 
-    //값 가져오기
-    queryClient.getQueryData(['posts','recommends'])
+    // //값 가져오기
+    // queryClient.getQueryData(['posts','recommends'])
 
     const tabRef=useRef<HTMLDivElement>(null)
     const slideRef = useRef<HTMLDivElement>(null);
@@ -73,7 +77,7 @@ export default async function Home(){
                         <section className={styles.recommendTab } onClick={()=>onHandleTab("recommendTab")}> 추천순</section>
                     </div>
                 </div>
-                <HydrationBoundary state={dehydratedState}>
+                {/* <HydrationBoundary state={dehydratedState}> */}
                 <div className={styles.collectionWrapper } ref={slideRef}>
                 <ul className={styles.collection} >
                     
@@ -387,7 +391,7 @@ export default async function Home(){
                     </div>
                 </ul>
                 </div>
-                </HydrationBoundary>
+                {/* </HydrationBoundary> */}
             </div>
         </div>
     )

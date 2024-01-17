@@ -1,8 +1,9 @@
 "use client"
-import { ChangeEventHandler, FormEventHandler, useState, useEffect } from "react"
+import { ChangeEventHandler, FormEventHandler, useState, useEffect,useContext } from "react"
 import styles from "./login.module.css"
 import { useRouter } from "next/navigation"
 import api from "@/app/config/apiConfig"
+import  { AuthContext } from "./Provider/authProvider"
 interface authData{
     accessToken: string,
     refreshToken: string,
@@ -11,6 +12,7 @@ interface authData{
     email:string
 }
 export default function LoginModal(){
+    const { setIsLogin ,setNickname } = useContext(AuthContext);
     const [email, setEmail]=useState('')
     const [password, setPassword]=useState('')
     const [message, setMessage]=useState()
@@ -32,7 +34,10 @@ export default function LoginModal(){
     const onSubmit:FormEventHandler= async(e)=>{
         e.preventDefault()
         const nickname="광열"
-        router.push(`/${nickname}/dashboard/home`)
+        setIsLogin(true);
+        setNickname(nickname)
+        router.push(`/${nickname}/dashboard/home`);
+
        
     //   try{
     //     const response = await api.post("/api/v1/auth/login",requestData,{

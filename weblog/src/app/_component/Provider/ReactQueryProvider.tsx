@@ -20,6 +20,7 @@ function ReactQueryProvider({children}:Props){
     )
     return(
         <QueryClientProvider client={client}>
+            {/* children 안에 있는 애들은 리액트쿼리 데이터 서로 공유 가능 */}
             {children}
             <ReactQueryDevtools initialIsOpen={process.env.NEXT_PUBLIC_MODE === 'local'} />
         </QueryClientProvider>

@@ -23,6 +23,7 @@
 }
 .leftFixedSection{
     position: fixed;
+    top: 0;
     padding: 0 4px;
     width: inherit;
     background:#FFFFFF;
@@ -59,8 +60,8 @@
 }
 .meuBarSection{
     position: fixed;
+    top: 0;
     width: inherit;
-  
     background: white;
     z-index: 99999;
     height: 60px;
