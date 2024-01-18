@@ -5,15 +5,18 @@ import {useState, useEffect, useRef } from "react"
 import tagImg from "@/asset/images/tags.png"
 import postImg from "@/asset/images/post.png"
 import Image from "next/image"
+import { Html } from "next/document"
 
 interface Post {
     post_id: number;
     nickname: string;
+    content:string;
     title: string;
     tags: { createdDate: string; modifiedDate: string; tagContent: string }[];
     like_count: number;
     is_like: boolean;
     image_url: string;
+    memo:string;
     createdDate: string;
     modifiedDate: string;
   }
@@ -66,6 +69,15 @@ export default function Post(){
         }
         
     }
+    useEffect(() => {
+      if (dataPostDetail) {
+        const button = document.querySelector<HTMLButtonElement>(".but");
+        if (button) {
+          button.style.visibility="hidden";
+        }
+      }
+    }, [dataPostDetail]);
+    
     useEffect(()=>{
         if(postRef.current){
             postRef.current.style.width="900px"
@@ -140,7 +152,12 @@ export default function Post(){
                       : `작성됨: ${formatRelativeTime(dataPostDetail.createdDate)}`}
                   </span>
                 </div>
-                <div className={styles.ScrabContainer}></div>
+                <div className={styles.ScrabContainer}>
+                  <div className={styles.scrabBox} dangerouslySetInnerHTML={{__html: dataPostDetail.content}} ></div>
+                </div>
+                <div className={styles.postBoxContainer}>
+                  <div className={styles.postBox} dangerouslySetInnerHTML={{__html: dataPostDetail.memo}} ></div>
+                </div>
                 </div>}
 
         </div>
