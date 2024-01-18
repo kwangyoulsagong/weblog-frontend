@@ -5,7 +5,8 @@ import {useState, useEffect, useRef } from "react"
 import tagImg from "@/asset/images/tags.png"
 import postImg from "@/asset/images/post.png"
 import Image from "next/image"
-import { Html } from "next/document"
+import unlikeImg from "@/asset/images/unlikestar.png"
+import likeImg from "@/asset/images/likestar.png"
 
 interface Post {
     post_id: number;
@@ -56,7 +57,37 @@ interface Post {
 export default function Post(){
     const [dataPostDetail, setDataPostDetail] = useState<Post>();
     const postRef=useRef<HTMLDivElement>(null)
+    const scrabRef=useRef<HTMLDivElement>(null)
+    const memoRef=useRef<HTMLDivElement>(null)
     const router=useRouter()
+    const btn = dataPostDetail?.is_like 
+    console.log(btn)
+  const [likeCount, setLikeCount] = useState(dataPostDetail?.like_count ?? 0);
+  const [btnPressed, setBtnPressed] = useState(dataPostDetail?.is_like ?? false);
+  const [img, setImg] = useState(btnPressed ? likeImg : unlikeImg);
+    console.log(likeCount)
+    console.log(btnPressed)
+   
+    const onHandleLikeButton = async () => {
+      setLikeCount((prev) => {
+        if (!btnPressed) {
+          setImg(likeImg);
+          setBtnPressed(true);
+          return prev + 1;
+        } else {
+          setImg(unlikeImg);
+          setBtnPressed(false);
+          return prev - 1;
+        }
+      });
+      try {
+        // 비동기 작업 수행 (필요한 경우)
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+
     const onHandleClose = ()=>{
         if(postRef.current){
             postRef.current.style.width="0px"
@@ -69,6 +100,15 @@ export default function Post(){
         }
         
     }
+    const onHandleFullSize = ()=>{
+      if(postRef.current&&scrabRef.current&&memoRef.current){
+          postRef.current.style.width="100%"
+          postRef.current.style.transition="0.4s"
+          scrabRef.current.style.height="1000px"
+          memoRef.current.style.marginTop="1220px"
+      }
+
+  }
     useEffect(() => {
       if (dataPostDetail) {
         const button = document.querySelector<HTMLButtonElement>(".but");
@@ -125,12 +165,18 @@ export default function Post(){
                 modifiedDate: "2024-01-17T20:51:43.85549",
           };
           setDataPostDetail(responseData);
+          setLikeCount(responseData.like_count ?? 0); 
+          setBtnPressed(responseData.is_like ?? false); 
+          setImg(responseData.is_like ? likeImg : unlikeImg);
       
     },[])
 
     return(
         <div className={styles.postBackground} ref={postRef}>
-            <button onClick={onHandleClose}>닫기</button>
+                <div className={styles.buttons}>
+                  <button className={styles.closeBtn} onClick={onHandleClose}></button>
+                  <button className={styles.fullScreenBtn} onClick={onHandleFullSize}></button>
+                </div>
                 {dataPostDetail&& <div className={styles.postContainer}>
                 <div className={styles.title}><h1>{dataPostDetail.title}</h1></div> 
                 <div className={styles.tagsContainer}>
@@ -142,6 +188,10 @@ export default function Post(){
                         </div>
                     ))}     
                 </div>
+                <button className={styles.likeBtn} onClick={onHandleLikeButton}>
+                <Image src={img} alt="img"></Image>
+                </button>
+                 <span className={styles.likeValue}>{likeCount}</span>
                 <div className={styles.postBy}>
                     <Image src={postImg} alt="postBY"></Image>
                     <span>post:</span>
@@ -152,10 +202,10 @@ export default function Post(){
                       : `작성됨: ${formatRelativeTime(dataPostDetail.createdDate)}`}
                   </span>
                 </div>
-                <div className={styles.ScrabContainer}>
+                <div className={styles.ScrabContainer} ref={scrabRef}>
                   <div className={styles.scrabBox} dangerouslySetInnerHTML={{__html: dataPostDetail.content}} ></div>
                 </div>
-                <div className={styles.postBoxContainer}>
+                <div className={styles.postBoxContainer} ref={memoRef}>
                   <div className={styles.postBox} dangerouslySetInnerHTML={{__html: dataPostDetail.memo}} ></div>
                 </div>
                 </div>}
