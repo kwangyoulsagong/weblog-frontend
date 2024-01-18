@@ -6,9 +6,10 @@ import Logo from "@/asset/images/logo.svg"
 import Link from "next/link";
 import Dashboard from "@/app/_component/Dashboard";
 type props = {children:ReactNode}
-export default function RootDashboard({children}:props){
-      return(
-          <Dashboard children={children}></Dashboard>
-      )
-  
+export default function RootDashboard({ children }: props) {
+    return (
+      <Dashboard>
+        {children}
+      </Dashboard>
+    );
   }
