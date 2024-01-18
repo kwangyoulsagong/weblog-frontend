@@ -26,22 +26,32 @@ type Props = {
 export default function AuthProvider({ children }: Props) {
   // isLogin 상태와 setIsLogin 함수를 정의하고 초기값을 로컬 스토리지에서 가져옴
   const [isLogin, setIsLogin] = useState(() => {
-    return JSON.parse(localStorage.getItem("isLogin") || "false");
+    if (typeof window !== "undefined" && window.localStorage) {
+      return JSON.parse(localStorage.getItem("isLogin") || "false");
+    }
+    return false;
   });
 
   // nickname 상태와 setNickname 함수를 정의하고 초기값을 로컬 스토리지에서 가져옴
   const [nickname, setNickname] = useState(() => {
-    return localStorage.getItem("nickname") || "";
+    if (typeof window !== "undefined" && window.localStorage) {
+      return localStorage.getItem("nickname") || "";
+    }
+    return "";
   });
 
   // isLogin 상태가 변경될 때마다 로컬 스토리지에 저장
   useEffect(() => {
-    localStorage.setItem("isLogin", JSON.stringify(isLogin));
+    if (typeof window !== "undefined" && window.localStorage) {
+      localStorage.setItem("isLogin", JSON.stringify(isLogin));
+    }
   }, [isLogin]);
 
   // nickname 상태가 변경될 때마다 로컬 스토리지에 저장
   useEffect(() => {
-    localStorage.setItem("nickname", nickname);
+    if (typeof window !== "undefined" && window.localStorage) {
+      localStorage.setItem("nickname", nickname);
+    }
   }, [nickname]);
 
   // AuthContext에 제공할 값 정의
