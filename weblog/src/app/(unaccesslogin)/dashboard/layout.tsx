@@ -8,7 +8,7 @@ import Dashboard from "@/app/_component/Dashboard";
 type props = {children:ReactNode}
 export default function RootDashboard({children}:props){
       return(
-          <Dashboard children={children}/>
+          <Dashboard children={children}></Dashboard>
       )
   
   }
