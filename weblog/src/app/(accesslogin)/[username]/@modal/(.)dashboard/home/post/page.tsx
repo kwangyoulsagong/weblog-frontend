@@ -7,6 +7,8 @@ import postImg from "@/asset/images/post.png"
 import Image from "next/image"
 import unlikeImg from "@/asset/images/unlikestar.png"
 import likeImg from "@/asset/images/likestar.png"
+import Comment from "@/app/_component/comment"
+
 
 interface Post {
     post_id: number;
@@ -209,7 +211,9 @@ export default function Post(){
                   <div className={styles.postBox} dangerouslySetInnerHTML={{__html: dataPostDetail.memo}} ></div>
                 </div>
                 </div>}
-
+                <div className={styles.footer}>
+                  <Comment />
+                </div>
         </div>
     )
 }
