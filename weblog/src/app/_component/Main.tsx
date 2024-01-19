@@ -1,10 +1,10 @@
-
+"use client"
 import Image from 'next/image'
 import styles from "@/app/_component/main.module.css"
 import Link from 'next/link'
 import Logo from "@/asset/images/logo.png"
-
 export default function Main() {
+
   return (
     <>
       <div className={styles.left}>

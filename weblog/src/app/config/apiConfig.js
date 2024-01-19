@@ -32,20 +32,17 @@ api.interceptors.response.use(
       originalRequest._retry = true;
 
       try {
-        // const body = {
-        //   email: email,
-        //   password: password,
-        // };
-        const response = await api.post(
-          "/api/v1/auth/reissue",
-          // body,
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${localStorage.getItem("refreshtoken")}`,
-            },
-          }
-        );
+        console.log(localStorage.getItem("refreshtoken"));
+        const body = {
+          email: "sgky0511@naver.com",
+          password: "ky4400",
+        };
+        const response = await api.post("/api/v1/auth/reissue", body, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("refreshtoken")}`,
+          },
+        });
 
         const newAccessToken = response.data.accessToken;
         localStorage.setItem("accessToken", newAccessToken);

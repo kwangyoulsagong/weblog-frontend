@@ -1,3 +1,4 @@
+"use client"
 import { ReactNode } from "react";
 import styles from "@/app/_component/main.module.css"
 type Props ={children:ReactNode, modal:ReactNode}

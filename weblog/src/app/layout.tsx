@@ -1,9 +1,9 @@
+
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { ReactNode } from 'react'
 import AuthProvider from './_component/Provider/authProvider'
-
 const inter = Inter({ subsets: ['latin'] })
 type Props={children: ReactNode}
 

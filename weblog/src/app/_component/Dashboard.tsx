@@ -5,7 +5,6 @@ import Image from "next/image";
 import Logo from "@/asset/images/logo.svg"
 import UnAccessLinkBar from "./unaccesslogin/linkBar";
 import AccessLinkBar from "./accesslogin/linkBar"
-import ReactQueryProvider from "./Provider/ReactQueryProvider";
 import { AuthContext } from "./Provider/authProvider";
 import { useRouter } from "next/navigation";
 
@@ -32,7 +31,6 @@ export default function Dashboard({children}:props){
 
       return(
           <div className={styles.container}>
-            <ReactQueryProvider>
               {/* 여기안에는 데이터 접근 가능 */}
               {menubar&&(
                 <header className={styles.leftWrapper}>
@@ -61,7 +59,6 @@ export default function Dashboard({children}:props){
                   </main>
                   </div>
               </div>
-              </ReactQueryProvider>
               </div>
       )
   
