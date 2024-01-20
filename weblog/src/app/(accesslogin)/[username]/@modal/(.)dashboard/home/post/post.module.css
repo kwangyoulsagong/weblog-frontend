@@ -93,7 +93,6 @@ height: 30px;
     margin-top: 220px;
     width: 100%;
     height: 500px;
-    background: rgba(233, 233, 233, 0.5);
 }
 .scrabBox{
     width: 100%;
@@ -115,7 +114,6 @@ height: 30px;
     width: 100%;
     height: 500px;
     border-top: 1.5px dashed #AAB3FF;
-    background: rgba(233, 233, 233, 0.5);
 }
 .postBox{
     margin-top: 30px;
