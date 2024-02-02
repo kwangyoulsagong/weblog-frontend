@@ -61,6 +61,7 @@
     display: flex;
     gap: 150px;
     overflow-y:scroll;
+    scroll-behavior: smooth;
     overflow-x: hidden;
     height: 82.5vh;
     scroll-behavior: smooth;
