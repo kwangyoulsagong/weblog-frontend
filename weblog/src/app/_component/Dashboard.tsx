@@ -25,7 +25,6 @@ export default function Dashboard({children}:props){
 
   const onHandleMenubar = () => {
     setMenubar(!menubar);
-    setLogo(!logoimg);
     if (menuRef.current) {
       menuRef.current.style.scrollBehavior = "smooth";
       menuRef.current.scrollTop = !menubar ? 3000 : 0;
