@@ -3,14 +3,16 @@
 .container{
     position: absolute;
     width: 100%;
-    height: auto;
+    height: 100vh;
     display: flex;
     align-items: stretch;
-    background-color: #fff;
-
+    background-image: url("../../asset/images/background.jpg");
+    background-size: cover;
+    background-position: contain;
 }
 
 .leftWrapper{
+    position: absolute;
     display: flex;
     flex-direction: column;
 }
@@ -62,9 +64,10 @@
     position: fixed;
     top: 0;
     width: inherit;
-    background: white;
     z-index: 99999;
     height: 60px;
+    border-bottom: 1px solid rgba(113 119 144 / 25%);
+
 }
 .menuBarFixedSection{
     width: 100%;
