@@ -5,7 +5,7 @@
     background: rgba(225, 224, 224, 0.31);
     display: flex;
     backdrop-filter: blur(20px);
-    overflow-x: hidden;
+    overflow:hidden;
 
 }
 .innerContents{
@@ -14,14 +14,17 @@
 }
 .postTabContainer{
     width: 99vw;
+    height: 25vh;
     display: flex;
     justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid rgba(113 119 144 / 25%);
+    overflow: hidden;
 
 }
 .postTab{
     position: relative;
     z-index: 1;
-    margin-top: 70px;
     width: 200px;
     height: 50px;
     display: flex;  
@@ -56,6 +59,26 @@
 .postTab section:hover{
     font-size: 14px;
 
+}
+.headerMenu{
+    position: absolute;
+    margin-top: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: inherit;
+    height: 58px;
+    flex-shrink: 0;
+}
+.headerMenu a{
+    padding: 20px 30px;
+    text-decoration: none;
+    color: #7e7e80;
+    border-bottom: 2px solid transparent;
+}
+.headerMenu a.is-active{
+
+    border-bottom: 2px solid #7e7e80;
 }
 .collectionWrapper{
     position: absolute;
