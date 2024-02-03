@@ -39,8 +39,8 @@ const MyPost = ({ dataMyPostDetail }) => {
   const accessToken = localStorage.getItem("accesstoken");
   const [updateBtn, setUpdateBtn] = useState(false);
   const [img, setImg] = useState(unlikeImg);
-  const [likeCount, setLikeCount] = useState(dataMyPostDetail.likeCount);
-  const [btnPressed, setBtnPressed] = useState(dataMyPostDetail.like);
+  const [likeCount, setLikeCount] = useState(dataMyPostDetail?.likeCount);
+  const [btnPressed, setBtnPressed] = useState(dataMyPostDetail?.like);
   const onHandleLikeButton = async (postId) => {
     setLikeCount((prev) => {
       if (!btnPressed) {
@@ -75,12 +75,17 @@ const MyPost = ({ dataMyPostDetail }) => {
     const tags = tag;
     const scrab = document.querySelector(".PostScrabBox").innerHTML;
     const memo = document.getElementById("myPostEditor").innerHTML;
+    console.log(post_id);
+    console.log(tags);
 
     const requestData = {
       title: title,
       tags: tags,
       content: scrab,
       memo: memo,
+      url: window.location.href,
+      image_url:
+        "https://blog.kakaocdn.net/dn/clyrhv/btqXJVvfOgF/1lMKjoQo3iW0pyYDmV2HVK/img.jpg",
     };
     console.log(requestData);
 
@@ -153,7 +158,10 @@ const MyPost = ({ dataMyPostDetail }) => {
           <button
             className="saveMemoBtn"
             onClick={() =>
-              onHandleSaveBtn(dataMyPostDetail?.postId, dataMyPostDetail?.tags)
+              onHandleSaveBtn(
+                dataMyPostDetail?.postId,
+                dataMyPostDetail?.tags.map((tag) => tag.tagContent)
+              )
             }
           >
             저장

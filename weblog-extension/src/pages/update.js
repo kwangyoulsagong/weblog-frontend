@@ -53,7 +53,7 @@ const Update = () => {
     // };
     // setDataMyPost(responseDat.data);
     api
-      .get(`/api/v1/posts/mine?url=${url}`, {
+      .get(`/api/v1/posts/mine?url=${encodeUrl}`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${accessToken}`,
