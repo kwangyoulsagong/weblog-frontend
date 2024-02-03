@@ -58,6 +58,7 @@ export default  function Home(){
                     </div>
                 </div>
                 <div className={styles.collectionWrapper } ref={slideRef}>
+                <div className={styles.collectionContainer}>
                 <ul className={styles.collection} >
                     
                     <div className={styles.wrapper} onClick={onHandlePost}>
@@ -274,8 +275,9 @@ export default  function Home(){
                     </li>
                     </div>
                 </ul>
+                </div>
                 {/* 다른 컴포넌트 */}
-
+                <div className={styles.collectionContainer}>
                 <ul className={styles.collection}>
                     <div className={styles.wrapper}>
                     <li className={styles.previewBox}>
@@ -430,6 +432,7 @@ export default  function Home(){
                     </li>
                     </div>
                 </ul>
+                </div>
                 </div>
             </div>
         </div>

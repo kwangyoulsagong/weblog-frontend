@@ -43,7 +43,7 @@ const MyPost = ({ dataMyPostDetail }) => {
   const [img, setImg] = useState(unlikeImg);
   const [likeCount, setLikeCount] = useState(like);
   const [btnPressed, setBtnPressed] = useState(btn);
-  const onHandleLikeButton = async () => {
+  const onHandleLikeButton = async (postId) => {
     setLikeCount((prev) => {
       if (!btnPressed) {
         setImg(likeImg);
@@ -56,6 +56,9 @@ const MyPost = ({ dataMyPostDetail }) => {
       }
     });
     try {
+      const response = await api.get(`/api/like/${postId}`);
+      setLikeCount(response.data.like_count);
+      setBtnPressed(response.data.is_like);
     } catch (error) {
       console.log(error);
     }
@@ -79,15 +82,16 @@ const MyPost = ({ dataMyPostDetail }) => {
     console.log(requestData);
 
     try {
-      const response = await api.put("/api/post", requestData, {
-        params: {
-          postId: post_id,
-        },
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${accessToken}`,
-        },
-      });
+      const response = await api.put(
+        `/api/post?postId=${post_id}`,
+        requestData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      );
       console.log(response.data);
     } catch (error) {
       console.log(error);
@@ -135,7 +139,10 @@ const MyPost = ({ dataMyPostDetail }) => {
               dangerouslySetInnerHTML={{ __html: value.memo }}
             ></div>
           </div>
-          <button className="likeBtn" onClick={onHandleLikeButton}>
+          <button
+            className="likeBtn"
+            onClick={() => onHandleLikeButton(value.post_id)}
+          >
             <img src={img}></img>
           </button>
           <span className="likeValue">{likeCount}</span>

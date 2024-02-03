@@ -154,10 +154,7 @@ const PostPreview = ({ dataPost }) => {
     // };
     // setDataPostDetail(responseData.data);
     try {
-      const response = await api.get("/api/post", {
-        params: {
-          postId: postId,
-        },
+      const response = await api.get(`/api/post/${postId}`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${accessToken}`,

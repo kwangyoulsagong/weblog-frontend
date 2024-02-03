@@ -50,10 +50,7 @@ const Update = () => {
     // };
     // setDataMyPost(responseDat.data);
     api
-      .get("//api/post/mine", {
-        params: {
-          url: window.location.href,
-        },
+      .get(`/api/post/mine?url=${window.location.href}`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${accessToken}`,

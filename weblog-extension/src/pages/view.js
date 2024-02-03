@@ -101,10 +101,7 @@ const View = () => {
     // };
     // setDataPost(responseDat.data);
     api
-      .get("/api/post/preview", {
-        params: {
-          url: url,
-        },
+      .get(`/api/post/preview?url=${url}`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${accessToken}`,

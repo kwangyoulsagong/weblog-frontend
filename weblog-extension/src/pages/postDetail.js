@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./postDetail.css";
 import Comment from "../components/comment";
 import unlikeImg from "../images/unlikestar.png";
+import api from "../config/apiConfig";
 import likeImg from "../images/likestar.png";
 const formatDate = (dateString) => {
   const options = { year: "numeric", month: "long", day: "numeric" };
@@ -41,7 +42,8 @@ const PostDetail = ({ dataPostDetail }) => {
   const [img, setImg] = useState(unlikeImg);
   const [likeCount, setLikeCount] = useState(like);
   const [btnPressed, setBtnPressed] = useState(btn);
-  const onHandleLikeButton = async () => {
+  const onHandleLikeButton = async (postId) => {
+    console.log(postId);
     setLikeCount((prev) => {
       if (!btnPressed) {
         setImg(likeImg);
@@ -54,6 +56,9 @@ const PostDetail = ({ dataPostDetail }) => {
       }
     });
     try {
+      const response = await api.get(`/api/like/${postId}`);
+      setLikeCount(response.data.like_count);
+      setBtnPressed(response.data.is_like);
     } catch (error) {
       console.log(error);
     }
@@ -96,7 +101,10 @@ const PostDetail = ({ dataPostDetail }) => {
               dangerouslySetInnerHTML={{ __html: value.memo }}
             ></div>
           </div>
-          <button className="likeBtn" onClick={onHandleLikeButton}>
+          <button
+            className="likeBtn"
+            onClick={() => onHandleLikeButton(value.post_id)}
+          >
             <img src={img}></img>
           </button>
           <span className="likeValue">{likeCount}</span>
