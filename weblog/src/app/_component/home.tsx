@@ -11,10 +11,10 @@ export default  function Home(){
     const slideRef = useRef<HTMLDivElement>(null);
     const postTabRef = useRef<HTMLDivElement>(null!);
     const [tabMenu, setTabMenu]=useState("popularTab")
-    const [datePostMenu, setDatePostMenu]=useState("")
+    const [datePostMenu, setDatePostMenu]=useState("주간")
     const [upScroll, setUpScroll] = useState(0);
     const router=useRouter()
-    //스크롤 감지
+    //스크롤 감지 
     useEffect(() => {
         if (postTabRef?.current && slideRef?.current) {
             const handleScroll = () => {
@@ -75,6 +75,14 @@ export default  function Home(){
         }
         
     }
+    const handlePostTab= (tab:any)=>{
+        setDatePostMenu(tab)
+    }
+    const styleComponent = (tab:any) => {
+        return {
+            borderBottom: datePostMenu === tab ? "1px solid #7e7e80" : "none",
+        };
+      };
     return(
         <div className={styles.moduleBackground} >
             <div className={styles.innerContents}>
@@ -86,9 +94,9 @@ export default  function Home(){
                         <section className={styles.recommendTab } onClick={()=>onHandleTab("recommendTab")}> 추천순</section>
                     </div>
                     <div className={styles.headerMenu}>
-                    <a  href="#">주간</a>
-                    <a href="#">월간</a>
-                    <a  href="#">연간</a>
+                    <div style={styleComponent("주간")} onClick={()=>handlePostTab("주간")}>주간</div>
+                    <div style={styleComponent("월간")} onClick={()=>handlePostTab("월간")}>월간</div>
+                    <div style={styleComponent("연간")} onClick={()=>handlePostTab("연간")}>연간</div>
 
                   </div>
 

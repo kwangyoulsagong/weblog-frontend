@@ -153,7 +153,7 @@ const MyPostPreview = ({ dataMyPost }) => {
     // };
     // setDataMyPostDetail(responseData.data);
     try {
-      const response = await api.get(`/api/post/${postId}`, {
+      const response = await api.get(`/api/v1/posts/${postId}`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${accessToken}`,
@@ -189,7 +189,7 @@ const MyPostPreview = ({ dataMyPost }) => {
               key={index}
               className="myPreviewBox"
               style={getPreviewBoxStyle()}
-              onClick={() => onHandleMyPost(value.post_id)}
+              onClick={() => onHandleMyPost(value.postId)}
             >
               <img
                 className="myBox"

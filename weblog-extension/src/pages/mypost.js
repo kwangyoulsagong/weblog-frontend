@@ -38,11 +38,9 @@ const formatRelativeTime = (dateString) => {
 const MyPost = ({ dataMyPostDetail }) => {
   const accessToken = localStorage.getItem("accesstoken");
   const [updateBtn, setUpdateBtn] = useState(false);
-  const like = dataMyPostDetail[0].like_count;
-  const btn = dataMyPostDetail[0].is_like;
   const [img, setImg] = useState(unlikeImg);
-  const [likeCount, setLikeCount] = useState(like);
-  const [btnPressed, setBtnPressed] = useState(btn);
+  const [likeCount, setLikeCount] = useState(dataMyPostDetail.likeCount);
+  const [btnPressed, setBtnPressed] = useState(dataMyPostDetail.like);
   const onHandleLikeButton = async (postId) => {
     setLikeCount((prev) => {
       if (!btnPressed) {
@@ -56,16 +54,21 @@ const MyPost = ({ dataMyPostDetail }) => {
       }
     });
     try {
-      const response = await api.get(`/api/like/${postId}`);
-      setLikeCount(response.data.like_count);
-      setBtnPressed(response.data.is_like);
+      const response = await api.patch(`/api/v1/likes/${postId}`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+      setLikeCount(response.data?.like_count);
+      setBtnPressed(response.data?.is_like);
     } catch (error) {
       console.log(error);
     }
   };
-  useEffect(() => {
-    document.querySelector(".but").style.visibility = "hidden";
-  }, []);
+  // useEffect(() => {
+  //   document.querySelector(".but").style.visibility = "hidden";
+  // }, []);
   const onHandleSaveBtn = async (post_id, tag) => {
     console.log("저장");
     const title = document.querySelector(".myPostTitle").innerHTML;
@@ -83,7 +86,7 @@ const MyPost = ({ dataMyPostDetail }) => {
 
     try {
       const response = await api.put(
-        `/api/post?postId=${post_id}`,
+        `/api/v1/posts?postId=${post_id}`,
         requestData,
         {
           headers: {
@@ -105,65 +108,65 @@ const MyPost = ({ dataMyPostDetail }) => {
   };
   return (
     <div className="myPostBackground">
-      {dataMyPostDetail.map((value, index) => (
-        <div key={index} className="myPostDetailContainer">
-          <h1 className="myPostTitle">{value.title}</h1>
-          <div className="myPostTagContainer">
-            <span>
-              {value.tags.map((tag, index) => (
-                <span key={index} className="tag">
-                  {tag.tagContent}
-                </span>
-              ))}
-            </span>
-          </div>
-          <div className="postWho">
-            <span>post</span>
-            <b>{value.nickname}</b>
-            <span>
-              {value.modifiedDate
-                ? `수정됨: ${formatRelativeTime(value.modifiedDate)}`
-                : `작성됨: ${formatRelativeTime(value.createdDate)}`}
-            </span>
-          </div>
-          <div className="myPostScrabBox">
-            <div
-              className="PostScrabBox"
-              dangerouslySetInnerHTML={{ __html: value.content }}
-            ></div>
-          </div>
-          <div className="myPostDetailBox">
-            <div
-              id="myPostEditor"
-              contentEditable={updateBtn}
-              dangerouslySetInnerHTML={{ __html: value.memo }}
-            ></div>
-          </div>
-          <button
-            className="likeBtn"
-            onClick={() => onHandleLikeButton(value.post_id)}
-          >
-            <img src={img}></img>
-          </button>
-          <span className="likeValue">{likeCount}</span>
-
-          <header className="myPostHeader">
-            <button
-              className="saveMemoBtn"
-              onClick={() => onHandleSaveBtn(value.post_id, value.tags)}
-            >
-              저장
-            </button>
-            <button className="updateBtn" onClick={onHandleUpdateBtn}>
-              수정
-            </button>
-            <button className="deleteBtn" onClick={onHandleDeleteBtn}>
-              삭제
-            </button>
-            <Comment />
-          </header>
+      <div className="myPostDetailContainer">
+        <h1 className="myPostTitle">{dataMyPostDetail?.title}</h1>
+        <div className="myPostTagContainer">
+          <span>
+            {dataMyPostDetail?.tags.map((tag, index) => (
+              <span key={index} className="tag">
+                {tag.tagContent}
+              </span>
+            ))}
+          </span>
         </div>
-      ))}
+        <div className="postWho">
+          <span>post</span>
+          <b>{dataMyPostDetail?.nickname}</b>
+          <span>
+            {dataMyPostDetail?.modifiedDate
+              ? `수정됨: ${formatRelativeTime(dataMyPostDetail?.modifiedDate)}`
+              : `작성됨: ${formatRelativeTime(dataMyPostDetail?.createdDate)}`}
+          </span>
+        </div>
+        <div className="myPostScrabBox">
+          <div
+            className="PostScrabBox"
+            dangerouslySetInnerHTML={{ __html: dataMyPostDetail?.content }}
+          ></div>
+        </div>
+        <div className="myPostDetailBox">
+          <div
+            id="myPostEditor"
+            contentEditable={updateBtn}
+            dangerouslySetInnerHTML={{ __html: dataMyPostDetail?.memo }}
+          ></div>
+        </div>
+        <button
+          className="likeBtn"
+          onClick={() => onHandleLikeButton(dataMyPostDetail?.postId)}
+        >
+          <img src={img}></img>
+        </button>
+        <span className="likeValue">{likeCount}</span>
+
+        <header className="myPostHeader">
+          <button
+            className="saveMemoBtn"
+            onClick={() =>
+              onHandleSaveBtn(dataMyPostDetail?.postId, dataMyPostDetail?.tags)
+            }
+          >
+            저장
+          </button>
+          <button className="updateBtn" onClick={onHandleUpdateBtn}>
+            수정
+          </button>
+          <button className="deleteBtn" onClick={onHandleDeleteBtn}>
+            삭제
+          </button>
+          <Comment />
+        </header>
+      </div>
     </div>
   );
 };
