@@ -4,12 +4,16 @@ import axios from "axios"
 import Image from "next/image"
 import styles from "./mypost.module.css"
 import likesIcon from "@/asset/images/likestar.png"
-import { useEffect,useState} from "react"
+import { useEffect,useState,useContext} from "react"
 import { useQuery } from "@tanstack/react-query"
+import { AuthContext } from "./Provider/authProvider";
 import { useRouter } from "next/navigation"
+import { useDispatch } from "react-redux"
+import { setPostId } from "../slices/postSlice"
 import api from "@/app/config/apiConfig"
+import Post from "./post"
 interface Post {
-    post_id: number;
+    postId: number;
     nickname: string;
     title: string;
     tags: { createdDate: string; modifiedDate: string; tagContent: string }[];
@@ -53,22 +57,38 @@ interface Post {
   };
   
 export default function MyPost(){
-  const url=window.location.href;
+  const {nickname } = useContext(AuthContext);
+  const dispatch = useDispatch()
+  const url: string = window.location.href;
   const encodeUrl=encodeURIComponent(url)
+  console.log(encodeUrl)
   const accessToken=localStorage.getItem("accestoken")
   async function onHandleMyPostPreview() {
-    try {
-      const response = await api.get(`/api/v1/posts/mine?url=${encodeUrl}`, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${accessToken}`,
-        },
-      });
-      return response.data;
-    } catch (error) {
-      console.error(error);
-      throw error;
-    }
+    // try {
+    //   const response = await api.get(`/api/v1/posts/mine?url=${encodeUrl}`, {
+    //     headers: {
+    //       Authorization: `Bearer ${accessToken}`,
+    //     },
+    //   });
+    //   console.log(response.data)
+    //   return response.data;
+    // } catch (error) {
+    //   console.error(error);
+    //   throw error;
+    // }
+
+    try{
+      const response =await axios.get("http://localhost:3002/postPreview", {
+      // headers: {
+      //   "Content-Type": "application/json",
+      //   Authorization: `Bearer ${accesstoken}`
+      // }
+    });
+    console.log(response.data)
+    return response.data;
+    }catch(error){
+      console.log(error)
+}
   }
   
   const { data: datapost, isLoading, isError, isSuccess } = useQuery<Post[]>({
@@ -76,8 +96,10 @@ export default function MyPost(){
     queryFn: onHandleMyPostPreview,
   });
     const router=useRouter()
-    const onHandlePost =()=>{
-        router.push('/dashboard/home/post')
+    const onHandlePost = (postId: number) => {
+      console.log(postId)
+      router.push(`/${nickname}/dashboard/home/post`)
+      dispatch(setPostId(postId))
     }
     if(isLoading){
       return(
@@ -94,8 +116,8 @@ export default function MyPost(){
             </div>
             <div className={styles.collectionWrapper }>
             <ul className={styles.collection} >
-            {datapost?.map((value:any , index:any)=>(
-                <div key={index} className={styles.wrapper} onClick={onHandlePost}>
+            {datapost?.map((value: Post, index: number)=>(
+                <div key={index} className={styles.wrapper} onClick={() => onHandlePost(value.postId)}>
                 <li className={styles.previewBox}>
                     <div className={styles.front}>
                     <img  src={value.image_url} alt="image"></img>

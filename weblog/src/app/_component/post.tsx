@@ -10,7 +10,9 @@ import likeImg from "@/asset/images/likestar.png"
 import Comment from "@/app/_component/comment"
 import api from "@/app/config/apiConfig"
 import { useQuery } from "@tanstack/react-query"
+import { useSelector } from "react-redux"
 import axios from "axios"
+import { RootState } from '../reducers/rootReducer';
 
 
 interface Post {
@@ -60,27 +62,42 @@ interface Post {
   };
 
 export default function Post(){
-    const accesstoken=localStorage.getItem("accestoken")
+  const postId = useSelector((state: RootState) => state.post.postId);
+  console.log(postId)
+    const accessToken=localStorage.getItem("accestoken")
     const [likeCount, setLikeCount] = useState(0);
   const [btnPressed, setBtnPressed] = useState(false);
   const [img, setImg] = useState(btnPressed ? likeImg : unlikeImg);
+  const router = useRouter();
 
     async function onHandlePostDetail() {
+      // try{
+      //   const response = await api.get(`/api/v1/posts/${postId}`, {
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //       Authorization: `Bearer ${accessToken}`,
+      //     },
+      //   });
+      //           console.log(response.data)
+      //           return response.data;
+      //           }catch(error){
+      //             console.log(error)
+      //       }
       try{
-                  const response =await axios.get<Post>("http://localhost:3001/postDetail", {
-                  params: {
-                    post_id: 3// 'posId'를 'postId'로 수정
-                  },
-                  // headers: {
-                  //   "Content-Type": "application/json",
-                  //   Authorization: `Bearer ${accesstoken}`
-                  // }
-                });
-                console.log(response.data)
-                return response.data;
-                }catch(error){
-                  console.log(error)
-            }
+        const response =await axios.get<Post>("http://localhost:3001/postDetail", {
+          params: {
+            post_id: 1// 'posId'를 'postId'로 수정
+          },
+        // headers: {
+        //   "Content-Type": "application/json",
+        //   Authorization: `Bearer ${accesstoken}`
+        // }
+      });
+      console.log(response.data)
+      return response.data;
+      }catch(error){
+        console.log(error)
+  }
     }
 
     const {data:dataPostDetail, isLoading, isError, isSuccess}=useQuery<any>({ 
@@ -93,9 +110,9 @@ export default function Post(){
         <div className={styles.postContainer}>로딩중입니다...</div>
       }
       if (isSuccess && dataPostDetail) {
-        setLikeCount(dataPostDetail[0].like_count ?? 0);
-        setBtnPressed(dataPostDetail[0].is_like ?? false);
-        setImg(dataPostDetail[0].is_like ? likeImg : unlikeImg);
+        setLikeCount(dataPostDetail.like_count ?? 0);
+        setBtnPressed(dataPostDetail.is_like ?? false);
+        setImg(dataPostDetail.is_like ? likeImg : unlikeImg);
       }
       
     }, [isSuccess, dataPostDetail, isLoading]);
@@ -103,7 +120,7 @@ export default function Post(){
     const postRef=useRef<HTMLDivElement>(null)
     const scrabRef=useRef<HTMLDivElement>(null)
     const memoRef=useRef<HTMLDivElement>(null)
-    const router=useRouter()
+   
    
     const onHandleLikeButton = async () => {
       setLikeCount((prev) => {
@@ -150,14 +167,14 @@ export default function Post(){
     const hideButtonsInContent = () => {
       if (dataPostDetail) {
         const contentContainer = document.createElement("div");
-        contentContainer.innerHTML = dataPostDetail[0].content;
+        contentContainer.innerHTML = dataPostDetail.content;
         const buttons = contentContainer.querySelectorAll<HTMLButtonElement>(".but");
   
         buttons.forEach((button) => {
           button.style.visibility = "hidden";
         });
   
-        dataPostDetail[0].content = contentContainer.innerHTML;
+        dataPostDetail.content = contentContainer.innerHTML;
       }
     };
   
@@ -177,13 +194,12 @@ export default function Post(){
                   <button className={styles.closeBtn} onClick={onHandleClose}></button>
                   <button className={styles.fullScreenBtn} onClick={onHandleFullSize}></button>
                 </div>
-                {dataPostDetail?.map((value:any, index:any)=>(
-                  <div key={index} className={styles.postContainer}>
-                  <div className={styles.title}><h1>{value.title}</h1></div> 
+                  <div className={styles.postContainer}>
+                  <div className={styles.title}><h1>{dataPostDetail?.title}</h1></div> 
                   <div className={styles.tagsContainer}>
                       <Image src={tagImg} alt="tag"></Image>
                       <span>태그:</span>
-                      {value.tags.map((value:any,index:any)=>(
+                      {dataPostDetail?.tags.map((value:any,index:any)=>(
                             <div key={index} className={styles.tagsIndex}>
                               <span className={styles.tagCircle}>{value.tagContent}</span>
                           </div>
@@ -196,22 +212,21 @@ export default function Post(){
                   <div className={styles.postBy}>
                       <Image src={postImg} alt="postBY"></Image>
                       <span>post:</span>
-                      <b>{value.nickname}</b>
+                      <b>{dataPostDetail?.nickname}</b>
                       <span>
-                      {value.modifiedDate
-                        ? `수정됨: ${formatRelativeTime(value.modifiedDate)}`
-                        : `작성됨: ${formatRelativeTime(value.createdDate)}`}
+                      {dataPostDetail?.modifiedDate
+                        ? `수정됨: ${formatRelativeTime(dataPostDetail?.modifiedDate)}`
+                        : `작성됨: ${formatRelativeTime(dataPostDetail?.createdDate)}`}
                     </span>
                   </div>
                   <div className={styles.ScrabContainer} ref={scrabRef}>
-                    <div className={styles.scrabBox} dangerouslySetInnerHTML={{__html: value.content}} ></div>
+                    <div className={styles.scrabBox} dangerouslySetInnerHTML={{__html: dataPostDetail?.content}} ></div>
                   </div>
                   <div className={styles.postBoxContainer} ref={memoRef}>
-                    <div className={styles.postBox} dangerouslySetInnerHTML={{__html: value.memo}} ></div>
+                    <div className={styles.postBox} dangerouslySetInnerHTML={{__html: dataPostDetail?.memo}} ></div>
                   </div>
                   </div>
 
-                ))}
                 <div className={styles.footer}>
                   <Comment />
                 </div>
