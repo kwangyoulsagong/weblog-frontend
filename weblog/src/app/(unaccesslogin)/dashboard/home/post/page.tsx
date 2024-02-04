@@ -1,8 +1,13 @@
+import Home from "@/app/_component/home";
+import Post from "@/app/_component/post";
+import styles from "@/app/_component/dashboard.module.css"
 
 
-export default function Post(){
-
+export default function PostView(){
     return(
-        <div> 포스트</div>
+     <div className={styles.container}>
+      <Home/>
+      <Post/>
+     </div>
     )
 }

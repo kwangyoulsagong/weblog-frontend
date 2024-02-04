@@ -115,6 +115,23 @@
     color:#2b2e3a;
     
 }
+.searchBar{
+    height: 30px;
+    display: flex;
+    width: 100px;
+    max-width: 400px;
+    border-radius: 4px;
+    gap: 20px;
+    background: #2c3056;
+    justify-content: center;
+    align-items: center;
+    color: #585872;
+    transition: 0.5s;
+}
+.searchBar:hover{
+    width: 120px;
+    color: beige;
+}
 .iconSearch{
     background: url(../../asset/images/search.png);
     width: 20px;

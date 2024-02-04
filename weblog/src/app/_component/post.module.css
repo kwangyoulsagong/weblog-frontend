@@ -4,7 +4,9 @@
     right: 0;
     height: 93%;
     width: 0px;
-    background: white;
+    background: rgba(225, 224, 224, 0.7);
+    backdrop-filter: blur(15px);
+    opacity: 95%;
     overflow-y: scroll;
     z-index: 9999;
 }

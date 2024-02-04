@@ -9,6 +9,7 @@ import { AuthContext } from "./Provider/authProvider";
 import { useRouter } from "next/navigation";
 import profile from "@/asset/images/kwang.jpg"
 import Link from "next/link";
+import Search from "./search";
 
 type props = {children:ReactNode}
 export default function Dashboard({children}:props){
@@ -18,6 +19,7 @@ export default function Dashboard({children}:props){
   const [menubar, setMenubar] = useState(false);
   const [logoimg, setLogo] = useState(true);
   const [dropMenu,setDropMenu]=useState(false)
+  const [showSearch, setShowSearch]=useState(false)
   const onHandleLogout=()=>{
     setIsLogin(false)
     router.push("/dashboard/home")
@@ -32,6 +34,9 @@ export default function Dashboard({children}:props){
   };
   const handleDropdownMenu = ()=>{
     setDropMenu((prev)=>!prev)
+  }
+  const handleSearchBar=()=>{
+    setShowSearch(!showSearch)
   }
 
       return(
@@ -55,7 +60,11 @@ export default function Dashboard({children}:props){
                         </button>
                         {logoimg&& <Image className={styles.LogoImg} src={Logo} alt="Logo"></Image>}
                         <div className={styles.profile_header}>
-                        <div className={styles.iconSearch}></div>
+                          <div className={styles.searchBar} onClick={handleSearchBar}>
+                            <span>검색</span>
+                            <div className={styles.iconSearch}></div>
+                          </div>
+                        
                         {isLogin && <button className={styles.notification}></button>}
                         {isLogin && <b className={styles.nickname}>{nickname}</b>}
                         {isLogin && <div className={styles.profileCircle}>
@@ -76,6 +85,7 @@ export default function Dashboard({children}:props){
                   </main>
                   </div>
               </div>
+             {showSearch&& <Search/>}
               </div>
       )
   
