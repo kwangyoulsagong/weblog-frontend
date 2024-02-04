@@ -80,7 +80,7 @@
     position: fixed;
     top: 0;
     width: inherit;
-    z-index: 99999;
+    z-index: 1;
     height: 60px;
     border-bottom: 1px solid rgba(113 119 144 / 25%);
 
@@ -114,6 +114,14 @@
     background: #e4e6ef;
     color:#2b2e3a;
     
+}
+.iconSearch{
+    background: url(../../asset/images/search.png);
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
 }
 .LogoImg{
 
