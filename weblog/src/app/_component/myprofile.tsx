@@ -1,6 +1,7 @@
 "use client"
 import { useState } from "react"
 import styles from "./myprofile.module.css"
+import MyProfile from "./myprofile/myprofile"
 export default function myProfile(){
     const [datePostMenu, setDatePostMenu]=useState("프로필")
     const handlePostTab= (tab:any)=>{
@@ -19,7 +20,10 @@ export default function myProfile(){
                     <div style={styleComponent("알림")} onClick={()=>handlePostTab("알림")}>알림</div>
                     <div style={styleComponent("설정")} onClick={()=>handlePostTab("설정")}>설정</div>
                     <div style={styleComponent("도움말")} onClick={()=>handlePostTab("도움말")}>도움말</div>
-                  </div>
+             </div>
+             <div className={styles.background}>
+                <MyProfile/>
+             </div>
         </div>
     )
 }

@@ -1,0 +1,81 @@
+.container{
+    width: inherit;
+    height: inherit;
+    display: grid;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    grid-template-columns: repeat(2,1fr);
+    @media only screen and (max-width: 1200px) {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+.profile{
+    width: 100%;
+    height: inherit;
+    background: white;
+}
+.header{
+    width: inherit;
+    display: flex;
+    align-items: center;
+    height: 150px;
+    gap: 20px;
+    border-bottom: 1px solid rgb(219, 219, 219);  
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  
+
+}
+.profileCircle{
+
+    width: 70px;
+    height: 70px;
+    margin-left: 12.5px;
+    border-radius: 50px;
+    border: 2px solid rgb(183, 181, 181)
+}
+.profileCircle img{
+    border-radius: 50px;
+    width: inherit;
+    height: inherit;
+    object-fit: cover;
+}
+.authContainer{
+    width: 300px;
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+}
+.authContainer b{
+    font-size: 13px;
+}
+.authContainer span{
+    font-size: 12px;
+}
+.followers{
+    gap: 10px;
+    display: flex;
+}
+.followers span{
+    font-size: 14px;
+    color: #666;
+    font-weight: bold;
+}
+.authContainer a{
+    color: #05d697;
+    font-size: 13px;
+}
+.subTitle{
+    width: 185px;
+}
+.headerTab{
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid rgb(219, 219, 219);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+}
+.setting{
+    width: 100%;
+    height: inherit;
+    background: yellow;
+}
