@@ -36,6 +36,8 @@
     text-indent: 3vw;
     outline: none;
     background: transparent;
+    color:#e9e5e5;
+    
 }
 .searchBar input::placeholder{
     color:#e9e5e5;

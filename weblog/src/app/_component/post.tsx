@@ -68,6 +68,7 @@ export default function Post(){
     const [likeCount, setLikeCount] = useState(0);
   const [btnPressed, setBtnPressed] = useState(false);
   const [img, setImg] = useState(btnPressed ? likeImg : unlikeImg);
+  const [isFullSize, setIsFullSize] = useState(false);
   const router = useRouter();
 
     async function onHandlePostDetail() {
@@ -156,10 +157,11 @@ export default function Post(){
     }
     const onHandleFullSize = ()=>{
       if(postRef.current&&scrabRef.current&&memoRef.current){
-          postRef.current.style.width="100%"
-          postRef.current.style.transition="0.4s"
-          scrabRef.current.style.height="1000px"
-          memoRef.current.style.marginTop="1220px"
+        postRef.current.style.width = isFullSize ? "900px" : "100%";
+        postRef.current.style.transition = "0.4s";
+        scrabRef.current.style.height = isFullSize ? "500px" : "1000px";
+        memoRef.current.style.marginTop = isFullSize ? "702px" : "1177.5px";
+          setIsFullSize(!isFullSize);
       }
 
   }

@@ -101,7 +101,7 @@
         grid-template-columns: repeat(3, 1fr);
     }
     @media only screen and (max-width: 1200px) {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
 }
 
 @media only screen and (max-width: 800px) {
@@ -130,18 +130,17 @@ width: 18vw;
 height:48vh;
 background: #FFFFFF;
 @media only screen and (max-width: 1400px) {
-    width: 27vw;
-    height: 35vh;
+    width: 24vw;
+    height: 45vh;
 }
 @media only screen and (max-width: 1200px) {
-    width: 27vw;
-    height: 38vh;
+    width: 40vw;
 }
 @media only screen and (max-width: 800px) {
-    width: 35vw;
+    width: 38vw;
 }
 @media only screen and (max-width: 480px) {
-    width: 60vw;
+    width: 76vw;
 }
 
 /* main color */
