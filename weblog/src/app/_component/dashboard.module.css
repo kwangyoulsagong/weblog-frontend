@@ -41,7 +41,7 @@
     background: rgb(255 255 255 / 31%);
 
 }
-.leftFixedSection a{
+.leftFixedSection div{
     text-decoration: none;
     color:  rgba(70, 70, 71, 0.78);
     display: flex;

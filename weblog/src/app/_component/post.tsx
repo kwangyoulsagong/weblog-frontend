@@ -185,7 +185,7 @@ export default function Post(){
     
     useEffect(()=>{
         if(postRef.current){
-            postRef.current.style.width="900px"
+            postRef.current.style.width="60vw"
             postRef.current.style.transition="0.4s"
         }
     },[])
