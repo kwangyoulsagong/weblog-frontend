@@ -17,6 +17,7 @@ export default function Dashboard({children}:props){
   const { isLogin, nickname, setIsLogin } = useContext(AuthContext);
   const menuRef = useRef<any>(null);
   const leftWrapperRef = useRef<HTMLDivElement>(null!)
+  const mainWrapperRef=useRef<HTMLDivElement>(null!)
   const [menubar, setMenubar] = useState(false);
   const [logoimg, setLogo] = useState(true);
   const [dropMenu,setDropMenu]=useState(false)
@@ -28,11 +29,12 @@ export default function Dashboard({children}:props){
 
   const onHandleMenubar = () => {
     setMenubar(!menubar);
-    if (menuRef.current&&leftWrapperRef.current) {
+    if (menuRef.current&&leftWrapperRef.current&&mainWrapperRef.current) {
       menuRef.current.style.scrollBehavior = "smooth";
       menuRef.current.scrollTop = !menubar ? 3000 : 0;
-      leftWrapperRef.current.style.width=!menubar? "150px":"30px";
+      leftWrapperRef.current.style.width=!menubar? "110px":"30px";
       leftWrapperRef.current.style.transition="0.5s"
+
     }
   };
   const handleDropdownMenu = ()=>{
@@ -51,7 +53,7 @@ export default function Dashboard({children}:props){
                 </section>
            
             </header>
-              <div className={styles.mainWrapper} >
+              <div className={styles.mainWrapper} ref={mainWrapperRef} >
                   <div className={styles.mainSectionInner}>
                   <div className={styles.meuBarSection}>
                       <div className={styles.menuBarFixedSection}>
