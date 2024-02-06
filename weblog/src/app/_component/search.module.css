@@ -46,11 +46,23 @@
 .iconSearch{
     position: absolute;
     right: 26.5vw;
-    background: url(../../asset/images/search.png); 
+    background: url(../../asset/images/searchFUll.png); 
     width: 3vw;
     height: 3vh;
     background-size: contain;
     background-position: center center;
     background-repeat: no-repeat;
     border: none;
+}
+.autoCompleteList{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.autoCompleteItem{
+    width: 100%;
+    height: 30px;
+    border-bottom: 1px solid #b3b3b3;
+    color: #e9e5e5;
 }

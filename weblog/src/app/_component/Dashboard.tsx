@@ -16,6 +16,7 @@ export default function Dashboard({children}:props){
   const router=useRouter()
   const { isLogin, nickname, setIsLogin } = useContext(AuthContext);
   const menuRef = useRef<any>(null);
+  const leftWrapperRef = useRef<HTMLDivElement>(null!)
   const [menubar, setMenubar] = useState(false);
   const [logoimg, setLogo] = useState(true);
   const [dropMenu,setDropMenu]=useState(false)
@@ -27,9 +28,11 @@ export default function Dashboard({children}:props){
 
   const onHandleMenubar = () => {
     setMenubar(!menubar);
-    if (menuRef.current) {
+    if (menuRef.current&&leftWrapperRef.current) {
       menuRef.current.style.scrollBehavior = "smooth";
       menuRef.current.scrollTop = !menubar ? 3000 : 0;
+      leftWrapperRef.current.style.width=!menubar? "150px":"30px";
+      leftWrapperRef.current.style.transition="0.5s"
     }
   };
   const handleDropdownMenu = ()=>{
@@ -42,14 +45,12 @@ export default function Dashboard({children}:props){
       return(
           <div className={styles.container}>
               {/* 여기안에는 데이터 접근 가능 */}
-              {menubar&&(
-                <header className={styles.leftWrapper}>
-                <section className={styles.leftSection}>
+                <header className={styles.leftWrapper} >
+                <section className={styles.leftSection}ref={leftWrapperRef} >
                 {isLogin ? <AccessLinkBar /> : <UnAccessLinkBar />}
                 </section>
            
             </header>
-              )}
               <div className={styles.mainWrapper} >
                   <div className={styles.mainSectionInner}>
                   <div className={styles.meuBarSection}>
