@@ -67,18 +67,17 @@ export default function Dashboard({children}:props){
                           </div>
                         
                         {isLogin && <button className={styles.notification}></button>}
-                        {isLogin && <b className={styles.nickname}>{nickname}</b>}
-                        {isLogin && <div className={styles.profileCircle}>
+                        {isLogin && <div className={styles.profileCircle} onClick={handleDropdownMenu}>
                           <Image src={profile} alt="kwang"/>
                         </div>}
-                        {isLogin&& <div className={styles.dropdown}>
-                          <button className={styles.dropdownButton} onClick={handleDropdownMenu} style={{rotate:dropMenu?'180deg':'0deg'}}></button>
-                          <div className={styles.dropMenu}  style={{height:dropMenu? '50px':'0px', transition: "0.5s"}}>
+                       </div>
+                       {isLogin&& <div className={styles.dropdown}>
+                          <div className={styles.dropMenu}  style={{height:dropMenu? '100vh':'0px', transition: "0.5s"}}>
+                          {isLogin && <b className={styles.nickname}>{nickname}</b>}
                              <Link href="">마이페이지</Link>
                             <button onClick={onHandleLogout}>로그아웃</button>
                           </div>
-                          </div>}</div>
-                        
+                          </div>}
                       </div>
                     </div>
                   <main className={styles.main}>

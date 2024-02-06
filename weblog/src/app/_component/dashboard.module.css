@@ -32,6 +32,7 @@
     height: 92dvh;
     display: flex;
     flex-direction: column;
+    gap: 30px;
     flex-basis: 240px;
     overflow: hidden;
     flex-shrink: 0;
@@ -149,7 +150,7 @@
     display: flex;
     right: 100px;
     align-items: center;
-    gap: 10px;
+    gap: 20px;
 }
 .notification{
 
@@ -177,9 +178,12 @@
     height: inherit;
     object-fit: cover;
 }
+.profileCircle:hover{
+    border:2px solid greenyellow;
+}
 .dropdown{
     position: absolute;
-    right: 0px;
+    right: 30px;
     margin-top: 30px;
 }
 .dropdownButton{
@@ -193,12 +197,19 @@ border: none;
 }
 .dropMenu{
     position: absolute;
-    width: 65px;
-    height: 0;
-    overflow: hidden;
-    background: white;
-    font-size: 15px;
+    overflow-wrap: break-word;
+    background: rgba(225, 224, 224, 0.4);
+    backdrop-filter: blur(15px);
+    box-shadow: rgba(0, 0, 0, 0.7) 0px 0px 1px 0px, rgba(0, 0, 0, 0.5) 0px 8px 20px 0px;
+    color: rgb(201, 206, 220);
+    font-family: "Sandoll Nemony2", "Apple SD Gothic NEO", "Helvetica Neue", Helvetica, 나눔고딕, NanumGothic, "Malgun Gothic", "맑은 고딕", 굴림, gulim, 새굴림, "noto sans", 돋움, Dotum, sans-serif;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    top: calc(100% + 15px);
+    right: 0;
+    width: 200px;
+    word-break: break-all;
+    border-radius: 10px;
+    overflow: hidden;
+
 }
