@@ -2,9 +2,7 @@
 .moduleBackground{
     width: inherit;
     height: inherit;
-    background: rgba(225, 224, 224, 0.31);
     display: flex;
-    backdrop-filter: blur(20px);
     overflow:hidden;
 
 }
@@ -86,13 +84,122 @@
     margin-left: 2vw;
     scroll-behavior: smooth;
 }
+.collectionBestContainer{
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    word-wrap: break-word;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    width: 92%;
+    overflow: hidden;
+    border-radius: 12px;
+    height: 370px;
+    word-break: break-all;
+}
+.bestWrapper{
+    width: inherit;
+    height: inherit;
+}
+.bestPreviewBox{
+    width: inherit;
+    height: inherit;
+}
+.bestPreviewBox img{
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.hoverBox{
+    position: absolute;
+    bottom: 0;
+    overflow: hidden;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    height: 0;
+    background: rgba(90, 88, 88, 0.667);
+    backdrop-filter: blur(16px) saturate(120%);
+}
+.hoverBox h3{
+    color: #b3b3b3;
+    font-size: 1.5rem;
+    font-family: 'Gaegu', sans-serif;
+}
+.bestTags{
+    position: absolute;
+    top: 120px;
+    display: flex;
+    gap: 10px;
+    
+
+}
+.bestTags span{
+    width: 60px;
+    font-size: 12px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    height: 20px;
+    align-items: center;
+    border-radius: 15px;
+    border: #b3b3b3 1px solid;
+    color: #b3b3b3;
+}
+.bestContentHeader{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 60px;
+    border-top: 1px solid #b3b3b3;
+}
+.bestLikes{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    right: 15px;
+}
+.bestLikes img{
+    width: inherit;
+    height: inherit;
+    object-fit: contain;
+}
+.bestProfileCircle{
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+}
+.bestProfileCircle img{
+    margin-left: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+}
+.bestLikesCount{
+    position: absolute;
+    right: 60px
+}
+.bestPostBy{
+    margin-left: 30px;
+}
+.bestContentHeader span, .bestContentHeader b{
+    margin-left: 5px;
+    font-size: 12px;
+}
+.bestContentHeader span{
+    color: #b3b3b3;
+}
 .collectionContainer{
     display: flex;
     width: inherit;
 }
 
 .collection{
-    margin-top: 50px;
+    margin-top: 450px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);;
     width: 100vw;

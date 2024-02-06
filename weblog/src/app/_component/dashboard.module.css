@@ -6,9 +6,9 @@
     height: 100vh;
     display: flex;
     align-items: stretch;
-    background-image: url("../../asset/images/background.jpg");
+    background-image: linear-gradient(68deg,#f7f3f4,#ffffff,#f6fefb);
     background-size: cover;
-    background-position: contain;
+
 }
 
 .leftWrapper{

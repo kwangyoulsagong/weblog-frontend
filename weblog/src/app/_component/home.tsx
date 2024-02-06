@@ -10,6 +10,8 @@ export default  function Home(){
     const tabRef=useRef<HTMLDivElement>(null)
     const slideRef = useRef<HTMLDivElement>(null);
     const postTabRef = useRef<HTMLDivElement>(null!);
+    const bestPostRef=useRef<HTMLDivElement>(null!);
+    const bestHover=useRef<HTMLDivElement>(null!);
     const [tabMenu, setTabMenu]=useState("popularTab")
     const [datePostMenu, setDatePostMenu]=useState("주간")
     const [upScroll, setUpScroll] = useState(0);
@@ -60,6 +62,18 @@ export default  function Home(){
           }
     }
     useEffect(()=>{
+        if(bestPostRef.current && bestHover.current){
+            bestPostRef.current.addEventListener("mouseover",()=>{
+                bestHover.current.style.height="60%"
+                bestHover.current.style.transition="1s"
+            })
+            bestPostRef.current.addEventListener("mouseout",()=>{
+                bestHover.current.style.height="0"
+                bestHover.current.style.transition="1s"
+            })
+        }
+    },[])
+    useEffect(()=>{
       if(tabRef.current){
         tabRef.current.style.left=tabMenu==="recommendTab"? '100px':'0'
         tabRef.current.style.transition="0.5s"
@@ -102,7 +116,30 @@ export default  function Home(){
 
                 </div>
                 <div className={styles.collectionWrapper } ref={slideRef}>
+               
                 <div className={styles.collectionContainer}>
+                <div className={styles.collectionBestContainer}ref={bestPostRef}>
+                    <div className={styles.bestWrapper}>
+                        <div className={styles.bestPreviewBox}>
+                            <img  src="https://velog.velcdn.com/images/hmmhmmhm/post/f6cb929e-4552-4955-83ee-5d861225bc45/image.gif" alt="image"></img>
+                        </div>
+                        <div className={styles.hoverBox} ref={bestHover}>
+                        <h3>하루 만에 혼자 3D 로 신년카드 웹앱을?</h3>
+                         <div className={styles.bestTags}>
+                            <span>알고리즘</span>
+                            <span>신년</span>
+                         </div>
+                        <div className={styles.bestContentHeader}> 
+                        <div className={styles.bestProfileCircle}>
+                            <img src="https://velog.velcdn.com/images/hmmhmmhm/profile/352c0d2c-9f4d-4489-a5c5-64d789a66a4b/image.webp" alt=''></img>  
+                        </div>
+                        <div className={styles.bestLikes}><Image src={likesIcon} alt="like"></Image></div>
+                        <div className={styles.postBy}> <span>post</span> <b>하민</b></div> 
+                        <span className={styles.bestLikesCount}>200</span>
+                        </div>
+                        </div>
+                    </div>
+                </div>
                 <ul className={styles.collection} >
                     
                     <div className={styles.wrapper} onClick={onHandlePost}>
