@@ -89,11 +89,20 @@
     position: absolute;
      margin-left: 45px;
     font-weight: 400;
-    font: inherit;
     vertical-align: top;
-    font-size: 30px;
+    font-size: 22.5px;
     font-family: 'Nanum Gothic', sans-serif;
     color: #7e7e80;
+}
+.popularH3{
+    position: absolute;
+    bottom: 50px;
+    z-index: 9999;
+    font-size: 22.5px;
+    font-family: 'Nanum Gothic', sans-serif;
+    color: #7e7e80;
+    font-weight: 400;
+    vertical-align: top;
 }
 .collectionBestContainer{
     position: absolute;
@@ -109,14 +118,18 @@
     word-break: break-all;
 }
 .bestWrapper{
-    position: absolute;
-    display: flex;
+    display: grid;
     width: 100%;
-    height: inherit;
+    height: 100%;
+    grid-template-columns: repeat(auto-fill, minmax(30vw, 1fr));
+    gap: 20px;
 }
 .bestPreviewBox{
-    width: inherit;
-    height: inherit;
+    position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
 }
 .bestPreviewBox img{
     left: 0;
@@ -124,7 +137,7 @@
     height: 100%;
 }
 .hoverBox{
-    margin-top: -54.25%;
+    margin-top: -58.25%;
     overflow: hidden;
     display: flex;
     width: 100%;

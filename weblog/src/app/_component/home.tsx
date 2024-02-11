@@ -104,7 +104,7 @@ export default  function Home(){
                 <div className={styles.collectionWrapper } ref={slideRef}>
                
                 <div className={styles.collectionContainer}>
-                <h3 className={styles.bestH3}>주간 top 2</h3>
+                <h3 className={styles.bestH3}>주간 BEST</h3>
                 <div className={styles.collectionBestContainer}>
                 <div className={styles.bestWrapper}>
                         <div className={styles.bestPreviewBox}>
@@ -147,7 +147,9 @@ export default  function Home(){
                       
                     </div>
                 </div>
+                
                 <ul className={styles.collection} >
+                <h3 className={styles.popularH3}>주간 인기포스트</h3>
                     
                     <div className={styles.wrapper} onClick={onHandlePost}>
                     <li className={styles.previewBox}>
