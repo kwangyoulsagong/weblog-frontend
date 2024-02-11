@@ -62,6 +62,7 @@ export default function MyPost(){
   const url: string = window.location.href;
   const encodeUrl=encodeURIComponent(url)
   console.log(encodeUrl)
+
   const accessToken=localStorage.getItem("accestoken")
   async function onHandleMyPostPreview() {
     // try {
@@ -95,6 +96,9 @@ export default function MyPost(){
     queryKey: ["mypostpreview"],
     queryFn: onHandleMyPostPreview,
   });
+
+  
+  
     const router=useRouter()
     const onHandlePost = (postId: number) => {
       console.log(postId)

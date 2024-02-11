@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@300&family=Noto+Sans+KR&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 .moduleBackground{
     width: inherit;
     height: inherit;
@@ -7,11 +8,11 @@
 
 }
 .innerContents{
-    width: 100%;
+    width: inherit;
     height: inherit;
 }
 .postTabContainer{
-    width: 100vw;
+    width: inherit;
     height: 25vh;
     display: flex;
     justify-content: center;
@@ -76,7 +77,7 @@
 .collectionWrapper{
     position: absolute;
     display: flex;
-    width: 100vw;
+    width: inherit;
     overflow-y:scroll;
     scroll-behavior: smooth;
     overflow-x: hidden;
@@ -84,9 +85,19 @@
     margin-left: 2vw;
     scroll-behavior: smooth;
 }
+.bestH3{
+    position: absolute;
+     margin-left: 45px;
+    font-weight: 400;
+    font: inherit;
+    vertical-align: top;
+    font-size: 30px;
+    font-family: 'Nanum Gothic', sans-serif;
+    color: #7e7e80;
+}
 .collectionBestContainer{
     position: absolute;
-    top: 30px;
+    top: 80px;
     left: 40px;
     word-wrap: break-word;
     align-items: center;
@@ -203,7 +214,7 @@
 }
 
 .collection{
-    margin-top: 450px;
+    margin-top: 600px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);;
     width: 100vw;

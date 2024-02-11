@@ -34,6 +34,8 @@ export default function Dashboard({children}:props){
       menuRef.current.scrollTop = !menubar ? 3000 : 0;
       leftWrapperRef.current.style.width=!menubar? "110px":"30px";
       leftWrapperRef.current.style.transition="0.5s"
+      mainWrapperRef.current.style.width=!menubar? "90vw":"95vw";
+      mainWrapperRef.current.style.transition="0.5s"
 
     }
   };

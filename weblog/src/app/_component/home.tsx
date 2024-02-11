@@ -104,6 +104,7 @@ export default  function Home(){
                 <div className={styles.collectionWrapper } ref={slideRef}>
                
                 <div className={styles.collectionContainer}>
+                <h3 className={styles.bestH3}>주간 top 2</h3>
                 <div className={styles.collectionBestContainer}>
                 <div className={styles.bestWrapper}>
                         <div className={styles.bestPreviewBox}>
