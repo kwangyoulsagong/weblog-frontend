@@ -255,7 +255,12 @@
 }
 .wrapper{
     perspective: 900px;
+    display: flex;
+    justify-content: center;
 }
+.wrapper:nth-child(3n) .previewBox {
+    width: 13vw;
+  }
 .previewBox{
     box-sizing: border-box;
 align-items: center;
@@ -284,6 +289,7 @@ border-radius: 16px;
     transition: all 1.5s cubic-bezier(0.7, -.5, 0.3, 1.8);
     transform-style: preserve-3d;
 }
+
 .wrapper:hover .previewBox{
     transform: rotateY(180deg);
 
