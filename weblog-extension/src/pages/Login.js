@@ -16,43 +16,27 @@ const Login = ({ onClose, onLoginSuccess }) => {
       onLoginSuccess("sgky0511");
     } else {
       alert("로그인 실패");
+    } // 동기 처리
+    const requestData = {
+      email: email,
+      password: password,
+    };
+    try {
+      const response = await api.post("/api/v1/auths/login", requestData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = response.data;
+      console.log(data);
+      if (data.accessToken && data.refreshToken) {
+        localStorage.setItem("accesstoken", data.accessToken);
+        localStorage.setItem("refreshtoken", data.refreshToken);
+        onLoginSuccess(data.nickname);
+      }
+    } catch (error) {
+      console.log(error);
     }
-    // axios
-    //   .get("/api/users/login", {
-    //     params: {
-    //       loginId: id,
-    //       password: password,
-    //     },
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //   })
-    //   .then((response) => {
-    //     console.log(response.data);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   }); 동기 처리
-    // const requestData = {
-    //   email: email,
-    //   password: password,
-    // };
-    // try {
-    //   const response = await api.post("/api/v1/auths/login", requestData, {
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //   });
-    //   const data = response.data;
-    //   console.log(data);
-    //   if (data.accessToken && data.refreshToken) {
-    //     localStorage.setItem("accesstoken", data.accessToken);
-    //     localStorage.setItem("refreshtoken", data.refreshToken);
-    //     onLoginSuccess(data.nickname);
-    //   }
-    // } catch (error) {
-    //   console.log(error);
-    // }
   };
   const handleChangeEmail = (e) => {
     setEmail(e.target.value);
