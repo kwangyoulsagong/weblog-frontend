@@ -145,6 +145,34 @@ export default  function Home(){
                         </div>
                         </div>
                       
+
+                        <div className={styles.bestPreviewBox}>
+                        <img  src="https://velog.velcdn.com/images/teo/post/4320ed12-8242-4245-b58b-c1f05445c5b7/image.png" alt="image"></img>
+                            <div className={styles.hoverBox} >
+                            <h3>나를 프로그래밍 해보자.</h3>
+                         <div className={styles.bestTags}>
+                            <span>프로그래밍</span>
+                            <span>나</span>
+                         </div>
+                        <div className={styles.bestContentHeader}> 
+                        <div className={styles.bestProfileCircle}>
+                            <img src="https://velog.velcdn.com/images/teo/profile/392ec036-5070-4c97-aabe-100969716dd9/image.jpg" alt=''></img>  
+                        </div>
+                        <div className={styles.bestLikes}><Image src={likesIcon} alt="like"></Image></div>
+                        <div className={styles.postBy}>  <span>post</span> <b>teo.yu</b></div> 
+                        <span className={styles.bestLikesCount}>36</span>
+                        </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div className={styles.minimap}>
+                        <div className={styles.images}>
+                            <div className={styles.image}>
+                                <img  src="https://velog.velcdn.com/images/hmmhmmhm/post/f6cb929e-4552-4955-83ee-5d861225bc45/image.gif" alt="image"></img>
+                                <img  src="https://velog.velcdn.com/images/greencloud/post/4ad0de67-bbaa-46af-8630-0f0d947791b5/image.GIF" alt="image"></img>
+                                <img  src="https://velog.velcdn.com/images/teo/post/4320ed12-8242-4245-b58b-c1f05445c5b7/image.png" alt="image"></img>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
