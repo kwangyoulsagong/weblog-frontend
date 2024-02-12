@@ -10,11 +10,54 @@ export default  function Home(){
     const tabRef=useRef<HTMLDivElement>(null)
     const slideRef = useRef<HTMLDivElement>(null);
     const postTabRef = useRef<HTMLDivElement>(null!);
+    const bestWrapperRef=useRef<HTMLDivElement>(null!)
+    const imageBoxRef = useRef<HTMLDivElement>(null!)
     const [tabMenu, setTabMenu]=useState("popularTab")
     const [datePostMenu, setDatePostMenu]=useState("주간")
     const [upScroll, setUpScroll] = useState(0);
     const router=useRouter()
     //스크롤 감지 
+
+    useEffect(() => {
+        if (bestWrapperRef.current && imageBoxRef.current) {
+            const imageBoxes = imageBoxRef.current.querySelectorAll(`.${styles.imageBox}`);
+            bestWrapperRef.current.style.scrollBehavior = 'smooth';
+            let count = 0;
+            let scale = 1.0;  
+            (imageBoxes[0] as HTMLElement).style.transform = `scale(1.25)`
+            const intervalId = setInterval(() => {
+                let nextScrollTop = bestWrapperRef.current.scrollTop + 500;
+                count++;
+                bestWrapperRef.current.scrollTop = nextScrollTop;
+                ;
+                if (count < imageBoxes.length) {
+                    scale = 1.25;
+
+                    (imageBoxes[count] as HTMLElement).style.transform = `scale(${scale})`;
+
+                    if (count > 0) {
+                        (imageBoxes[count - 1] as HTMLElement).style.transform = `scale(1.0)`;
+                    }
+                }
+    
+                if (count === 3) {
+                    (imageBoxes[count - 1] as HTMLElement).style.transform = `scale(1.0)`;
+                    (imageBoxes[0] as HTMLElement).style.transform = `scale(1.25)`
+                    count = 0;
+                    bestWrapperRef.current.scrollTop = 0;
+                    
+
+                }
+            }, 3000);
+    
+            return () => clearInterval(intervalId);
+        }
+    }, []);
+    
+      
+      
+
+
     useEffect(() => {
         if (postTabRef?.current && slideRef?.current) {
             const handleScroll = () => {
@@ -105,8 +148,8 @@ export default  function Home(){
                
                 <div className={styles.collectionContainer}>
                 <h3 className={styles.bestH3}>주간 BEST</h3>
-                <div className={styles.collectionBestContainer}>
-                <div className={styles.bestWrapper}>
+                <div className={styles.collectionBestContainer} >
+                <div className={styles.bestWrapper}ref={bestWrapperRef} >
                         <div className={styles.bestPreviewBox}>
                             <img  src="https://velog.velcdn.com/images/hmmhmmhm/post/f6cb929e-4552-4955-83ee-5d861225bc45/image.gif" alt="image"></img>
                             <div className={styles.hoverBox} >
@@ -167,10 +210,20 @@ export default  function Home(){
                     </div>
                     <div className={styles.minimap}>
                         <div className={styles.images}>
-                            <div className={styles.image}>
-                                <img  src="https://velog.velcdn.com/images/hmmhmmhm/post/f6cb929e-4552-4955-83ee-5d861225bc45/image.gif" alt="image"></img>
-                                <img  src="https://velog.velcdn.com/images/greencloud/post/4ad0de67-bbaa-46af-8630-0f0d947791b5/image.GIF" alt="image"></img>
-                                <img  src="https://velog.velcdn.com/images/teo/post/4320ed12-8242-4245-b58b-c1f05445c5b7/image.png" alt="image"></img>
+                            <div className={styles.image} ref={imageBoxRef}>
+                                <div className={styles.imageBox}>
+                                    <img   src="https://velog.velcdn.com/images/hmmhmmhm/post/f6cb929e-4552-4955-83ee-5d861225bc45/image.gif" alt="image"></img>
+                                </div>
+                                <div className={styles.imageBox}>
+                                    <img  src="https://velog.velcdn.com/images/greencloud/post/4ad0de67-bbaa-46af-8630-0f0d947791b5/image.GIF" alt="image"></img>
+                                </div>
+                                <div className={styles.imageBox}>
+
+                                 <img  src="https://velog.velcdn.com/images/teo/post/4320ed12-8242-4245-b58b-c1f05445c5b7/image.png" alt="image"></img>
+                                </div>
+                                
+                             
+                                
                             </div>
                         </div>
                     </div>
