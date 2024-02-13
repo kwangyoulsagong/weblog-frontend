@@ -64,6 +64,7 @@ export default  function Home(){
         queryFn: onHandleBestPostPreview,
         initialPageParam:0,
         getNextPageParam: (lastpage)=>lastpage.at(-1)?.postId,
+   
 
     })
     const {ref,inView}=useInView({
