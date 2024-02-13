@@ -5,6 +5,21 @@ import likesIcon from "@/asset/images/likestar.png"
 import { useContext, useEffect, useRef, useState } from "react"
 import { useRouter } from "next/navigation"
 import { AuthContext } from "./Provider/authProvider"
+import { InfiniteData, useInfiniteQuery, useQuery } from "@tanstack/react-query"
+import axios from "axios"
+import { useInView } from "react-intersection-observer"
+
+type Post ={
+    postId: number;
+    nickname: string;
+    title: string;
+    tags: string [];
+    likeCount: number;
+    is_like: boolean;
+    imageUrl: string;
+    createdDate: string;
+    modifiedDate: string;
+}
 export default  function Home(){
     const {isLogin,nickname}=useContext(AuthContext)
     const tabRef=useRef<HTMLDivElement>(null)
@@ -17,6 +32,51 @@ export default  function Home(){
     const [upScroll, setUpScroll] = useState(0);
     const router=useRouter()
     //스크롤 감지 
+
+    // useEffect(() => {
+    //     const handleScroll = () => {
+    //         if (
+    //             slideRef.current &&
+    //             slideRef.current.scrollTop + slideRef.current.clientHeight >= slideRef.current.scrollHeight-20
+    //         ) {
+    //             console.log("hello")
+    //         }
+    //     };
+    
+    //    slideRef.current?.addEventListener("scroll", handleScroll);
+    
+    //     return () => {
+    //         slideRef.current?.removeEventListener("scroll", handleScroll);
+    //     };
+    // }, [slideRef]);
+    async function onHandleBestPostPreview({ pageParam }: { pageParam?: number }) {
+        try {
+            const response = await axios.get(`http://localhost:8000/api/v1/posts/ranks?type=weekly&number=20&offset=${pageParam}&limit=12`)
+            console.log(response.data)
+            return response.data.slicedData
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+    const {data:bestPost, isLoading, isError, isSuccess, fetchNextPage, hasNextPage, isFetching  }=useInfiniteQuery<Post[],object,InfiniteData<Post[]>,[_1: string],number>({
+        queryKey:["bestPostPreview"],
+        queryFn: onHandleBestPostPreview,
+        initialPageParam:0,
+        getNextPageParam: (lastpage)=>lastpage.at(-1)?.postId,
+
+    })
+    const {ref,inView}=useInView({
+        threshold:0,
+        delay:0,
+
+    });
+    useEffect(()=>{
+        if (inView && !isFetching && hasNextPage) {
+            fetchNextPage();
+          }
+
+    },[inView,isFetching,hasNextPage,fetchNextPage])
 
     useEffect(() => {
         if (bestWrapperRef.current && imageBoxRef.current) {
@@ -231,33 +291,41 @@ export default  function Home(){
                 
                 <ul className={styles.collection} >
                 <h3 className={styles.popularH3}>주간 인기포스트</h3>
-                    
-                    <div className={styles.wrapper} onClick={onHandlePost}>
-                    <li className={styles.previewBox}>
-                        <div className={styles.front}>
-                        <img  src="https://velog.velcdn.com/images/hmmhmmhm/post/f6cb929e-4552-4955-83ee-5d861225bc45/image.gif" alt="image"></img>
-                        <h3>하루 만에 혼자 3D 로 신년카드 웹앱을?</h3>
-                        <div className={styles.contentHeader}>
-                        <div className={styles.profileCircle}>
-                            <img src="https://velog.velcdn.com/images/hmmhmmhm/profile/352c0d2c-9f4d-4489-a5c5-64d789a66a4b/image.webp" alt=''></img>  
-                        </div>
-                        <div className={styles.likes}><Image src={likesIcon} alt="like"></Image></div>
-                        <div className={styles.postBy}> <span>post</span> <b>하민</b></div> 
-                        <span className={styles.likesCount}>200</span>
-                        </div>
-                        </div>
-                        <div className={styles.back}>
-                        <img  src="https://velog.velcdn.com/images/hmmhmmhm/post/f6cb929e-4552-4955-83ee-5d861225bc45/image.gif" alt="image"></img>
-                         <div className={styles.content}>
-                         <h3>하루 만에 혼자 3D 로 신년카드 웹앱을?</h3>
-                         <div className={styles.tags}>
-                            <span>알고리즘</span>
-                            <span>신년</span>
-                         </div>
-                        <p>신년카드 웹앱 이미지 새해인사 우체통 (Web) 서비스 링크: https://postbox.run 위 URL 에서 실제로 신년인사 카드를 작성해보실 수 있어요! 코육대 예시 항해 플러스 코육대에서 행사를 연다는 소식을 한참 뒤늦게 듣고 빠르게 도전해보기 위</p>
-                        </div></div>  
-                    </li>
-                    </div>
+                    {bestPost?.pages.map((group,index)=>(
+                        group.map((value)=>(
+                            <div key={index} className={styles.wrapper} onClick={onHandlePost}>
+                            <li className={styles.previewBox}>
+                                <div className={styles.front}>
+                                <img  src={value.imageUrl} alt="image"></img>
+                                <h3>{value.title}</h3>
+                                <div className={styles.contentHeader}>
+                                <div className={styles.profileCircle}>
+                                    <img src="https://velog.velcdn.com/images/hmmhmmhm/profile/352c0d2c-9f4d-4489-a5c5-64d789a66a4b/image.webp" alt=''></img>  
+                                </div>
+                                <div className={styles.likes}><Image src={likesIcon} alt="like"></Image></div>
+                                <div className={styles.postBy}> <span>post</span> <b>{value.nickname}</b></div> 
+                                <span className={styles.likesCount}>{value.likeCount}</span>
+                                </div>
+                                </div>
+                                <div className={styles.back}>
+                                <img  src={value.imageUrl} alt="image"></img>
+                                 <div className={styles.content}>
+                                 <h3>{value.title}</h3>
+                                 <div className={styles.tags}>
+                                   {value.tags.map((value,index)=>(
+                                       <span key={index}>{value}</span>
+                                   ))}
+                                    
+                                 </div>
+                                <p>신년카드 웹앱 이미지 새해인사 우체통 (Web) 서비스 링크: https://postbox.run 위 URL 에서 실제로 신년인사 카드를 작성해보실 수 있어요! 코육대 예시 항해 플러스 코육대에서 행사를 연다는 소식을 한참 뒤늦게 듣고 빠르게 도전해보기 위</p>
+                                </div></div>  
+                            </li>
+                            </div>
+                        ))
+                        
+                    ))}
+                    <div ref={ref} style={{height: 50}}></div>
+                   
                 </ul>
                 </div>
                 {/* 다른 컴포넌트 */}

@@ -291,9 +291,6 @@
     display: flex;
     justify-content: center;
 }
-.wrapper:nth-child(3n) .previewBox {
-    width: 13vw;
-  }
 .previewBox{
     box-sizing: border-box;
 align-items: center;
