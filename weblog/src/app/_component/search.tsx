@@ -17,7 +17,7 @@ export default function Search(){
     const onHandleAutoComplete=async ()=>{
         try{
            
-            const response = await axios.get(`http://localhost:3004/autoComplete?keyword=${autoCompleteSearch}`);
+            const response = await axios.get(`http://localhost:8000/api/v1/search/posts?query=${autoCompleteSearch}&type=tc&offset=0&limit=12`);
             const autoCompleteResults = response.data
 
             console.log("AutoComplete Results:", autoCompleteResults);
