@@ -161,7 +161,7 @@ export default function Comment() {
               </>
             ) : (
               <>
-                {comment.text}
+                <div className={styles.commentText}>{comment.text}</div>
 
                 {showReplyInput && replyIndex === commentIndex && (
                   <div className={styles.replyInput}>
@@ -195,16 +195,19 @@ export default function Comment() {
                       </>
                     ) : (
                       <>
-                        {reply.text}
+                        <div className={styles.replyText}>{reply.text}</div>
                         <button
+                       
                           onClick={() => {
                             setEditReplyIndex(replyIndex);
                             setReplyText(reply.text);
                           }}
+                           className={styles.editBtn}
                         >
                           수정
                         </button>
                         <button
+                        className={styles.deleteBtn}
                           onClick={() =>
                             handleDeleteReply(commentIndex, replyIndex)
                           }
@@ -226,10 +229,10 @@ export default function Comment() {
                 >
                   답글달기
                 </button>
-                <button onClick={() => setEditCommentIndex(commentIndex)}>
+                <button className={styles.editBtn} onClick={() => setEditCommentIndex(commentIndex)}>
                   수정
                 </button>
-                <button onClick={() => handleDeleteComment(commentIndex)}>
+                <button className={styles.deleteBtn}onClick={() => handleDeleteComment(commentIndex)}>
                   삭제
                 </button>
               </>
