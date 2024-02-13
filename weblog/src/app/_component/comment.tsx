@@ -1,12 +1,15 @@
+import axios from "axios";
 import styles from "./comment.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface Comment {
+  parentId: number; // parentId로 수정
   text: string;
   replies: Reply[];
 }
 
 interface Reply {
+  parentId: number; // parentId로 수정
   text: string;
 }
 
@@ -19,21 +22,82 @@ export default function Comment() {
   const [editCommentIndex, setEditCommentIndex] = useState<number | null>(null);
   const [editReplyIndex, setEditReplyIndex] = useState<number | null>(null);
 
-  const handleCommentSubmit = () => {
-    if (commentText.trim() !== "") {
-      setComments([...comments, { text: commentText, replies: [] }]);
-      setCommentText("");
+  useEffect(() => {
+    fetchComments();
+  }, []);
+
+  const fetchComments = async () => {
+    try {
+      const response = await axios.get("http://localhost:8000/api/v1/comments");
+      console.log(response.data);
+      setComments(response.data);
+    } catch (error) {
+      console.error("Error fetching comments:", error);
     }
   };
 
-  const handleReplySubmit = (commentIndex: number) => {
+  const handleCommentSubmit = async () => {
+    if (commentText.trim() !== "") {
+      try {
+        const response = await axios.post("http://localhost:8000/api/v1/comments", {
+          content: commentText,
+          parentId: null,
+          postId: 22,
+        });
+  
+        if (response.status === 201) {
+          const newComment = {
+            parentId: response.data.parentId, // 수정
+            text: commentText,
+            replies: [],
+          };
+  
+          setComments([...comments, newComment]);
+          setCommentText("");
+        } else {
+          console.error("Failed to submit comment");
+        }
+      } catch (error) {
+        console.error("Error submitting comment:", error);
+      }
+    }
+  };
+
+  const handleReplySubmit = async (commentId: number) => {
     if (replyText.trim() !== "") {
-      const updatedComments = [...comments];
-      updatedComments[commentIndex].replies.push({ text: replyText });
-      setComments(updatedComments);
-      setReplyText("");
-      setShowReplyInput(false);
-      setReplyIndex(null);
+      try {
+        const response = await axios.post("http://localhost:8000/api/v1/comments", {
+          content: replyText,
+          parentId: commentId,
+          postId: 22,
+        });
+  
+        if (response.status === 201) {
+          const newReply = {
+            parentId: response.data.parentId, // 수정
+            text: replyText,
+          };
+  
+          const updatedComments = comments.map((comment) => {
+            if (comment.parentId === commentId) { // 수정
+              return {
+                ...comment,
+                replies: [...comment.replies, newReply],
+              };
+            }
+            return comment;
+          });
+  
+          setComments(updatedComments);
+          setReplyText("");
+          setShowReplyInput(false);
+          setReplyIndex(null);
+        } else {
+          console.error("Failed to submit reply");
+        }
+      } catch (error) {
+        console.error("Error submitting reply:", error);
+      }
     }
   };
 
@@ -107,7 +171,7 @@ export default function Comment() {
                       value={replyText}
                       onChange={(e) => setReplyText(e.target.value)}
                     />
-                    <button onClick={() => handleReplySubmit(commentIndex)}>
+                    <button onClick={() => handleReplySubmit(comment.parentId)}> 
                       답글달기
                     </button>
                   </div>
