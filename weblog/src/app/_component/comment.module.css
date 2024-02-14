@@ -12,6 +12,7 @@
 
 .commentInput {
   display: flex;
+  align-items: center;
   margin-bottom: 20px;
 }
 
@@ -20,6 +21,7 @@
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  margin-left: 8px;
   margin-right: 8px;
 }
 
@@ -39,9 +41,14 @@
   border-radius: 4px;
   margin-bottom: 20px;
 }
+.commentProfile{
+  display: flex;
+  align-items: center;
+
+}
 
 .commentText {
-  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 /* Profile Image Styles */
@@ -79,23 +86,28 @@
   margin-bottom: 10px;
 }
 
-.replyText {
-  margin-bottom: 8px;
+.replyProfile{
+  display: flex;
+  align-items: center;
 }
 
+.replyText {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
 .reply button {
   margin-right: 8px;
   padding: 8px;
-  background-color: #4caf50;
-  color: #fff;
+  background: none;
+  color: #9db4c2;
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
 
-.reply button:last-child {
-  margin-right: 0;
-}
+  .reply button:last-child {
+    margin-right: 0;
+  }
 
 .replyBtn {
   padding: 8px;

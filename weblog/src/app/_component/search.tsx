@@ -57,8 +57,9 @@ export default function Search(){
         const viewHtml: HTMLElement | null = document.getElementById("view");
       
         if (viewHtml) {
-            viewHtml.style.display="block"
-            viewHtml.style.transition="0.3s"
+          viewHtml.style.display = "block";
+          viewHtml.style.transition = "0.3s";
+      
           const onMouseMove = (e: MouseEvent) => {
             viewHtml.style.left = `${e.pageX}px`;
             viewHtml.style.top = `${e.pageY}px`;
@@ -72,17 +73,18 @@ export default function Search(){
           `;
       
           viewHtml.innerHTML = contentHtml;
-      
         }
       };
       
-    const onHandleSearchItemOut=()=>{
+      const onHandleSearchItemOut = () => {
         const viewHtml: HTMLElement | null = document.getElementById("view");
+      
         if (viewHtml) {
-            viewHtml.style.display="none"
-            viewHtml.style.transition="0.3s"
-          }
-    }
+          viewHtml.style.display = "none";
+          viewHtml.style.transition = "0.3s";
+        }
+      };
+      
 
 
     return(

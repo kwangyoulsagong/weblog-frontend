@@ -65,6 +65,7 @@
     height: 30px;
     border-bottom: 1px solid #b3b3b3;
     color: #e9e5e5;
+    cursor: pointer;
 }
 
 .searchItem{

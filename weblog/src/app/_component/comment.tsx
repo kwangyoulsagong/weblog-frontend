@@ -166,8 +166,10 @@ export default function Comment() {
 
         {comments.map((comment, commentIndex) => (
           <div key={commentIndex} className={styles.comment}>
-            <img src={comment.profile} alt="Profile" className={styles.profileImage} />
-            <div className={styles.commenterName}>{comment.name}</div>
+            <div className={styles.commentProfile}>
+              <img src={comment.profile} alt="Profile" className={styles.profileImage} />
+              <div className={styles.commenterName}>{comment.name}</div>
+            </div>
 
             {editCommentIndex === commentIndex ? (
               <>
@@ -200,9 +202,10 @@ export default function Comment() {
                 )}
                 {comment.replies.map((reply, replyIndex) => (
                   <div key={replyIndex} className={styles.reply}>
-                    <img src={reply.profile} alt="Profile" className={styles.profileImage} />
-                    <div className={styles.commenterName}>{reply.name}</div>
-
+                    <div className={styles.replyProfile}>
+                      <img src={reply.profile} alt="Profile" className={styles.profileImage} />
+                      <div className={styles.commenterName}>{reply.name}</div>
+                    </div>
                     {editReplyIndex === replyIndex ? (
                       <>
                         <input
