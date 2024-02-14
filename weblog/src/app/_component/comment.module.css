@@ -1,8 +1,6 @@
-/* comment.module.css */
-
 .commentContainer {
   width: 100%;
-  height: inherit; /* Adjust the width as needed */
+  height: inherit;
   margin: 0 auto;
   padding: 20px;
   overflow-y: scroll;
@@ -14,7 +12,7 @@
 
 .commentInput {
   display: flex;
-  margin-bottom: 20px; /* Increased margin for comment input */
+  margin-bottom: 20px;
 }
 
 .commentInput input {
@@ -39,11 +37,19 @@
   border: 1px solid #ccc;
   padding: 10px;
   border-radius: 4px;
-  margin-bottom: 20px; /* Increased margin for comments */
+  margin-bottom: 20px;
 }
 
 .commentText {
   margin-bottom: 10px;
+}
+
+/* Profile Image Styles */
+.profileImage {
+  border-radius: 50%;
+  width: 30px; /* Adjust the width as needed */
+  height: 30px; /* Adjust the height as needed */
+  margin-right: 8px;
 }
 
 .replyInput input {
@@ -70,7 +76,7 @@
   border: 1px solid #eee;
   padding: 10px;
   border-radius: 4px;
-  margin-bottom: 10px; /* Increased margin for replies */
+  margin-bottom: 10px;
 }
 
 .replyText {

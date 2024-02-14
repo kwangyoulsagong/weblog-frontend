@@ -1,17 +1,27 @@
 import axios from "axios";
 import styles from "./comment.module.css";
 import { useState, useEffect } from "react";
+import profileImg from "../../asset/images/kwang.jpg"
 
 interface Comment {
-  parentId: number; // parentId로 수정
+  profile: string;
+  name: string;
+  parentId: number ;
   text: string;
   replies: Reply[];
 }
 
 interface Reply {
-  parentId: number; // parentId로 수정
+  profile: string;
+  name: string;
+  parentId: number;
   text: string;
 }
+
+const user = {
+  profile: "https://velog.velcdn.com/images/tkrhdrhkdduf/profile/3d009855-9fa9-4d75-b0d5-397af8fea3b1/social_profile.jpeg",
+  name: "광열",
+};
 
 export default function Comment() {
   const [commentText, setCommentText] = useState<string>("");
@@ -44,14 +54,17 @@ export default function Comment() {
           parentId: null,
           postId: 22,
         });
-  
+
         if (response.status === 201) {
           const newComment = {
-            parentId: response.data.parentId, // 수정
+            id: response.data.id,
+            profile: user.profile,
+            name: user.name,
+            parentId: response.data.parentId,
             text: commentText,
             replies: [],
           };
-  
+
           setComments([...comments, newComment]);
           setCommentText("");
         } else {
@@ -71,15 +84,17 @@ export default function Comment() {
           parentId: commentId,
           postId: 22,
         });
-  
+
         if (response.status === 201) {
           const newReply = {
-            parentId: response.data.parentId, // 수정
+            profile:"https://velog.velcdn.com/images/tosspayments/profile/b8fbda89-6591-41ea-b280-582674fcff7a/image.jpg",
+            name: "토스페이먼츠",
+            parentId: response.data.parentId,
             text: replyText,
           };
-  
+
           const updatedComments = comments.map((comment) => {
-            if (comment.parentId === commentId) { // 수정
+            if (comment.parentId === commentId) {
               return {
                 ...comment,
                 replies: [...comment.replies, newReply],
@@ -87,7 +102,7 @@ export default function Comment() {
             }
             return comment;
           });
-  
+
           setComments(updatedComments);
           setReplyText("");
           setShowReplyInput(false);
@@ -137,6 +152,9 @@ export default function Comment() {
     <div className={styles.commentContainer}>
       <div className={styles.commentContent}>
         <div className={styles.commentInput}>
+          <img src={user.profile} alt="Profile" className={styles.profileImage} />
+          <div className={styles.commenterName}>{user.name}</div>
+
           <input
             type="text"
             placeholder="댓글을 남겨주세요..."
@@ -148,6 +166,9 @@ export default function Comment() {
 
         {comments.map((comment, commentIndex) => (
           <div key={commentIndex} className={styles.comment}>
+            <img src={comment.profile} alt="Profile" className={styles.profileImage} />
+            <div className={styles.commenterName}>{comment.name}</div>
+
             {editCommentIndex === commentIndex ? (
               <>
                 <input
@@ -165,6 +186,7 @@ export default function Comment() {
 
                 {showReplyInput && replyIndex === commentIndex && (
                   <div className={styles.replyInput}>
+                    <img src={user.profile} alt="Profile" className={styles.profileImage} />
                     <input
                       type="text"
                       placeholder="답글을 남겨주세요..."
@@ -178,6 +200,9 @@ export default function Comment() {
                 )}
                 {comment.replies.map((reply, replyIndex) => (
                   <div key={replyIndex} className={styles.reply}>
+                    <img src={reply.profile} alt="Profile" className={styles.profileImage} />
+                    <div className={styles.commenterName}>{reply.name}</div>
+
                     {editReplyIndex === replyIndex ? (
                       <>
                         <input
@@ -197,7 +222,6 @@ export default function Comment() {
                       <>
                         <div className={styles.replyText}>{reply.text}</div>
                         <button
-                       
                           onClick={() => {
                             setEditReplyIndex(replyIndex);
                             setReplyText(reply.text);
