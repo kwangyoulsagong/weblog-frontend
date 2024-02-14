@@ -66,3 +66,14 @@
     border-bottom: 1px solid #b3b3b3;
     color: #e9e5e5;
 }
+
+.searchItem{
+    position: absolute;
+    width: 15vw;
+    height: 20vh;
+    border-radius: 20px;
+    color: white;
+    background-color: rgba(105, 104, 104, 0.4);
+    border: 1px solid #b3b3b3;
+    display: none;
+}
