@@ -1,12 +1,6 @@
 .container{
     width: inherit;
     height: inherit;
-    display: grid;
-    overflow: hidden;
-    grid-template-columns: repeat(2,1fr);
-    @media only screen and (max-width: 1200px) {
-        grid-template-columns: repeat(1, 1fr);
-    }
 }
 .profile{
     width: 100%;
@@ -95,16 +89,15 @@
 }
 .collectionContainer{
     display: flex;
-    flex-direction: column;
     width: inherit;
-    height: inherit;
-    justify-content: center;
-    align-items: center;
+    background: white;
+    height: 60vh;
     overflow: hidden;
 }
 .collection{
-
-    width: 325px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    width: inherit;
     height: inherit;
     overflow-y: scroll;
 
