@@ -103,3 +103,15 @@
     border: #b3b3b3 1px solid;
     color: #b3b3b3;
 }
+.postBy{
+    position: absolute;
+    bottom: 10px;
+    margin-left: 5px;
+}
+.postBy span{
+    color: #b3b3b3;
+    font-size: 12px;
+}
+.postBy b{
+    font-size: 13px;
+}

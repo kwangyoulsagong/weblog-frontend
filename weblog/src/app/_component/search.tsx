@@ -5,8 +5,10 @@ import Debounce from "./searchDebounce/debounce"
 import { useQuery } from "@tanstack/react-query"
 import axios from "axios"
 type Value={
+    postId:number
     title:string
     tags:string
+    nickname:string
 }
 export default function Search(){
     const [search, setSearch]=useState("")
@@ -73,6 +75,7 @@ export default function Search(){
               <div  class=${styles.bestTags}>
             ${value.tags.map((tag: string)=> `<span>${tag}</span>`).join('')}
               </div>
+              <div class=${styles.postBy}> <span>post</span> <b>${value.nickname}</b></div> 
           `;
       
           viewHtml.innerHTML = contentHtml;
