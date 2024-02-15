@@ -188,7 +188,6 @@ export default function Comment() {
 
                 {showReplyInput && replyIndex === commentIndex && (
                   <div className={styles.replyInput}>
-                    <img src={user.profile} alt="Profile" className={styles.profileImage} />
                     <input
                       type="text"
                       placeholder="답글을 남겨주세요..."

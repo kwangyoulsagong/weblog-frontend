@@ -27,9 +27,9 @@
 
 .commentInput button {
   padding: 8px;
-  background-color: #4caf50;
-  color: #fff;
-  border: none;
+  color: #9db4c2;
+  background: none;
+  border: 1px solid #9db4c2;
   border-radius: 4px;
   cursor: pointer;
 }
@@ -49,6 +49,7 @@
 
 .commentText {
   margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 /* Profile Image Styles */
@@ -58,29 +59,33 @@
   height: 30px; /* Adjust the height as needed */
   margin-right: 8px;
 }
-
+.replyInput{
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
 .replyInput input {
-  width: calc(100% - 8px);
+  width: calc(45vw);
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  margin-right: 20px;
   margin-bottom: 8px;
 }
 
 .replyInput button {
-  width: 100%;
-  padding: 8px;
-  background-color: #4caf50;
-  color: #fff;
-  border: none;
+  margin-top: -7px;
+  padding: 5px;
+  color: #9db4c2;
+  background: none;
+  border: 1px solid #9db4c2;
   border-radius: 4px;
   cursor: pointer;
-  margin-top: 8px;
 }
 
 .reply {
   margin-top: 10px;
-  border: 1px solid #eee;
+  border: 1px solid #ccc;
   padding: 10px;
   border-radius: 4px;
   margin-bottom: 10px;
@@ -111,8 +116,8 @@
 
 .replyBtn {
   padding: 8px;
-  background-color: #4caf50;
-  color: #fff;
+  background: none;
+  color: #9db4c2;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -121,8 +126,8 @@
 
 .editBtn {
   padding: 8px;
-  background-color: #2196f3;
-  color: #fff;
+  background: none;
+  color: #9db4c2;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -131,8 +136,8 @@
 
 .deleteBtn {
   padding: 8px;
-  background-color: #f44336;
-  color: #fff;
+  background: none;
+  color: #9db4c2;
   border: none;
   border-radius: 4px;
   cursor: pointer;

@@ -6,6 +6,7 @@ import { useQuery } from "@tanstack/react-query"
 import axios from "axios"
 type Value={
     title:string
+    tags:string
 }
 export default function Search(){
     const [search, setSearch]=useState("")
@@ -68,8 +69,10 @@ export default function Search(){
           document.addEventListener("mousemove", onMouseMove);
       
           const contentHtml = `
-            <div>${value.title}</div>
-            <div>${value.tags}</div>
+             <h3>${value.title}</h3>
+              <div  class=${styles.bestTags}>
+            ${value.tags.map((tag: string)=> `<span>${tag}</span>`).join('')}
+              </div>
           `;
       
           viewHtml.innerHTML = contentHtml;
