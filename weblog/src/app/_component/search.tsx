@@ -97,7 +97,7 @@ export default function Search(){
         <div className={styles.modalBackground}>
             <div className={styles.searchContainer}>
                 <div className={styles.searchBar}>
-                    <select id="searchTypeSelect">
+                    <select className={styles.select} id="searchTypeSelect">
                         <option value="default">제목+테그</option>
                         <option value="paragraph">제목</option>
                         <option value="tag">태그</option>

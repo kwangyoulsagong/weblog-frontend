@@ -54,6 +54,13 @@
     background-repeat: no-repeat;
     border: none;
 }
+.select{
+    background: none;
+    border: none;
+    outline: none;
+    color: #e9e5e5;
+    border-bottom: 1px solid #b3b3b3;
+}
 .autoCompleteList{
     margin-top: 30px;
     display: flex;
