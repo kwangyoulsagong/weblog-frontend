@@ -4,6 +4,7 @@ import styles from "./login.module.css"
 import { useRouter } from "next/navigation"
 import api from "@/app/config/apiConfig"
 import  { AuthContext } from "./Provider/authProvider"
+import { GoogleLogin } from "@react-oauth/google"
 interface authData{
     accessToken: string,
     refreshToken: string,
@@ -86,7 +87,17 @@ export default function LoginModal(){
                     <button className={styles.actionBtn} onClick={onSubmit}  disabled={!email && !password}>로그인하기</button>
                 </div>
             </form>
+            <GoogleLogin
+                onSuccess={credentialResponse => {
+                 console.log(credentialResponse);
+             }}
+            onError={() => {
+                console.log('Login Failed');
+            }}
+            />;
+   
             </div>
+          
         </div>
     )
 }
