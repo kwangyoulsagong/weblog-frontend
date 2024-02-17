@@ -4,8 +4,6 @@ import styles from "./login.module.css"
 import { useRouter } from "next/navigation"
 import api from "@/app/config/apiConfig"
 import  { AuthContext } from "./Provider/authProvider"
-import googleAuthImg from "@/asset/images/googleLight.png"
-import { GoogleLogin } from "@react-oauth/google"
 interface authData{
     accessToken: string,
     refreshToken: string,
@@ -90,13 +88,11 @@ export default function LoginModal(){
                 <div className={styles.modalFooter}>
                     <button className={styles.actionBtn} onClick={onSubmit}  disabled={!email && !password}>로그인하기</button>
                     <button className={styles.googleBtn} type="button" onClick={auth}>
+                        signin with google
                     </button>
                 </div>
             </form>
-
-   
             </div>
-          
         </div>
     )
 }

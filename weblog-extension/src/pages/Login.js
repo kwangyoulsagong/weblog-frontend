@@ -44,6 +44,10 @@ const Login = ({ onClose, onLoginSuccess }) => {
   const handleChangePassword = (e) => {
     setPassword(e.target.value);
   };
+  const auth = () => {
+    window.open("http://localhost:6005/auth/google/callback", "_self");
+  };
+
   return (
     <div className="LoginBackground">
       <div className="loginModal">
@@ -84,6 +88,9 @@ const Login = ({ onClose, onLoginSuccess }) => {
           <div className="modalFooter">
             <button className="loginActionBtn" disabled={!email && !password}>
               로그인하기
+            </button>
+            <button className="googleBtn" type="button" onClick={auth}>
+              로그인
             </button>
           </div>
         </form>
