@@ -8,34 +8,55 @@
     width: 99dvw;
     height: 100dvh;
     scroll-behavior: smooth;
+    @media only screen and (max-width: 800px) {
+        flex-direction: column;
+    }
+
+   
 }
 .logo{
     position: absolute;
     width: 50dvw;
     height: 50dvw;
+    @media only screen and (max-width: 800px) {
+        width: 75vw;
+        height: 75vw;
+    }
 }
 .left{
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-
+   
 }
 .right{
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items:center;
 }
 .right h1{
     font-weight: bold;
     font-size: 3rem;
     margin: 48px 0;
+    @media only screen and (max-width: 800px) {
+        display: flex;
+        justify-content: center;
+        margin-top: -200px;
+        font-size: 2rem;
+    }
 }
 .right h2{
     font-weight: bold;
     font-size: 31px;
     margin-bottom: 32px;
+    @media only screen and (max-width: 800px) {
+        display: flex;
+        justify-content: center;
+        font-size: 1.5rem;
+    }
 }
 .right h4{
     font-size: 17px;
@@ -43,9 +64,14 @@
     margin-top: 40px;
 
     color: rgb(176, 176, 176);
+    @media only screen and (max-width: 800px) {
+        display: flex;
+        justify-content: center;
+        font-size: 1.5rem;
+    }
 }
 .signup{
-    width: 300px;
+    width: 20vw;
     height: 40px;
     border-radius: 20px;
     padding: 0 16px;
@@ -57,12 +83,13 @@
     align-items: center;
     justify-content: center;
     text-decoration: none;
+
 }
 .signup:hover {
     background-color: #b0b5de;
 }
 .login{
-    width: 300px;
+    width: 20vw;
     height: 40px;
     border-radius: 20px;
     padding: 0 16px;
