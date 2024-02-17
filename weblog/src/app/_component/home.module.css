@@ -13,7 +13,7 @@
 }
 .postTabContainer{
     width: inherit;
-    height: 25vh;
+    height: 20vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -23,9 +23,10 @@
 }
 .postTab{
     position: relative;
+    margin-top: 17.5px;
     z-index: 1;
     width: 200px;
-    height: 50px;
+    height: 40px;
     display: flex;  
     justify-content: center;
     align-items: center;
@@ -50,7 +51,7 @@
     position: absolute;
     left: 0;
     width: 100px;
-    height: 50px;
+    height: 40px;
     background: #868e96;
     border-radius: 30px;
     
@@ -61,7 +62,7 @@
 }
 .headerMenu{
     position: absolute;
-    margin-top: 120px;
+    margin-top: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -93,6 +94,9 @@
     font-size: 22.5px;
     font-family: 'Nanum Gothic', sans-serif;
     color: #7e7e80;
+    @media only screen and (max-width: 800px) {
+        visibility: hidden;
+    }
 }
 .popularH3{
     position: absolute;
@@ -102,7 +106,10 @@
     font-family: 'Nanum Gothic', sans-serif;
     color: #7e7e80;
     font-weight: 400;
-    vertical-align: top;
+    vertical-align: top; @media only screen and (max-width: 800px) {
+        top: 30px;
+    }
+   
 }
 
 
@@ -119,7 +126,9 @@
     height: 500px;
  
     word-break: break-all;
-    visibility: hidden;
+    @media only screen and (max-width: 800px) {
+        visibility: hidden;
+    }
 }
 .bestWrapper{
     width: 770px;
@@ -276,6 +285,7 @@
 
 @media only screen and (max-width: 800px) {
     grid-template-columns: repeat(2, 1fr);
+    margin-top: 100px;
 }
 
 @media only screen and (max-width: 480px) {
@@ -311,7 +321,7 @@ background: #FFFFFF;
     width: 38vw;
 }
 @media only screen and (max-width: 480px) {
-    width: 76vw;
+    width: 76.5vw;
 }
 
 /* main color */

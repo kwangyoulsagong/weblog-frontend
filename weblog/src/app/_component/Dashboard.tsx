@@ -51,6 +51,10 @@ export default function Dashboard({children}:props){
               {/* 여기안에는 데이터 접근 가능 */}
                 <header className={styles.leftWrapper} >
                 <section className={styles.leftSection}ref={leftWrapperRef} >
+                <button className={styles.menuBtn}  onClick={onHandleMenubar}>
+                          <div ref={menuRef}> <span>메뉴</span>
+                        <span>닫기</span></div>
+                        </button>
                 {isLogin ? <AccessLinkBar /> : <UnAccessLinkBar />}
                 </section>
            
@@ -59,10 +63,7 @@ export default function Dashboard({children}:props){
                   <div className={styles.mainSectionInner}>
                   <div className={styles.meuBarSection}>
                       <div className={styles.menuBarFixedSection}>
-                        <button className={styles.menuBtn}  onClick={onHandleMenubar}>
-                          <div ref={menuRef}> <span>메뉴</span>
-                        <span>닫기</span></div>
-                        </button>
+                       
                         {logoimg&& <Image className={styles.LogoImg} src={Logo} alt="Logo"></Image>}
                         <div className={styles.profile_header}>
                           <div className={styles.searchBar} onClick={handleSearchBar}>

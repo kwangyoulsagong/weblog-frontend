@@ -21,9 +21,10 @@
     padding: 0 8px;
     height: 100dvh;
     overflow: hidden;
-    @media only screen and (max-width: 800px) {
+    @media only screen and (max-width: 1200px) {
         position: absolute;
-    }
+        
+       
   
 }
 .leftFixedSection{
@@ -40,6 +41,16 @@
     flex-shrink: 0;
     align-items: left;
     z-index: 1;
+    @media only screen and (max-width: 1200px) {
+        position: fixed;
+        top:95vh;
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        width: 100%;
+        height: 5dvh;
+    }
+    }
 
 }
 .leftFixedSection div{
@@ -53,6 +64,9 @@
     font-size: 14px;
     border-radius: 6px;
     transition: 0.3s;
+    @media only screen and (max-width: 440px) {
+       font-size: 10px;
+    }
 }
 .leftFixedSection img{
     width: 20px;
@@ -65,7 +79,7 @@
     height: inherit;
     width: 95vw;
     flex-direction: column;
-    @media only screen and (max-width: 800px) {
+    @media only screen and (max-width: 1200px) {
         width: 100vw;
     }
 }
@@ -74,17 +88,12 @@
     height: 100%;
     width: inherit;
     display: flex;
-    @media only screen and (max-width: 800px) {
-        width: inherit;
-    }
+
 
 }
 .main{
     width: inherit;
     height: 100%;
-    @media only screen and (max-width: 800px) {
-        width: inherit;
-    }
 }
 .meuBarSection{
     position: fixed;
@@ -102,17 +111,9 @@
     align-items: center;
 }
 .menuBtn{
-    display: flex;
-    margin-left: 10px;
-    width: 102px;
-    height: 30px;
-    border-radius: 30px;
-    justify-content: center;
-    color: white;
-    align-items: center;
-    background: #2b2e3a;
-    border: none;
-    flex-direction: column;
+    @media only screen and (max-width: 1200px) {
+       visibility: hidden;
+    }
 }
 .menuBtn div{
     position: absolute;
@@ -151,7 +152,8 @@
     background-repeat: no-repeat;
 }
 .LogoImg{
-
+    position: absolute;
+    left: -20px;
     width: 150px;
     height: 150px;
     object-fit: contain;
@@ -164,6 +166,10 @@
     gap: 20px;
     @media only screen and (max-width: 800px) {
         right: 30px;
+        gap: 10px;
+    }
+    @media only screen and (max-width: 480px) {
+        right: 5px;
         gap: 10px;
     }
     

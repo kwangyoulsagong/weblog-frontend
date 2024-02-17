@@ -112,7 +112,7 @@ export default  function Home(){
                   postTabRef.current.style.opacity="0"
                   postTabRef.current.style.transition="0.5s"
                 } else {
-                    postTabRef.current.style.height="25vh"
+                    postTabRef.current.style.height="20vh"
                     postTabRef.current.style.opacity="100%"
                     postTabRef.current.style.transition="0.5s"
                 }
