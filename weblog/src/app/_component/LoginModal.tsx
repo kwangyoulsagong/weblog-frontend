@@ -4,6 +4,7 @@ import styles from "./login.module.css"
 import { useRouter } from "next/navigation"
 import api from "@/app/config/apiConfig"
 import  { AuthContext } from "./Provider/authProvider"
+import googleAuthImg from "@/asset/images/googleLight.png"
 import { GoogleLogin } from "@react-oauth/google"
 interface authData{
     accessToken: string,
@@ -61,6 +62,9 @@ export default function LoginModal(){
     //     console.log(error)
     // }
     }
+    const auth=()=>{
+        window.open("http://localhost:6005/auth/google/callback","_self")
+    }
     
     return(
         <div className={styles.modalBackground}>
@@ -85,16 +89,11 @@ export default function LoginModal(){
                 <div className={styles.message}>{message}</div>
                 <div className={styles.modalFooter}>
                     <button className={styles.actionBtn} onClick={onSubmit}  disabled={!email && !password}>로그인하기</button>
+                    <button className={styles.googleBtn} type="button" onClick={auth}>
+                    </button>
                 </div>
             </form>
-            <GoogleLogin
-                onSuccess={credentialResponse => {
-                 console.log(credentialResponse);
-             }}
-            onError={() => {
-                console.log('Login Failed');
-            }}
-            />;
+
    
             </div>
           

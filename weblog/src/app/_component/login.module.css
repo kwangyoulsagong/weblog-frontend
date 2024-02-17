@@ -73,6 +73,10 @@
 
 .modalFooter {
     padding: 24px 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }
 
 .actionBtn {
@@ -108,4 +112,22 @@
 }
 .closeBtn:hover {
     background-color: rgba(15,20,25, 0.1);
+}
+.googleBtn{
+    width: 200px;
+    height: 40px;
+
+    background: url(../../asset/images/googleLight.png);
+
+    background-size: cover;
+    border: none;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.googleBtn:hover{
+    background: url(../../asset/images/googleDark.png);
+    background-size: cover;
+    border: none;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
