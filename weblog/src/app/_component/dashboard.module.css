@@ -21,6 +21,9 @@
     padding: 0 8px;
     height: 100dvh;
     overflow: hidden;
+    @media only screen and (max-width: 800px) {
+        position: absolute;
+    }
   
 }
 .leftFixedSection{
@@ -62,17 +65,26 @@
     height: inherit;
     width: 95vw;
     flex-direction: column;
+    @media only screen and (max-width: 800px) {
+        width: 100vw;
+    }
 }
 
 .mainSectionInner{
     height: 100%;
     width: inherit;
     display: flex;
+    @media only screen and (max-width: 800px) {
+        width: inherit;
+    }
 
 }
 .main{
     width: inherit;
     height: 100%;
+    @media only screen and (max-width: 800px) {
+        width: inherit;
+    }
 }
 .meuBarSection{
     position: fixed;
@@ -150,6 +162,11 @@
     right: 100px;
     align-items: center;
     gap: 20px;
+    @media only screen and (max-width: 800px) {
+        right: 30px;
+        gap: 10px;
+    }
+    
 }
 .notification{
 
@@ -160,6 +177,10 @@
     background-size: contain;
     background-repeat: no-repeat;
     border: none;
+    @media only screen and (max-width: 800px) {
+        width: 15px;
+        height: 15px;
+    }
 }
 .nickname{
  
