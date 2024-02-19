@@ -17,6 +17,7 @@
     border-radius: 30px;
     min-height: 40vh;
     overflow: hidden;
+    
 }
 .searchBar{
     display: flex;

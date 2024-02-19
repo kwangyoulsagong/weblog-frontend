@@ -68,29 +68,29 @@ export default  function Home(){
       
 
 
-    // useEffect(() => {
-    //     if (postTabRef?.current && slideRef?.current) {
-    //         const handleScroll = () => {
-    //             const scrollDetection = slideRef.current?.scrollTop as number;
-    //             if (upScroll < scrollDetection) {
-    //               postTabRef.current.style.height="10vh";
-    //               postTabRef.current.style.opacity="0"
-    //               postTabRef.current.style.transition="0.5s"
-    //             } else {
-    //                 postTabRef.current.style.height="20vh"
-    //                 postTabRef.current.style.opacity="100%"
-    //                 postTabRef.current.style.transition="0.5s"
-    //             }
-    //             setUpScroll(scrollDetection);
-    //         };
+    useEffect(() => {
+        if (postTabRef?.current && slideRef?.current) {
+            const handleScroll = () => {
+                const scrollDetection = slideRef.current?.scrollTop as number;
+                if (upScroll < scrollDetection) {
+                  postTabRef.current.style.height="0";
+                  postTabRef.current.style.opacity="0"
+                  postTabRef.current.style.transition="0.5s"
+                } else {
+                    postTabRef.current.style.height="40px"
+                    postTabRef.current.style.opacity="100%"
+                    postTabRef.current.style.transition="0.5s"
+                }
+                setUpScroll(scrollDetection);
+            };
     
-    //         slideRef.current.addEventListener("scroll", handleScroll);
+            slideRef.current.addEventListener("scroll", handleScroll);
     
-    //         return () => {
-    //             slideRef.current?.removeEventListener("scroll", handleScroll);
-    //         };
-    //     }
-    // }, [postTabRef, slideRef, upScroll])
+            return () => {
+                slideRef.current?.removeEventListener("scroll", handleScroll);
+            };
+        }
+    }, [postTabRef, slideRef, upScroll])
     
 
     const onHandleTab=(prev:string)=>{
@@ -139,22 +139,27 @@ export default  function Home(){
     return(
         <div className={styles.moduleBackground} >
             <div className={styles.innerContents}>
-             
-                <div className={styles.collectionWrapper } ref={slideRef}>
-               
-                <div className={styles.collectionContainer}>
-                <div className={styles.postTabContainer} ref={postTabRef}>
-                    <div className={styles.postTab}>
+            <div className={styles.postTab}ref={postTabRef}>
                       <div ref={tabRef} className={styles.tabActive}>
                       </div>
                       <section className={styles.popularTab}  onClick={()=> onHandleTab("popularTab")}> 인기포스트</section>
                         <section className={styles.recommendTab } onClick={()=>onHandleTab("recommendTab")}> 추천순</section>
                     </div>
+             
+                <div className={styles.collectionWrapper } ref={slideRef}>
+               
+                <div className={styles.collectionContainer}>
+                <div className={styles.postTabContainer} >
+                 
                     <div className={styles.headerMenu}>
                     <div style={styleComponent("주간")} onClick={()=>handlePostTab("주간")}>주간</div>
                     <div style={styleComponent("월간")} onClick={()=>handlePostTab("월간")}>월간</div>
                     <div style={styleComponent("연간")} onClick={()=>handlePostTab("연간")}>연간</div>
-
+                    <div className={styles.bestImage}>
+                    <img  src="https://velog.velcdn.com/images/hmmhmmhm/post/f6cb929e-4552-4955-83ee-5d861225bc45/image.gif" alt="image"></img>
+                    <img  src="https://velog.velcdn.com/images/greencloud/post/4ad0de67-bbaa-46af-8630-0f0d947791b5/image.GIF" alt="image"></img>
+                    <img  src="https://velog.velcdn.com/images/teo/post/4320ed12-8242-4245-b58b-c1f05445c5b7/image.png" alt="image"></img>
+                    </div>
                   </div>
 
                 </div>

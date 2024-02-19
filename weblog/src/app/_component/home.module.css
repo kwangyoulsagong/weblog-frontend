@@ -20,19 +20,59 @@
     width: 82.5vw;
     height: 25vh;
     display: flex;
-    justify-content: center;
+    justify-content:left;
     align-items: center;
     background: #1F1F1F;
-
     overflow: hidden;
     border-radius: 20px;
     @media only screen and (max-width: 1200px) {
         left: 9vw;
+        height: 20vh;
     }
 
 }
+.bestImage{
+    position: absolute;
+    top: -55px;
+    left: 50vw;
+    width: 20vw;
+    gap: 70px;
+    display: flex;
+    flex-direction: column;
+    rotate: 30deg;
+    height: 40vh;
+    @media only screen and (max-width: 1200px) {
+      height: 20vh;
+    }
+    @media only screen and (max-width: 440px) {
+        height:20vh;
+        width: 10vw;
+
+      }
+}
+.bestImage img{
+    
+    width: 20vw;
+    height: 20vh;
+    opacity: 60%;
+}
+.bestImage img:nth-child(2){
+    position: absolute;
+    top: 3vh;
+    right: 12.5vw;
+    rotate: -60deg;
+    z-index: -1;
+}
+.bestImage img:nth-child(3){
+    position: absolute;
+    bottom: 15vw;
+    left: 10vw;
+    rotate: -60deg;
+    z-index: -1;
+}
 .postTab{
-    position: relative;
+position: absolute;
+left: 10vw;
     margin-top: 17.5px;
     z-index: 1;
     width: 200px;
@@ -72,18 +112,25 @@
 }
 .headerMenu{
     position: absolute;
-    margin-top: 100px;
+    margin-left: 20px;
+    margin-top: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: inherit;
+
     height: 58px;
     flex-shrink: 0;
+
 }
 .headerMenu div{
     padding: 10px 25px;
     text-decoration: none;
     color: #D7FFB8;
+    @media only screen and (max-width: 440px) {
+        padding: 10px 7px;
+       font-size: 10px;
+
+      }
 }
 .collectionWrapper{
     position: absolute;
@@ -98,16 +145,21 @@
 }   
 .popularH3{
     position: absolute;
-    top: 190px;
-    z-index: 9999;
+    top: 25vh;
     font-size: 22.5px;
     font-family: 'Nanum Gothic', sans-serif;
     color: #ffffff;
     font-weight: 400;
-    vertical-align: top; @media only screen and (max-width: 800px) {
-        top: 30px;
-    }
-   
+  
+    vertical-align: top; 
+    @media only screen and (max-width: 1200px) {
+        top: 20vh;
+      }
+      @media only screen and (max-width: 800px) {
+        top: 20vh;
+        font-size: 18px;
+      }
+     
 }
 
 
@@ -128,11 +180,11 @@
     }
     @media only screen and (max-width: 1200px) {
     grid-template-columns: repeat(2, 1fr);
+    margin-top: 25vh;
 }
 
 @media only screen and (max-width: 800px) {
     grid-template-columns: repeat(2, 1fr);
-    margin-top: 100px;
 }
 
 @media only screen and (max-width: 480px) {
@@ -144,6 +196,9 @@
 .wrapper,.singlecard{
     height: 45vh;
     max-width: 300px;
+    @media only screen and (max-width: 1200px) {
+
+    }
 }
 .wrapper{
     perspective: 900px;
@@ -157,13 +212,14 @@ flex-direction: column;
 width: 18vw;
 height:40vh;
 border-radius: 16px;
-background: #c0bebe86;
+background: #d5d5d586;
 @media only screen and (max-width: 1400px) {
     width: 24vw;
     height: 45vh;
 }
 @media only screen and (max-width: 1200px) {
     width: 40vw;
+    height: 40vh;
 }
 @media only screen and (max-width: 800px) {
     width: 38vw;
