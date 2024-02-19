@@ -63,69 +63,34 @@ export default  function Home(){
 
     },[inView,isFetching,hasNextPage,fetchNextPage])
 
-    useEffect(() => {
-        if (bestWrapperRef.current && imageBoxRef.current) {
-            const imageBoxes = imageBoxRef.current.querySelectorAll(`.${styles.imageBox}`);
-            bestWrapperRef.current.style.scrollBehavior = 'smooth';
-            let count = 0;
-            let scale = 1.0;  
-            (imageBoxes[0] as HTMLElement).style.transform = `scale(1.25)`
-            const intervalId = setInterval(() => {
-                let nextScrollTop = bestWrapperRef.current.scrollTop + 500;
-                count++;
-                bestWrapperRef.current.scrollTop = nextScrollTop;
-                ;
-                if (count < imageBoxes.length) {
-                    scale = 1.25;
-
-                    (imageBoxes[count] as HTMLElement).style.transform = `scale(${scale})`;
-
-                    if (count > 0) {
-                        (imageBoxes[count - 1] as HTMLElement).style.transform = `scale(1.0)`;
-                    }
-                }
-    
-                if (count === 3) {
-                    (imageBoxes[count - 1] as HTMLElement).style.transform = `scale(1.0)`;
-                    (imageBoxes[0] as HTMLElement).style.transform = `scale(1.25)`
-                    count = 0;
-                    bestWrapperRef.current.scrollTop = 0;
-                    
-
-                }
-            }, 3000);
-    
-            return () => clearInterval(intervalId);
-        }
-    }, []);
     
       
       
 
 
-    useEffect(() => {
-        if (postTabRef?.current && slideRef?.current) {
-            const handleScroll = () => {
-                const scrollDetection = slideRef.current?.scrollTop as number;
-                if (upScroll < scrollDetection) {
-                  postTabRef.current.style.height="10vh";
-                  postTabRef.current.style.opacity="0"
-                  postTabRef.current.style.transition="0.5s"
-                } else {
-                    postTabRef.current.style.height="20vh"
-                    postTabRef.current.style.opacity="100%"
-                    postTabRef.current.style.transition="0.5s"
-                }
-                setUpScroll(scrollDetection);
-            };
+    // useEffect(() => {
+    //     if (postTabRef?.current && slideRef?.current) {
+    //         const handleScroll = () => {
+    //             const scrollDetection = slideRef.current?.scrollTop as number;
+    //             if (upScroll < scrollDetection) {
+    //               postTabRef.current.style.height="10vh";
+    //               postTabRef.current.style.opacity="0"
+    //               postTabRef.current.style.transition="0.5s"
+    //             } else {
+    //                 postTabRef.current.style.height="20vh"
+    //                 postTabRef.current.style.opacity="100%"
+    //                 postTabRef.current.style.transition="0.5s"
+    //             }
+    //             setUpScroll(scrollDetection);
+    //         };
     
-            slideRef.current.addEventListener("scroll", handleScroll);
+    //         slideRef.current.addEventListener("scroll", handleScroll);
     
-            return () => {
-                slideRef.current?.removeEventListener("scroll", handleScroll);
-            };
-        }
-    }, [postTabRef, slideRef, upScroll])
+    //         return () => {
+    //             slideRef.current?.removeEventListener("scroll", handleScroll);
+    //         };
+    //     }
+    // }, [postTabRef, slideRef, upScroll])
     
 
     const onHandleTab=(prev:string)=>{
@@ -168,12 +133,16 @@ export default  function Home(){
     }
     const styleComponent = (tab:any) => {
         return {
-            borderBottom: datePostMenu === tab ? "1px solid #7e7e80" : "none",
+            borderBottom: datePostMenu === tab ? "1px solid #D7FFB8" : "none",
         };
       };
     return(
         <div className={styles.moduleBackground} >
             <div className={styles.innerContents}>
+             
+                <div className={styles.collectionWrapper } ref={slideRef}>
+               
+                <div className={styles.collectionContainer}>
                 <div className={styles.postTabContainer} ref={postTabRef}>
                     <div className={styles.postTab}>
                       <div ref={tabRef} className={styles.tabActive}>
@@ -189,93 +158,9 @@ export default  function Home(){
                   </div>
 
                 </div>
-                <div className={styles.collectionWrapper } ref={slideRef}>
-               
-                <div className={styles.collectionContainer}>
-                <h3 className={styles.bestH3}>주간 BEST</h3>
-                <div className={styles.collectionBestContainer} >
-                <div className={styles.bestWrapper}ref={bestWrapperRef} >
-                        <div className={styles.bestPreviewBox}>
-                            <img  src="https://velog.velcdn.com/images/hmmhmmhm/post/f6cb929e-4552-4955-83ee-5d861225bc45/image.gif" alt="image"></img>
-                            <div className={styles.hoverBox} >
-                        <h3>하루 만에 혼자 3D 로 신년카드 웹앱을?</h3>
-                         <div className={styles.bestTags}>
-                            <span>알고리즘</span>
-                            <span>신년</span>
-                         </div>
-                        <div className={styles.bestContentHeader}> 
-                        <div className={styles.bestProfileCircle}>
-                            <img src="https://velog.velcdn.com/images/hmmhmmhm/profile/352c0d2c-9f4d-4489-a5c5-64d789a66a4b/image.webp" alt=''></img>  
-                        </div>
-                        <div className={styles.bestLikes}><Image src={likesIcon} alt="like"></Image></div>
-                        <div className={styles.postBy}> <span>post</span> <b>하민</b></div> 
-                        <span className={styles.bestLikesCount}>200</span>
-                        </div>
-                        </div>
-                        </div>
-
-                        <div className={styles.bestPreviewBox}>
-                        <img  src="https://velog.velcdn.com/images/greencloud/post/4ad0de67-bbaa-46af-8630-0f0d947791b5/image.GIF" alt="image"></img>
-                            <div className={styles.hoverBox} >
-                        <h3>하루 만에 혼자 3D 로 신년카드 웹앱을?</h3>
-                         <div className={styles.bestTags}>
-                            <span>알고리즘</span>
-                            <span>신년</span>
-                         </div>
-                        <div className={styles.bestContentHeader}> 
-                        <div className={styles.bestProfileCircle}>
-                            <img src="https://velog.velcdn.com/images/hmmhmmhm/profile/352c0d2c-9f4d-4489-a5c5-64d789a66a4b/image.webp" alt=''></img>  
-                        </div>
-                        <div className={styles.bestLikes}><Image src={likesIcon} alt="like"></Image></div>
-                        <div className={styles.postBy}> <span>post</span> <b>하민</b></div> 
-                        <span className={styles.bestLikesCount}>200</span>
-                        </div>
-                        </div>
-                        </div>
-                      
-
-                        <div className={styles.bestPreviewBox}>
-                        <img  src="https://velog.velcdn.com/images/teo/post/4320ed12-8242-4245-b58b-c1f05445c5b7/image.png" alt="image"></img>
-                            <div className={styles.hoverBox} >
-                            <h3>나를 프로그래밍 해보자.</h3>
-                         <div className={styles.bestTags}>
-                            <span>프로그래밍</span>
-                            <span>나</span>
-                         </div>
-                        <div className={styles.bestContentHeader}> 
-                        <div className={styles.bestProfileCircle}>
-                            <img src="https://velog.velcdn.com/images/teo/profile/392ec036-5070-4c97-aabe-100969716dd9/image.jpg" alt=''></img>  
-                        </div>
-                        <div className={styles.bestLikes}><Image src={likesIcon} alt="like"></Image></div>
-                        <div className={styles.postBy}>  <span>post</span> <b>teo.yu</b></div> 
-                        <span className={styles.bestLikesCount}>36</span>
-                        </div>
-                        </div>
-                        </div>
-                    </div>
-                    <div className={styles.minimap}>
-                        <div className={styles.images}>
-                            <div className={styles.image} ref={imageBoxRef}>
-                                <div className={styles.imageBox}>
-                                    <img   src="https://velog.velcdn.com/images/hmmhmmhm/post/f6cb929e-4552-4955-83ee-5d861225bc45/image.gif" alt="image"></img>
-                                </div>
-                                <div className={styles.imageBox}>
-                                    <img  src="https://velog.velcdn.com/images/greencloud/post/4ad0de67-bbaa-46af-8630-0f0d947791b5/image.GIF" alt="image"></img>
-                                </div>
-                                <div className={styles.imageBox}>
-
-                                 <img  src="https://velog.velcdn.com/images/teo/post/4320ed12-8242-4245-b58b-c1f05445c5b7/image.png" alt="image"></img>
-                                </div>
-                                
-                             
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 
                 <ul className={styles.collection} >
-                <h3 className={styles.popularH3}>주간 인기포스트</h3>
+                <h3 className={styles.popularH3}>주간 인기 포스트</h3>
                     {bestPost?.pages.map((group,index)=>(
                         group.map((value)=>(
                             <div key={index} className={styles.wrapper} onClick={onHandlePost}>
