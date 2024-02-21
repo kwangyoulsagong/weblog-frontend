@@ -73,7 +73,7 @@
     }
 }
 .leftFixedSection div:hover{
-    background: #585872;
+    background: rgba(0, 0, 0, 0.1);
 }
 .leftFixedSection img{
     width: 20px;
