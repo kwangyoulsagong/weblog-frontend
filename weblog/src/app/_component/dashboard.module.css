@@ -6,7 +6,7 @@
     height: 100vh;
     display: flex;
     align-items: stretch;
-    background: #F6F6F6;
+    background: #F6F6F6
 
 }
 
@@ -37,6 +37,7 @@
     gap: 30px;
     flex-basis: 240px;
     overflow: hidden;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
     flex-shrink: 0;
     align-items: left;
     z-index: 1;
@@ -58,14 +59,21 @@
     display: flex;
     align-items: center;
     font-weight: 400;
-    padding: 10px;
+    height: 3vh;
+    padding: 5px;
     gap: 5px;
+
+    background-color: #f4f4f4;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
     font-size: 14px;
     border-radius: 6px;
-    transition: 0.3s;
+
     @media only screen and (max-width: 440px) {
        font-size: 10px;
     }
+}
+.leftFixedSection div:hover{
+    background: #585872;
 }
 .leftFixedSection img{
     width: 20px;
