@@ -27,10 +27,13 @@
     margin-right: 70px;
     display: flex;
     align-items: center;
+    
   }
   
   .chart {
     width: 0.1vw;
+    height: 1vh;
+    
   }
   
   .labelsContainer {
@@ -40,21 +43,22 @@
   .chartLabel {
     font-size: 14px;
     margin-top: 8px;
+    font-weight: bold;
   }
   .labelsContainer :nth-child(1){
-    color:#FF6384
+    color:#FFAFCA
   }
   .labelsContainer :nth-child(2){
-    color:#36A2EB
+    color:#546595
   }
   .labelsContainer :nth-child(3){
-    color:#FFCE56
+    color:#a9a9a9
   }
   .labelsContainer :nth-child(4){
-    color:#4BC0C0
+    color:#81D9C0
   }
   .labelsContainer :nth-child(5){
-    color:#9966FF
+    color:#b0b4d3
   }
   
 .innerContents{

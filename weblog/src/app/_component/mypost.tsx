@@ -148,7 +148,7 @@ export default function MyPost(){
       datasets: [
         {
           data: topTags.map((tag) => tag.count),
-          backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'], // Add more colors as needed
+          backgroundColor: ['#FFAFCA', '#546595', '#E9E9EA', '#81D9C0', '#CFD4FA'], // Add more colors as needed
         },
       ],
     };
