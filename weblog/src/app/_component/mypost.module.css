@@ -5,12 +5,29 @@
     background: #F6F6F6;
     display: flex;
 
+}.myStatContainer{
+    position: absolute;
+    margin-left: -2.5vw;
+    width: 82.5vw;
+    height: 25vh;
+    display: flex;
+    justify-content:left;
+    align-items: center;
+    background: #ededed;
+    overflow: hidden;
+    border-radius: 20px;
+    @media only screen and (max-width: 1200px) {
+        left: 9vw;
+        height: 20vh;
+    }
+
 }
 .innerContents{
     position: absolute;
-    top: 50px;
+    top: 12.5vh;
     width: inherit;
     height: inherit;
+    justify-content: center;
 }
 
 .collectionWrapper{
@@ -33,6 +50,7 @@
 }
 
 .collection{
+    margin-top: 34vh;
     display: grid;
     grid-template-columns: repeat(4, 1fr);;
     width: 100vw;

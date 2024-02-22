@@ -116,9 +116,11 @@ export default function MyPost(){
     return(
         <div className={styles.moduleBackground} >
         <div className={styles.innerContents}>
-        <div className={styles.postTabContainer}>
-            </div>
+
             <div className={styles.collectionWrapper }>
+            <div className={styles.collectionContainer}>
+            <div className={styles.myStatContainer}>
+            </div>
             <ul className={styles.collection} >
             {datapost?.map((value: Post, index: number)=>(
                 <div key={index} className={styles.wrapper} onClick={() => onHandlePost(value.postId)}>
@@ -152,6 +154,7 @@ export default function MyPost(){
             ))}
                 
             </ul>
+            </div>
             </div>
         </div>
     </div>
