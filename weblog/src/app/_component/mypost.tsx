@@ -12,6 +12,10 @@ import { useDispatch } from "react-redux"
 import { setPostId } from "../slices/postSlice"
 import api from "@/app/config/apiConfig"
 import Post from "./post"
+import { Doughnut } from "react-chartjs-2"
+import { Chart, ArcElement } from 'chart.js';
+Chart.register(ArcElement);
+
 interface Post {
     postId: number;
     nickname: string;
@@ -112,7 +116,47 @@ export default function MyPost(){
         </ul>
       )
     }
-   
+    
+    const getTopTags = () => {
+      const allTags = datapost?.reduce((tags, post) => {
+        return tags.concat(post.tags);
+      }, [] as string[]);
+    
+      const tagCount: { [key: string]: number } = {};
+    
+      if (allTags) {
+        allTags.forEach((tag) => {
+          const normalizedTag = tag.toLowerCase();
+          tagCount[normalizedTag] = (tagCount[normalizedTag] || 0) + 1;
+        });
+      }
+    
+      const sortedTags = Object.keys(tagCount).sort(
+        (a, b) => tagCount[b] - tagCount[a] || a.localeCompare(b)
+      );
+    
+      return sortedTags.slice(0, 5).map((tag) => ({
+        name: tag,
+        count: tagCount[tag],
+      }));
+    };
+    
+    const topTags = getTopTags();
+    
+    const chartData = {
+      labels: topTags.map((tag) => tag.name),
+      datasets: [
+        {
+          data: topTags.map((tag) => tag.count),
+          backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'], // Add more colors as needed
+        },
+      ],
+    };
+    
+    const chartOptions = {
+      cutout: '70%'
+    };
+    
     return(
         <div className={styles.moduleBackground} >
         <div className={styles.innerContents}>
@@ -120,6 +164,16 @@ export default function MyPost(){
             <div className={styles.collectionWrapper }>
             <div className={styles.collectionContainer}>
             <div className={styles.myStatContainer}>
+            <div className={styles.chartContainer}>
+            <Doughnut className={styles.chart} data={chartData} options={chartOptions} />
+            <div className={styles.labelsContainer}>
+              {topTags.map((tag, index) => (
+                <div key={index} className={styles.chartLabel}>
+                  {tag.name}: {tag.count}
+                </div>
+              ))}
+          </div>
+      </div>
             </div>
             <ul className={styles.collection} >
             {datapost?.map((value: Post, index: number)=>(

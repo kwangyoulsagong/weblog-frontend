@@ -11,7 +11,7 @@
     width: 82.5vw;
     height: 25vh;
     display: flex;
-    justify-content:left;
+    justify-content:right;
     align-items: center;
     background: #ededed;
     overflow: hidden;
@@ -22,6 +22,41 @@
     }
 
 }
+/* Add styling for the Doughnut chart and labels */
+.chartContainer {
+    margin-right: 70px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .chart {
+    width: 0.1vw;
+  }
+  
+  .labelsContainer {
+    margin-left: 20px; /* Adjust spacing between chart and labels */
+  }
+  
+  .chartLabel {
+    font-size: 14px;
+    margin-top: 8px;
+  }
+  .labelsContainer :nth-child(1){
+    color:#FF6384
+  }
+  .labelsContainer :nth-child(2){
+    color:#36A2EB
+  }
+  .labelsContainer :nth-child(3){
+    color:#FFCE56
+  }
+  .labelsContainer :nth-child(4){
+    color:#4BC0C0
+  }
+  .labelsContainer :nth-child(5){
+    color:#9966FF
+  }
+  
 .innerContents{
     position: absolute;
     top: 12.5vh;
