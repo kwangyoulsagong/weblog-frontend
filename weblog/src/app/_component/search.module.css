@@ -10,6 +10,7 @@
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.4);
     align-items: center;
+    z-index: 99999;
 }
 .searchContainer{
     width: 50vw;

@@ -10,12 +10,13 @@ import { useRouter } from "next/navigation";
 import profile from "@/asset/images/kwang.jpg"
 import Link from "next/link";
 import Search from "./search";
+import hamburger from "@/asset/images/burger.png"
+import cross from "@/asset/images/cross.png"
 
 type props = {children:ReactNode}
 export default function Dashboard({children}:props){
   const router=useRouter()
   const { isLogin, nickname, setIsLogin } = useContext(AuthContext);
-  const menuRef = useRef<any>(null);
   const leftWrapperRef = useRef<HTMLDivElement>(null!)
   const mainWrapperRef=useRef<HTMLDivElement>(null!)
   const [menubar, setMenubar] = useState(false);
@@ -29,9 +30,7 @@ export default function Dashboard({children}:props){
 
   const onHandleMenubar = () => {
     setMenubar(!menubar);
-    if (menuRef.current&&leftWrapperRef.current&&mainWrapperRef.current) {
-      menuRef.current.style.scrollBehavior = "smooth";
-      menuRef.current.scrollTop = !menubar ? 3000 : 0;
+    if (leftWrapperRef.current&&mainWrapperRef.current) {
       leftWrapperRef.current.style.width=!menubar? "110px":"30px";
       mainWrapperRef.current.style.width=!menubar? "90vw":"95vw";
       mainWrapperRef.current.style.transition="0.5s"
@@ -51,8 +50,7 @@ export default function Dashboard({children}:props){
                 <header className={styles.leftWrapper} >
                 <section className={styles.leftSection}ref={leftWrapperRef} >
                 <button className={styles.menuBtn}  onClick={onHandleMenubar}>
-                          <div ref={menuRef}> <span>메뉴</span>
-                        <span>닫기</span></div>
+                  <Image src={menubar? cross: hamburger } alt="burger"></Image>
                         </button>
                 {isLogin ? <AccessLinkBar /> : <UnAccessLinkBar />}
                 </section>
