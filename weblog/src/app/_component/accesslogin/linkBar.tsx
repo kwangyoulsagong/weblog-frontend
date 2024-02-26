@@ -46,6 +46,7 @@ export default function LinkBar(){
                <div onClick={()=>handleHome("home")}>
                     <Image src={dashboardImg} alt="dashboard"></Image>
                     <span>대시보드</span>
+                    <b className={styles.menuCircleRed}>hot</b>
                </div>
                <div onClick={()=>handleMyProfile("myprofile")}>
                     <Image src={userImg} alt="userImg"></Image>
@@ -54,6 +55,7 @@ export default function LinkBar(){
                <div onClick={()=>handleMyPost("mypost")}> 
                     <Image src={mypostImg} alt="mypostImg"></Image>
                     <span>마이포스트</span>
+                    <b className={styles.menuCircleGreen}>new</b>
                </div>
                <div >
                     <Image src={treeImg} alt="treeImg"></Image>

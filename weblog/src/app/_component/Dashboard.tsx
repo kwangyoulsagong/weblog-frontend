@@ -2,16 +2,12 @@
 import { ReactNode, useContext, useEffect, useRef, useState } from "react";
 import styles from "./dashboard.module.css"
 import Image from "next/image";
-import Logo from "@/asset/images/logo.svg"
 import UnAccessLinkBar from "./unaccesslogin/linkBar";
 import AccessLinkBar from "./accesslogin/linkBar"
 import { AuthContext } from "./Provider/authProvider";
 import { useRouter } from "next/navigation";
-import profile from "@/asset/images/kwang.jpg"
-import Link from "next/link";
 import Search from "./search";
-import hamburger from "@/asset/images/burger.png"
-import cross from "@/asset/images/cross.png"
+import arrowImg from "@/asset/images/main/right.png"
 
 type props = {children:ReactNode}
 export default function Dashboard({children}:props){
@@ -29,6 +25,9 @@ export default function Dashboard({children}:props){
                 <section className={styles.leftSection}ref={leftWrapperRef} >
                 {isLogin ? <AccessLinkBar /> : <UnAccessLinkBar />}
                 </section>
+                <div className={styles.menubarButton}>
+                  <Image src={arrowImg} alt="arrow"></Image>
+                </div>
            
             </header>
               <div className={styles.mainWrapper} ref={mainWrapperRef} >

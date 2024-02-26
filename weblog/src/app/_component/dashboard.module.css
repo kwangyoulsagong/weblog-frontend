@@ -12,7 +12,6 @@
 
 .leftWrapper{
     display: flex;
-    flex-direction: column;
 }
 
 .leftSection{
@@ -24,6 +23,23 @@
 
 
        
+}
+.menubarButton{
+margin-top: 40px;
+width: 20px;
+display: flex;
+align-items: center;
+justify-content: center;
+height: 26px;
+
+background: #F7F7F7;
+border-radius: 0px 3px 3px 0px;
+
+}
+.menubarButton img{
+    width: 10px;
+    height: 10px;
+    object-fit: contain;
 }
 .leftFixedSection{
     width: inherit;
@@ -88,6 +104,7 @@ background: #F1F1F5;
 .menuList div{
     margin-left: 20px;
     display: flex;
+    align-items: center;
     gap: 10px;
     cursor: pointer;
 }
@@ -104,6 +121,30 @@ font-size: 14px;
 line-height: 21px;
 color: rgba(153, 153, 153, 0.6);
 
+}
+.menuCircleRed{
+    width: 40px;
+    height: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #F50606;
+    border-radius: 20px;
+    color: white;
+    font-size: 10px;
+    font-weight: 400;
+}
+.menuCircleGreen{
+    width: 40px;
+    height: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #3ebe11;
+    border-radius: 20px;
+    color: white;
+    font-size: 10px;
+    font-weight: 400;
 }
 .menuHeader span{
     
