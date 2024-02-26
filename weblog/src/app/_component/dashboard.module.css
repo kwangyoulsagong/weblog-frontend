@@ -6,7 +6,7 @@
     height: 100vh;
     display: flex;
     align-items: stretch;
-    background: #F6F6F6
+    background: #fff
 
 }
 
@@ -16,84 +16,116 @@
 }
 
 .leftSection{
-    width: 30px;
-    padding: 0 8px;
+    width: 200px;
     height: 100dvh;
-    overflow: hidden;
-    @media only screen and (max-width: 1200px) {
-        position: absolute;
-        
+    background: #f7f7f7;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+
+
        
-  
 }
 .leftFixedSection{
-    position: fixed;
-    top: 100px;
-    left: 0;
     width: inherit;
-    height: 92dvh;
+    height: inherit;
     display: flex;
     flex-direction: column;
-    gap: 30px;
-    flex-basis: 240px;
-    overflow: hidden;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-    flex-shrink: 0;
-    align-items: left;
-    z-index: 1;
-    @media only screen and (max-width: 1200px) {
-        position: fixed;
-        top:95vh;
-        display: flex;
-        justify-content: center;
-        flex-direction: row;
-        width: 100%;
-        height: 5dvh;
-    }
-    }
-
+    align-items: center;
 }
-.leftFixedSection div{
-    text-decoration: none;
-    color:  rgba(70, 70, 71, 0.78);
+.logoContainer{
+    width: 100%;
+    height: 100px;
     display: flex;
     align-items: center;
-    font-weight: 400;
-    height: 3vh;
-    padding: 5px;
-    gap: 5px;
+    gap: 10px;
+}
+.ellipse{
+width: 50px;
+height: 50px;
+filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+border-radius: 25px;
+margin-left: 20px;
+overflow: hidden;
+
+}
+.ellipse img{
+    width: inherit;
+    height: inherit;
+}
+.logoContainer b{
+
+font-family: 'Padauk';
+font-style: normal;
+font-weight: 700;
+font-size: 18px;
+line-height: 27px;
+
+color: #000000;
+
+
+}
+.line{
+width: 160px;
+height: 2px;
+
+background: #F1F1F5;
+
+}
+.menuHeader{
+    display: flex;
+    width: inherit;
+    align-items: center;
+    height: 50px;
+}
+.menuList{
+    margin-top: 20px;
+    width: inherit;
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.menuList div{
+    margin-left: 20px;
+    display: flex;
+    gap: 10px;
     cursor: pointer;
-
-    background-color: #f4f4f4;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-    font-size: 14px;
-    border-radius: 6px;
-
-    @media only screen and (max-width: 440px) {
-       font-size: 10px;
-    }
 }
-.leftFixedSection div:hover{
-    background: rgba(0, 0, 0, 0.1);
+.menuList img{
+    width: 22px;
+    height: 22px;
 }
-.leftFixedSection img{
-    width: 20px;
-    height: 20px;
-}
+.menuList span{
+font-family: 'Padauk';
+font-style: normal;
+font-weight: 700;
+display: flex;
+font-size: 14px;
+line-height: 21px;
+color: rgba(153, 153, 153, 0.6);
 
+}
+.menuHeader span{
+    
+margin-left: 20px;
+font-family: 'Padauk';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 21px;
+
+
+color: #999999;
+}
 .mainWrapper{
     display: flex;
     align-items: flex-start;
     height: inherit;
-    width: 95vw;
-    flex-direction: column;
-    @media only screen and (max-width: 1200px) {
-        width: 100vw;
-    }
+    width: inherit
 }
 
 .mainSectionInner{
-    height: 100%;
+    height: inherit;
     width: inherit;
     display: flex;
 
@@ -102,159 +134,4 @@
 .main{
     width: inherit;
     height: 100%;
-}
-.meuBarSection{
-    position: fixed;
-    top: 0;
-    width: inherit;
-    z-index: 1;
-    height: 60px;
-
-
-}
-.menuBarFixedSection{
-    width: 100%;
-    height: 60px;
-    display: flex;
-    align-items: center;
-}
-.menuBtn{
-    @media only screen and (max-width: 1200px) {
-       visibility: hidden;
-    }
-}
-.menuBtn {
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    width: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 15px;
-    overflow: hidden;
-    border: none;
-   
-}
-.menuBtn img{
-    width: inherit;
-    height: inherit;
-}
-.menuBtn:hover{
-    background: #e4e6ef;
-    color:#2b2e3a;
-    
-}
-.searchBar{
-    height: 30px;
-    display: flex;
-    width: 100px;
-    max-width: 400px;
-    border-radius: 4px;
-    gap: 20px;
-    background: #2c3056;
-    justify-content: center;
-    align-items: center;
-    color: #585872;
-    transition: 0.5s;
-}
-.searchBar:hover{
-    width: 120px;
-    color: beige;
-}
-.iconSearch{
-    background: url(../../asset/images/search.png);
-    width: 20px;
-    height: 20px;
-    background-size: contain;
-    background-position: center center;
-    background-repeat: no-repeat;
-}
-.LogoImg{
-    position: absolute;
-    left: -20px;
-    width: 150px;
-    height: 150px;
-    object-fit: contain;
-}
-.profile_header{
-    position: absolute;
-    display: flex;
-    right: 100px;
-    align-items: center;
-    gap: 20px;
-    @media only screen and (max-width: 800px) {
-        right: 30px;
-        gap: 10px;
-    }
-    @media only screen and (max-width: 480px) {
-        right: 5px;
-        gap: 10px;
-    }
-    
-}
-.notification{
-
-    background: url(../../asset/images/notification.png);
-    width: 22px;
-    height: 22px;
-    background-position: center center;
-    background-size: contain;
-    background-repeat: no-repeat;
-    border: none;
-    @media only screen and (max-width: 800px) {
-        width: 15px;
-        height: 15px;
-    }
-}
-.nickname{
- 
-}
-.profileCircle{
-
-    width: 30px;
-    height: 30px;
-    border-radius: 30px;
-    border: 2px solid rgb(183, 181, 181)
-}
-.profileCircle img{
-    border-radius: 30px;
-    width: inherit;
-    height: inherit;
-    object-fit: cover;
-}
-.profileCircle:hover{
-    border:2px solid greenyellow;
-}
-.dropdown{
-    position: absolute;
-    right: 30px;
-    margin-top: 30px;
-}
-.dropdownButton{
-width: 10px;
-height: 10px;
-background: url(../../asset/images/dropdown.png);
-background-position: center center;
-background-size: contain;
-background-repeat: no-repeat;
-border: none;
-}
-.dropMenu{
-    position: absolute;
-    overflow-wrap: break-word;
-    background: rgba(225, 224, 224, 0.4);
-    backdrop-filter: blur(15px);
-    box-shadow: rgba(0, 0, 0, 0.7) 0px 0px 1px 0px, rgba(0, 0, 0, 0.5) 0px 8px 20px 0px;
-    color: rgb(201, 206, 220);
-    font-family: "Sandoll Nemony2", "Apple SD Gothic NEO", "Helvetica Neue", Helvetica, 나눔고딕, NanumGothic, "Malgun Gothic", "맑은 고딕", 굴림, gulim, 새굴림, "noto sans", 돋움, Dotum, sans-serif;
-    display: flex;
-    flex-direction: column;
-    top: calc(100% + 15px);
-    right: 0;
-    width: 200px;
-    word-break: break-all;
-    border-radius: 10px;
-    overflow: hidden;
-
 }
