@@ -1,0 +1,107 @@
+import styles from "./leftsection.module.css"
+import searchIcon from "@/asset/images/main/search.png"
+import fireIcon from "@/asset/images/main/hot.png"
+import Image from "next/image"
+import { useRouter } from "next/navigation"
+import { AuthContext } from "@/app/_component/Provider/authProvider"
+import { useContext, useEffect, useRef, useState } from "react"
+import { InfiniteData, useInfiniteQuery, useQuery } from "@tanstack/react-query"
+import { useInView } from "react-intersection-observer"
+import axios from "axios"
+type Post ={
+    postId: number;
+    nickname: string;
+    title: string;
+    tags: string [];
+    likeCount: number;
+    is_like: boolean;
+    imageUrl: string;
+    createdDate: string;
+    modifiedDate: string;
+}
+export default function leftSection(){
+    const {isLogin,nickname}=useContext(AuthContext)
+    const [datePostMenu, setDatePostMenu]=useState("주간")
+    const router=useRouter()
+
+        //인기포스트 요청
+        async function onHandleBestPostPreview({ pageParam }: { pageParam?: number }) {
+            try {
+                const response = await axios.get(`http://localhost:8000/api/v1/posts/ranks?type=weekly&number=20&offset=${pageParam}&limit=12`)
+                console.log(response.data)
+                return response.data.slicedData
+            } catch (error) {
+                console.error(error)
+            }
+        }
+        //리액트쿼리를 이용한 데이터 헨들 무한스크롤
+        const {data:bestPost, isLoading, isError, isSuccess, fetchNextPage, hasNextPage, isFetching  }=useInfiniteQuery<Post[],object,InfiniteData<Post[]>,[_1: string],number>({
+            queryKey:["bestPostPreview"],
+            queryFn: onHandleBestPostPreview,
+            initialPageParam:0,
+            getNextPageParam: (lastpage)=>lastpage.at(-1)?.postId,
+       
+    
+        })
+    
+        //스클롤 감지 하단으로 가면 다음 요청 보내기
+        const {ref,inView}=useInView({
+            threshold:0,
+            delay:0,
+    
+        });
+        useEffect(()=>{
+            if (inView && !isFetching && hasNextPage) {
+                fetchNextPage();
+              }
+    
+        },[inView,isFetching,hasNextPage,fetchNextPage])
+
+        const onHandlePost =()=>{
+            if(isLogin){
+                router.push(`/${nickname}/dashboard/home/post`)
+            }
+            else{
+                router.push(`/dashboard/home/post`)
+            }
+            
+        }
+        const handlePostTab= (tab:any)=>{
+            setDatePostMenu(tab)
+        }
+    return(
+        <div className={styles.leftSection}>
+            <div className={styles.postTab}>
+                <div className={styles.searchBar}>
+                    <Image src={searchIcon} alt="search"></Image>
+                    <span>포스트 검색...</span>
+                </div>
+                <div className={styles.popularHeader}>
+                    <h1>인기포스트</h1>
+                    <div className={styles.trendHeader}>
+                        <Image src={fireIcon} alt="fire"></Image>
+                        <span>트렌드 태그</span>
+                        <div className={styles.tag}>
+                            <span>알고리즘</span>
+                            <span>태그</span>
+                            <span>신년일교</span>
+                        </div>
+                    </div>
+                </div>
+                <div className={styles.popularTab}>
+                        <span>주간</span>
+                        <span>월간</span>
+                        <span>연간</span>
+                </div>
+            </div>
+            {/* 포스트 컨테이너 */}
+            <div className={styles.postContainer}>
+                <div className={styles.wrapper}>
+                    <div className={styles.previewBox}>
+                        <Image alt="previewImg"></Image>
+                    </div>
+                </div>
+            </div>
+         </div>
+    )
+}
