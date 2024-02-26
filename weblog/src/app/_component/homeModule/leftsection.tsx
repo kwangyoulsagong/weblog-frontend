@@ -27,7 +27,7 @@ export default function leftSection(){
         //인기포스트 요청
         async function onHandleBestPostPreview({ pageParam }: { pageParam?: number }) {
             try {
-                const response = await axios.get(`http://localhost:8000/api/v1/posts/ranks?type=weekly&number=20&offset=${pageParam}&limit=12`)
+                const response = await axios.get(`http://localhost:8000/api/v1/posts/ranks?type=weekly&number=20&offset=${pageParam}&limit=9`)
                 console.log(response.data)
                 return response.data.slicedData
             } catch (error) {
@@ -47,7 +47,7 @@ export default function leftSection(){
         //스클롤 감지 하단으로 가면 다음 요청 보내기
         const {ref,inView}=useInView({
             threshold:0,
-            delay:0,
+            delay:1000,
     
         });
         useEffect(()=>{
@@ -96,12 +96,27 @@ export default function leftSection(){
             </div>
             {/* 포스트 컨테이너 */}
             <div className={styles.postContainer}>
-                <div className={styles.wrapper}>
-                    <div className={styles.previewBox}>
-                        <Image alt="previewImg"></Image>
+                <div className={styles.wrapperContainer}>
+                {bestPost?.pages.map((group,index)=>(
+                        group.map((value)=>(
+                    <div key={index}className={styles.wrapper}>
+                      
+                            <div  className={styles.previewBox}>
+                                <img src={value.imageUrl} alt="previewImg"></img>
+                            </div>
+                        
+                  
+                            <div ref={ref} style={{height: 50}}></div>
                     </div>
+                    
+                    ))
+                    ))}
+                   
                 </div>
+          
+               
             </div>
+            
          </div>
     )
 }

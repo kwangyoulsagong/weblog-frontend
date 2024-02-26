@@ -167,24 +167,27 @@
         height: 72vh;
         display: flex;
         justify-content: center;
-        
-    }
-    .wrapper{
-        margin-left: 130px;
-        width: 47.4vw;
-        height: 100%;
-        overflow-y: scroll;
-        display: grid;
-        grid-template-columns: repeat(3,1fr);
-        grid-gap: 30px;
-        border: 1px solid black;
-        @media only screen and (max-width: 1400px) {
-            margin-left: 110px;
-        }
-        @media only screen and (max-width: 1100px) {
-            margin-left: 85px;
-        }
 
+        overflow-y: scroll;
+     
+    }
+    .wrapperContainer{
+        margin-left: 130px;
+        width: inherit;
+
+        height: 72vh;
+        
+         display: grid;
+         grid-template-columns: repeat(3,1fr);
+         grid-gap: 30px;
+         grid-row-gap: 10px;
+         border: 1px solid black;
+         @media only screen and (max-width: 1400px) {
+             margin-left: 110px;
+         }
+         @media only screen and (max-width: 1100px) {
+             margin-left: 85px;
+         }
     }
     .previewBox{
 
@@ -194,8 +197,11 @@
         border: 1px solid rgba(249, 247, 247, 0.03);
         box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
         border-radius: 20px;
+        overflow: hidden;
 
     }
-    .previewBox{
+    .previewBox img{
+        width: inherit;
+        height: inherit;
         
     }
