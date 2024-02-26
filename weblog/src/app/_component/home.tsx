@@ -2,6 +2,7 @@
 import Image from "next/image"
 import styles from "./home.module.css"
 import likesIcon from "@/asset/images/likestar.png"
+import searchIcon from "@/asset/images/main/search.png"
 import { useContext, useEffect, useRef, useState } from "react"
 import { useRouter } from "next/navigation"
 import { AuthContext } from "./Provider/authProvider"
@@ -31,8 +32,8 @@ export default  function Home(){
     const [datePostMenu, setDatePostMenu]=useState("주간")
     const [upScroll, setUpScroll] = useState(0);
     const router=useRouter()
-    //스크롤 감지 
 
+    //인기포스트 요청
     async function onHandleBestPostPreview({ pageParam }: { pageParam?: number }) {
         try {
             const response = await axios.get(`http://localhost:8000/api/v1/posts/ranks?type=weekly&number=20&offset=${pageParam}&limit=12`)
@@ -42,7 +43,7 @@ export default  function Home(){
             console.error(error)
         }
     }
-
+    //리액트쿼리를 이용한 데이터 헨들 무한스크롤
     const {data:bestPost, isLoading, isError, isSuccess, fetchNextPage, hasNextPage, isFetching  }=useInfiniteQuery<Post[],object,InfiniteData<Post[]>,[_1: string],number>({
         queryKey:["bestPostPreview"],
         queryFn: onHandleBestPostPreview,
@@ -51,6 +52,8 @@ export default  function Home(){
    
 
     })
+
+    //스클롤 감지 하단으로 가면 다음 요청 보내기
     const {ref,inView}=useInView({
         threshold:0,
         delay:0,
@@ -138,7 +141,20 @@ export default  function Home(){
       };
     return(
         <div className={styles.moduleBackground} >
-        
+            <div className={styles.homeContainer}>
+                <div className={styles.postTab}>
+                    <div className={styles.searchBar}>
+                        <Image src={searchIcon} alt="search"></Image>
+                        <span>포스트 검색...</span>
+                    </div>
+                    <h1>인기포스트</h1>
+                    <div className={styles.popularTab}>
+                        <span>주간</span>
+                        <span>월간</span>
+                        <span>연간</span>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }
