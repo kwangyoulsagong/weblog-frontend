@@ -11,6 +11,7 @@
 }
 
 .leftWrapper{
+    position: fixed;
     display: flex;
 }
 

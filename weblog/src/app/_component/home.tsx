@@ -143,30 +143,33 @@ export default  function Home(){
     return(
         <div className={styles.moduleBackground} >
             <div className={styles.homeContainer}>
-                <div className={styles.postTab}>
-                    <div className={styles.searchBar}>
-                        <Image src={searchIcon} alt="search"></Image>
-                        <span>포스트 검색...</span>
-                    </div>
-                    <div className={styles.popularHeader}>
-                        <h1>인기포스트</h1>
-                        <div className={styles.trendHeader}>
-                            <Image src={fireIcon} alt="fire"></Image>
-                            <span>트렌드 태그</span>
-                            <div className={styles.tag}>
-                                <span>알고리즘</span>
-                                <span>태그</span>
-                                <span>신년일교</span>
+                <div className={styles.leftSection}>
+                    <div className={styles.postTab}>
+                        <div className={styles.searchBar}>
+                            <Image src={searchIcon} alt="search"></Image>
+                            <span>포스트 검색...</span>
+                        </div>
+                        <div className={styles.popularHeader}>
+                            <h1>인기포스트</h1>
+                            <div className={styles.trendHeader}>
+                                <Image src={fireIcon} alt="fire"></Image>
+                                <span>트렌드 태그</span>
+                                <div className={styles.tag}>
+                                    <span>알고리즘</span>
+                                    <span>태그</span>
+                                    <span>신년일교</span>
+                                </div>
                             </div>
                         </div>
-                        
+                        <div className={styles.popularTab}>
+                            <span>주간</span>
+                            <span>월간</span>
+                            <span>연간</span>
+                        </div>
                     </div>
-                    
-                    <div className={styles.popularTab}>
-                        <span>주간</span>
-                        <span>월간</span>
-                        <span>연간</span>
-                    </div>
+                </div>
+                <div className={styles.rightSection}>
+                    <div className={styles.box}></div>
                 </div>
             </div>
         </div>
