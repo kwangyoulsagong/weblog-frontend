@@ -3,6 +3,7 @@ import Image from "next/image"
 import styles from "./home.module.css"
 import likesIcon from "@/asset/images/likestar.png"
 import searchIcon from "@/asset/images/main/search.png"
+import fireIcon from "@/asset/images/main/hot.png"
 import { useContext, useEffect, useRef, useState } from "react"
 import { useRouter } from "next/navigation"
 import { AuthContext } from "./Provider/authProvider"
@@ -147,7 +148,20 @@ export default  function Home(){
                         <Image src={searchIcon} alt="search"></Image>
                         <span>포스트 검색...</span>
                     </div>
-                    <h1>인기포스트</h1>
+                    <div className={styles.popularHeader}>
+                        <h1>인기포스트</h1>
+                        <div className={styles.trendHeader}>
+                            <Image src={fireIcon} alt="fire"></Image>
+                            <span>트렌드 태그</span>
+                            <div className={styles.tag}>
+                                <span>알고리즘</span>
+                                <span>태그</span>
+                                <span>신년일교</span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
                     <div className={styles.popularTab}>
                         <span>주간</span>
                         <span>월간</span>

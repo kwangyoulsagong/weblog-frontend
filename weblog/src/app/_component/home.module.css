@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@300&family=Noto+Sans+KR&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 .moduleBackground{
-    width: calc(80%) ;
+    width: 80% ;
     height: inherit;
     display: flex;
     justify-content: center;
@@ -54,9 +54,16 @@ color: #737991;
 
 
 }
-.postTab h1{
-margin-top: 30px;
-margin-left: 20px;
+.popularHeader{
+    margin-top: 20px;
+    margin-left: 20px;
+    width: inherit;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    align-items: center;
+}
+.popularHeader h1{
+    width: 30vw;
 font-family: 'Overpass';
 font-style: normal;
 font-weight: 400;
@@ -67,15 +74,60 @@ align-items: center;
 text-align: center;
 color: #080808;
 }
+.trendHeader{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+}
+.trendHeader img{
+width: 29px;
+height: 32px;
+
+}
+.trendHeader span{
+
+font-family: 'Overpass';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 25px;
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #080808;
+
+
+}
+.tag{
+    position: absolute;
+    margin-top: 60px;
+    display: flex;
+    gap: 10px;
+}
+.tag span{
+    width:auto;
+    min-width: 40px;
+    font-size: 8px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    height: 15px;
+    align-items: center;
+    border-radius: 10px;
+    border: #b3b3b3 1px solid;
+    color: #b3b3b3;
+}
 .popularTab{
     display: flex;
     width: 130px;
     justify-content: center;
+    gap: 13px;
 }
 .popularTab span{
-width: 34px;
+width: 30x;
 height: 18px;
-
 font-family: 'Overpass';
 font-style: normal;
 font-weight: 400;
@@ -83,8 +135,8 @@ font-size: 12px;
 line-height: 15px;
 align-items: center;
 text-align: center;
-
 color: #000000;
+/* border-bottom: 1px solid #000000; */
 
 
 
