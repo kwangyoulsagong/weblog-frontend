@@ -20,12 +20,16 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 border-radius: 10px;
 @media only screen and (max-width: 440px) {
     position: absolute;
-    height: 40px;
+    right: 0;
+   height: 40px;
     top: 0;
     margin-top: 12.5px;
-    gap: 15px;
-    width: 300px;
-    
+    gap: 5px;
+    align-items: center;
+    background: none;
+    box-shadow: none;
+    width: 180px;
+    z-index: 99;
 }
 
 }
@@ -38,7 +42,6 @@ filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 border-radius: 20px;
 overflow: hidden;
 @media only screen and (max-width: 440px) {
-    margin-left: 0px;
 }
 
 }
@@ -62,10 +65,10 @@ color: #4B4F50;
 .profileMenu{
 display: flex;
 margin-top: 15px;
-margin-left: 100px;
+margin-left: 80px;
 gap: 5px;
 @media only screen and (max-width: 440px) {
-    margin-left: 150px;
+margin-left: 0;
 }
 }
 .profileMenu :nth-child(1){
@@ -89,6 +92,11 @@ gap: 5px;
 .notificationBox{
     display: flex;
     gap: 15px;
+    @media only screen and (max-width: 440px) {
+       position: absolute;
+       top:80px;
+       right: 30px;
+    }
 }
 .alarmBox{
 width: 122px;
@@ -99,8 +107,11 @@ background: #FBB528;
 box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
 border-radius: 15px;
 @media only screen and (max-width: 440px) {
-    width: 100px;
-    height: 100px;
+    width: 34px;
+    height: 34px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;;
 }
 
 
@@ -110,6 +121,12 @@ border-radius: 15px;
     margin-left: 5px;
     width: 35px;
     height: 35px;
+    @media only screen and (max-width: 440px) {
+        width: 25px;
+        height: 25px;
+       margin-top: 0;
+       margin-left: 0;
+    }
 }
 .alarmBox span{
 width: 68px;
@@ -126,9 +143,7 @@ text-align: center;
 
 color: #FFFFFF;
 @media only screen and (max-width: 440px) {
-    margin-top: 70px;
-    margin-left: -20px;
-    font-size: 20px;
+    display: none;
 }
 
 
@@ -141,8 +156,11 @@ background: #02C896;
 box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
 border-radius: 15px;
 @media only screen and (max-width: 440px) {
-    width: 100px;
-    height: 100px;
+    width: 34px;
+    height: 34px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;;
 }
 
 }
@@ -151,6 +169,12 @@ border-radius: 15px;
     margin-left: 5px;
     width: 35px;
     height: 35px;
+    @media only screen and (max-width: 440px) {
+        width: 25px;
+        height: 25px;
+       margin-top: 0;
+       margin-left: 0;
+    }
 }
 .messageBox span{
 width: 68px;
@@ -167,9 +191,7 @@ text-align: center;
 margin-top: 80px;
 color: #FFFFFF;
 @media only screen and (max-width: 440px) {
-    font-size: 20px;
-    margin-top: 70px;
-    margin-left: -20px;
+    display:none;
 }
 
 }
