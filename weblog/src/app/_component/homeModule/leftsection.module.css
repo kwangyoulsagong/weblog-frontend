@@ -174,13 +174,11 @@
     .wrapperContainer{
         margin-left: 130px;
         width: inherit;
-
         height: 72vh;
-        
          display: grid;
          grid-template-columns: repeat(3,1fr);
          grid-gap: 30px;
-         grid-row-gap: 10px;
+         grid-row-gap: 0;
          border: 1px solid black;
          @media only screen and (max-width: 1400px) {
              margin-left: 110px;
@@ -189,11 +187,63 @@
              margin-left: 85px;
          }
     }
+    .wrapper{
+        display: flex;
+        flex-direction: column;
+     align-items: center;
+     cursor: pointer;
+    }
+    .previewHeader{
+        position: relative;
+        top: 25px;
+        display: flex;
+        align-items: center;
+        justify-content:start;
+        height: 0px;
+        gap: 7px;
+
+    }
+    .profileCircle{
+        /* Ellipse 831 */
+
+box-sizing: border-box;
+width: 34px;
+height: 34px;
+border: 1px solid #FFFFFF;
+filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+border-radius: 20px;
+overflow: hidden;
+    }
+    .profileCircle img{
+        width: inherit;
+        height: inherit;
+    }
+    .likes{
+        width: 20px;
+        height: 20px;
+
+    }
+    .likes img{
+        width: inherit;
+        height: inherit;
+    }
+    .previewHeader span, .previewHeader b{
+        font-size: 12px;
+        text-shadow: -1px 0 rgb(0, 0, 0), 0 1px rgb(0, 0, 0), 1px 0 rgb(0, 0, 0), 0 -1px rgb(0, 0, 0);
+
+    }
+    .previewHeader b{
+        color: azure;
+    }
+    .previewHeader span{
+        color: #868e96;
+    }
     .previewBox{
 
         box-sizing: border-box;
         width: 14vw;
         height: 250px;
+
         border: 1px solid rgba(249, 247, 247, 0.03);
         box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
         border-radius: 20px;
@@ -204,4 +254,15 @@
         width: inherit;
         height: inherit;
         
+    }
+    .card{
+        margin-top: -110px;
+box-sizing: border-box;
+width: 13vw;
+height: 98px;
+background: rgba(123, 121, 126, 0.77);
+border: 1px solid rgba(249, 247, 247, 0.03);
+backdrop-filter: blur(5px);
+border-radius: 20px;
+
     }

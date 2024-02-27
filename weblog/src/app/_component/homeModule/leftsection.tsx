@@ -1,6 +1,8 @@
 import styles from "./leftsection.module.css"
 import searchIcon from "@/asset/images/main/search.png"
 import fireIcon from "@/asset/images/main/hot.png"
+import profileImg from "@/asset/images/main/kwang.jpg"
+import likesIcon from "@/asset/images/likestar.png"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { AuthContext } from "@/app/_component/Provider/authProvider"
@@ -100,12 +102,18 @@ export default function leftSection(){
                 {bestPost?.pages.map((group,index)=>(
                         group.map((value)=>(
                     <div key={index}className={styles.wrapper}>
-                      
+                               <div className={styles.previewHeader}>
+                                    <div className={styles.profileCircle}>
+                                        <Image src={profileImg} alt="profileImg"></Image>
+                                    </div>
+                                    <div className={styles.postBy}> <span>post</span> <b>{value.nickname}</b></div> 
+                                    <span className={styles.likesCount}>{value.likeCount}</span>
+                                    <div className={styles.likes}><Image src={likesIcon} alt="like"></Image></div>
+                            </div>
                             <div  className={styles.previewBox}>
                                 <img src={value.imageUrl} alt="previewImg"></img>
                             </div>
-                        
-                  
+                            <div className={styles.card}></div>
                             <div ref={ref} style={{height: 50}}></div>
                     </div>
                     
