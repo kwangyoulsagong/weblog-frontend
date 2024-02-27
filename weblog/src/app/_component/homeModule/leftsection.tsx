@@ -113,7 +113,15 @@ export default function leftSection(){
                             <div  className={styles.previewBox}>
                                 <img src={value.imageUrl} alt="previewImg"></img>
                             </div>
-                            <div className={styles.card}></div>
+                            <div className={styles.card}>
+                                <h3>{value.title}</h3>
+                                <div className={styles.tags}>
+                                   {value.tags.map((value,index)=>(
+                                       <span key={index}>{value}</span>
+                                   ))}
+                                    
+                                 </div>
+                            </div>
                             <div ref={ref} style={{height: 50}}></div>
                     </div>
                     
