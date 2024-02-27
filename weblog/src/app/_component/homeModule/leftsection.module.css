@@ -13,6 +13,13 @@
     @media only screen and (max-width: 1000px) {
         margin-left: 200px;
     }
+    @media only screen and (max-width: 440px) {
+    }
+    @media only screen and (max-width: 440px) {
+       margin-left: 0;
+    }
+    
+
 }
 .postTab{
     margin-top: 2vh;
@@ -27,6 +34,13 @@
     @media only screen and (max-width: 1100px) {
         height: 18vh;
     }
+    @media only screen and (max-width: 440px) {
+        margin-top: 0;
+        margin-left: 0;
+        align-items: center;
+        height: 0px;
+     }
+    
     
     }
     .searchBar{
@@ -39,6 +53,14 @@
     background: #f2f2f5;
     border-radius: 100px;
     gap: 10px;
+    @media only screen and (max-width: 440px) {
+        width: 100px;
+        height: 30px;
+        margin-top: 30px;
+        margin-left: 0;
+        z-index: 1;
+    }
+  
     
     }
     .searchBar:hover{
@@ -73,6 +95,10 @@
         display: grid;
         grid-template-columns: repeat(2,1fr);
         align-items: center;
+        @media only screen and (max-width: 440px) {
+            display: none;
+         }
+        
     }
     .popularHeader h1{
         width: 30vw;
@@ -96,11 +122,17 @@
     @media only screen and (max-width: 1000px) {
         width: 20vw;
     }
+    @media only screen and (max-width: 440px) {
+        display: none;
+     }
     }
     .trendHeader{
         display: flex;
         align-items: center;
         gap: 5px;
+        @media only screen and (max-width: 440px) {
+            display: none;
+         }
     
     }
     .trendHeader img{
@@ -147,9 +179,15 @@
         width: 130px;
         justify-content: center;
         gap: 13px;
+     
+        @media only screen and (max-width: 440px) {
+            margin-top: 60px;
+            width: 150px;
+            gap: 20px;
+         }
     }
     .popularTab span{
-    width: 30x;
+   width: 30x;
     height: 18px;
     font-family: 'Overpass';
     font-style: normal;
@@ -158,9 +196,30 @@
     line-height: 15px;
     align-items: center;
     text-align: center;
-    color: #000000;
+    color: #BABABC;
     cursor: pointer;
     /* border-bottom: 1px solid #000000; */
+
+    @media only screen and (max-width: 440px) {
+        width: 50px;
+        height: 18px;
+        
+        font-family: 'Overpass';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 25px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        
+        
+            cursor: pointer;
+            /* border-bottom: 1px solid #000000; */
+     }
+    }
+    .popularTab :nth-child(1){
+        color: #000000;
     }
     .postContainer{
         margin-top: 20px;
@@ -168,8 +227,13 @@
         height: 72vh;
         display: flex;
         justify-content: center;
-
         overflow-y: scroll;
+        
+          @media only screen and (max-width: 440px) {
+            margin-top: 130px;
+            width: 100vw;
+            height: 380px;
+        }
      
     }
     .wrapperContainer{
@@ -187,6 +251,13 @@
          @media only screen and (max-width: 1100px) {
              margin-left: 85px;
          }
+         @media only screen and (max-width: 440px) {
+           margin-left: 0;
+           height: inherit;
+           display: flex;
+           gap: 0;
+        }
+         
     }
     .wrapper{
         display: flex;
@@ -202,6 +273,9 @@
         justify-content:start;
         height: 0px;
         gap: 7px;
+        @media only screen and (max-width: 440px) {
+            
+        }
 
     }
     .profileCircle{
@@ -249,6 +323,15 @@ overflow: hidden;
         box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
         border-radius: 20px;
         overflow: hidden;
+        @media only screen and (max-width: 440px) {
+            box-sizing: border-box;
+            margin-left: 20px;
+            width: 60vw;
+            height: 45vh;
+            border: 1px solid rgba(249, 247, 247, 0.03);
+            border-radius: 40px;
+
+         }
 
     }
     .previewBox img{
@@ -269,6 +352,18 @@ background: rgba(123, 121, 126, 0.77);
 border: 1px solid rgba(249, 247, 247, 0.03);
 backdrop-filter: blur(5px);
 border-radius: 20px;
+@media only screen and (max-width: 440px) {
+    margin-top: -95px;
+width: 60vw;
+height: 94.78px;
+margin-left: 20px;
+background: rgba(248, 248, 250, 0.39);
+backdrop-filter: blur(5px);
+/* Note: backdrop-filter has minimal browser support */
+border-radius: 50px;
+
+
+ }
 
     }
     .card h3{
@@ -284,7 +379,9 @@ display: flex;
 align-items: center;
 
 color: #FFFFFF;
-
+@media only screen and (max-width: 440px) {
+   
+}
 
     }
     .tags{

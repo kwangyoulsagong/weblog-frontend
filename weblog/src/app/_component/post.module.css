@@ -1,8 +1,7 @@
 .postBackground{
     position: fixed;
-    top: 60px;
     right: 0;
-    height: 93%;
+    height: 100%;
     width: 0px;
     background: rgba(225, 224, 224, 0.7);
     backdrop-filter: blur(15px);

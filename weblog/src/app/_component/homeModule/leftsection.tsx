@@ -29,7 +29,7 @@ export default function leftSection(){
         //인기포스트 요청
         async function onHandleBestPostPreview({ pageParam }: { pageParam?: number }) {
             try {
-                const response = await axios.get(`http://localhost:8000/api/v1/posts/ranks?type=weekly&number=20&offset=${pageParam}&limit=9`)
+                const response = await axios.get(`http://172.30.1.5:8000/api/v1/posts/ranks?type=weekly&number=20&offset=${pageParam}&limit=9`)
                 console.log(response.data)
                 return response.data.slicedData
             } catch (error) {
@@ -59,7 +59,8 @@ export default function leftSection(){
     
         },[inView,isFetching,hasNextPage,fetchNextPage])
 
-        const onHandlePost =()=>{
+        const onHandlePost =(postid:number)=>{
+            console.log(postid)
             if(isLogin){
                 router.push(`/${nickname}/dashboard/home/post`)
             }
@@ -101,7 +102,7 @@ export default function leftSection(){
                 <div className={styles.wrapperContainer}>
                 {bestPost?.pages.map((group,index)=>(
                         group.map((value)=>(
-                    <div key={index}className={styles.wrapper}>
+                    <div key={index}className={styles.wrapper} onClick={()=>onHandlePost(value.postId)}>
                                <div className={styles.previewHeader}>
                                     <div className={styles.profileCircle}>
                                         <Image src={profileImg} alt="profileImg"></Image>

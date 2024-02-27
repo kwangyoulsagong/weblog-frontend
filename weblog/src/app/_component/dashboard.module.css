@@ -13,6 +13,8 @@
 .leftWrapper{
     position: fixed;
     display: flex;
+
+    z-index: 9999;
 }
 
 .leftSection{
@@ -35,6 +37,7 @@ height: 26px;
 
 background: #F7F7F7;
 border-radius: 0px 3px 3px 0px;
+
 
 }
 .menubarButton img{
