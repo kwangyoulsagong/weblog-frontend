@@ -87,6 +87,49 @@ color: #887ADC;
 
 
 }
+.profileBottom{
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+.exp{
+margin-left: 30px;
+width: 199.93px;
+height: 2.67px;
+
+background: #F3F5F6;
+border-radius: 20px;
+
+}
+.exp div{
+
+position: absolute;
+width: 77.44px;
+height: 2.67px;
+
+background: #519CC2;
+border-radius: 20px;
+
+}
+.profileBottom span{
+width: 188.67px;
+height: 29.41px;
+
+font-family: 'Overpass';
+font-style: normal;
+font-weight: 700;
+font-size: 24px;
+line-height: 30px;
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #6C7373;
+
+
+}
 
 .alarmBox{
     width: 170px;

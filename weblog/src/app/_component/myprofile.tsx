@@ -47,6 +47,12 @@ export default function MyComponentProfile(){
                                 <span>{profileData?.email}</span>
                             </div>
                         </div>
+                        <div className={styles.profileBottom}>
+                            <div className={styles.exp}>
+                                <div></div>
+                            </div>
+                            <span>프로필 설정</span>
+                        </div>
                     </div>
                     <div className={styles.alarmBox}>
                     <Image src={alarmImg} alt="alarmImg"></Image>
