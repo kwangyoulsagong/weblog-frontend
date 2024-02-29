@@ -2,6 +2,7 @@
 import { useState } from "react"
 import styles from "./myprofile.module.css"
 import MyProfile from "./myprofile/myprofile"
+import profileImg from "@/asset/images/main/kwang.jpg"
 import alarmImg from "@/asset/images/main/notification.png"
 import messageImg from "@/asset/images/main/message.png"
 import Image from "next/image"
@@ -37,8 +38,15 @@ export default function MyComponentProfile(){
              <div className={styles.background}>
                 <div className={styles.top}>
                     <div className={styles.myProfileContainer}>
-                    <b>{profileData?.nickname}</b>
-                    <span>{profileData?.email}</span>
+                        <div className={styles.profiletop}>
+                            <div className={styles.profileCircle}>
+                                <Image src={profileImg} alt="profileImg"></Image>
+                            </div>
+                            <div className={styles.info}>
+                                <b>{profileData?.nickname}</b>
+                                <span>{profileData?.email}</span>
+                            </div>
+                        </div>
                     </div>
                     <div className={styles.alarmBox}>
                     <Image src={alarmImg} alt="alarmImg"></Image>
