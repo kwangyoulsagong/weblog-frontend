@@ -29,7 +29,7 @@ export default function leftSection(){
         //인기포스트 요청
         async function onHandleBestPostPreview({ pageParam }: { pageParam?: number }) {
             try {
-                const response = await axios.get(`http://172.30.1.5:8000/api/v1/posts/ranks?type=weekly&number=20&offset=${pageParam}&limit=9`)
+                const response = await axios.get(`http://localhost:8000/api/v1/posts/ranks?type=weekly&number=20&offset=${pageParam}&limit=9`)
                 console.log(response.data)
                 return response.data.slicedData
             } catch (error) {
