@@ -80,7 +80,10 @@ export default function MyComponentProfile(){
                         <Image src={settingImg} alt="settingIcon"/>
                         <span>설정</span>
                     </div>
-                    <div className={styles.plannerSetting}></div>
+                    <div className={styles.plannerSetting}>
+                        <Image src={calendarImg} alt="calendarIcon"/>
+                        <span>목표설정</span>
+                    </div>
                 </div>
              </div>
         </div>

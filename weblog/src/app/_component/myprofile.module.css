@@ -304,9 +304,34 @@ border-radius: 10px;
 .plannerSetting{
 width: 353.4px;
 height: 195.17px;
-
+display: flex;
+flex-direction: column;
+align-items: center;
 background: #FFFFFF;
 box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
 border-radius: 15px;
 
 }
+.plannerSetting img{
+
+    margin-top: 30px;
+    margin-right: 200px;
+    width: 55px;
+    height: 55px;
+
+    
+    }
+ .plannerSetting span{
+margin-left: 150px;
+margin-top: 50px;
+font-family: 'Overpass';
+font-style: normal;
+font-weight: 700;
+font-size: 28px;
+line-height: 30px;
+color: #000000;
+
+
+    
+    
+    }
