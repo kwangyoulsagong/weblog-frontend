@@ -241,10 +241,33 @@ color: #65DB8D;
 .setting{
 width: 205.56px;
 height: 195.17px;
-
+display: flex;
+flex-direction: column;
+align-items: center;
 background: #DDDDDD;
 box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
 border-radius: 15px;
+
+}
+.setting img{
+margin-left: 100px;
+margin-top: 10px;
+width: 55px;
+height: 55px;
+
+}
+.setting span{
+
+font-family: 'Overpass';
+font-style: normal;
+font-weight: 700;
+font-size: 28px;
+line-height: 30px;
+
+color: #FFFFFF;
+margin-right: 100px;
+margin-top: 70px;
+
 
 }
 .privacySettingBox span{

@@ -8,7 +8,8 @@ import messageImg from "@/asset/images/main/message.png"
 import Image from "next/image"
 import { useQuery } from "@tanstack/react-query"
 import axios from "axios"
-
+import settingImg from "@/asset/images/main/setting.png"
+import calendarImg from "@/asset/images/main/calendar.png"
 type profileType={
     nickname:string
     imageUrl: string
@@ -75,7 +76,10 @@ export default function MyComponentProfile(){
                             <span>계정공개 범위</span>
                         </div>
                     </div>
-                    <div className={styles.setting}></div>
+                    <div className={styles.setting}>
+                        <Image src={settingImg} alt="settingIcon"/>
+                        <span>설정</span>
+                    </div>
                     <div className={styles.plannerSetting}></div>
                 </div>
              </div>
