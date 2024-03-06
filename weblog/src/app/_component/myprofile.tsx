@@ -64,7 +64,17 @@ export default function MyComponentProfile(){
                 </div>
                 </div>
                 <div className={styles.bottom}>
-                    <div className={styles.privacyContainer}></div>
+                    <div className={styles.privacyContainer}>
+                        <div className={styles.privacySettingBox}>
+                            <span>비공개</span>
+                            <div  className={styles.privacySetting}>
+                                <div></div>
+                            </div>
+                        </div>
+                        <div className={styles.privacyBottom}>
+                            <span>계정공개 범위</span>
+                        </div>
+                    </div>
                     <div className={styles.setting}></div>
                     <div className={styles.plannerSetting}></div>
                 </div>

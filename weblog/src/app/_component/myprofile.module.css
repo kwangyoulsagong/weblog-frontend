@@ -208,6 +208,34 @@ height: 195.17px;
 background: #FAFFFE;
 box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
 border-radius: 15px;
+display: flex;
+flex-direction: column;
+}
+.privacySettingBox{
+    margin-top: 50px;
+    margin-left: 20px;
+    display: flex;
+    gap: 20px;
+}
+.privacyBottom{
+    margin-top: 50px;
+    display: flex;
+    justify-content: end;
+    margin-right: 30px;
+}
+.privacyBottom span{
+
+font-family: 'Overpass';
+font-style: normal;
+font-weight: 700;
+font-size: 24px;
+line-height: 30px;
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #65DB8D;
+
 
 }
 .setting{
@@ -217,6 +245,37 @@ height: 195.17px;
 background: #DDDDDD;
 box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
 border-radius: 15px;
+
+}
+.privacySettingBox span{
+    font-family: 'Overpass';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    
+    color: #B5B7B8;
+}
+.privacySetting{
+width: 56.32px;
+height: 20.05px;
+
+background: #FFFFFF;
+box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 20px;
+
+
+}
+.privacySetting div{
+width: 21.12px;
+height: 20.05px;
+
+background: #5ED933;
+box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 10px;
 
 }
 .plannerSetting{
