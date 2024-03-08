@@ -16,14 +16,14 @@ import { RootState } from '../reducers/rootReducer';
 
 
 interface Post {
-    post_id: number;
+    postId: number;
     nickname: string;
     content:string;
     title: string;
-    tags: { createdDate: string; modifiedDate: string; tagContent: string }[];
-    like_count: number;
-    is_like: boolean;
-    image_url: string;
+    tags: string [];
+    likeCount: number;
+    like: boolean;
+    imageUrl: string;
     memo:string;
     createdDate: string;
     modifiedDate: string;
@@ -85,14 +85,11 @@ export default function Post(){
       //             console.log(error)
       //       }
       try{
-        const response =await axios.get<Post>("http://localhost:3001/postDetail", {
-          params: {
-            post_id: 1// 'posId'를 'postId'로 수정
-          },
-        // headers: {
-        //   "Content-Type": "application/json",
-        //   Authorization: `Bearer ${accesstoken}`
-        // }
+        const response =await api.get<Post>(`/api/v1/posts/${1}`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`
+        }
       });
       console.log(response.data)
       return response.data;
@@ -203,7 +200,7 @@ export default function Post(){
                       <span>태그:</span>
                       {dataPostDetail?.tags.map((value:any,index:any)=>(
                             <div key={index} className={styles.tagsIndex}>
-                              <span className={styles.tagCircle}>{value.tagContent}</span>
+                              <span className={styles.tagCircle}>{value}</span>
                           </div>
                       ))}     
                   </div>

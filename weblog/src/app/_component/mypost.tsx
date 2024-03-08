@@ -50,11 +50,11 @@ export default function MyPost(){
     // }
 
     try{
-      const response =await axios.get("http://localhost:3002/postPreview", {
-      // headers: {
-      //   "Content-Type": "application/json",
-      //   Authorization: `Bearer ${accesstoken}`
-      // }
+      const response =await api.get("/api/v1/profiles/mine", {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`
+      }
     });
     console.log(response.data)
     return response.data;

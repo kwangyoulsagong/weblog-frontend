@@ -11,12 +11,12 @@ const Login = ({ onClose, onLoginSuccess }) => {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    if (email === "sgky0511" && password === "ky4400") {
-      alert("로그인 성공");
-      onLoginSuccess("sgky0511");
-    } else {
-      alert("로그인 실패");
-    } // 동기 처리
+    // if (email === "sgky0511" && password === "ky4400") {
+    //   alert("로그인 성공");
+    //   onLoginSuccess("sgky0511");
+    // } else {
+    //   alert("로그인 실패");
+    // } // 동기 처리
     const requestData = {
       email: email,
       password: password,

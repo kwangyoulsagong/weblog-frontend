@@ -10,6 +10,8 @@ import { useContext, useEffect, useRef, useState } from "react"
 import { InfiniteData, useInfiniteQuery, useQuery } from "@tanstack/react-query"
 import { useInView } from "react-intersection-observer"
 import axios from "axios"
+import api from "@/app/config/apiConfig"
+import Search from "../search"
 type Post ={
     postId: number;
     nickname: string;
@@ -24,14 +26,23 @@ type Post ={
 export default function leftSection(){
     const {isLogin,nickname}=useContext(AuthContext)
     const [datePostMenu, setDatePostMenu]=useState("주간")
+    const [isSearchbar,setIsSearchbar]=useState(false)
+    const HandleSearch=()=>{
+        setIsSearchbar(true)
+    }
     const router=useRouter()
 
         //인기포스트 요청
         async function onHandleBestPostPreview({ pageParam }: { pageParam?: number }) {
             try {
-                const response = await axios.get(`http://localhost:8000/api/v1/posts/ranks?type=weekly&number=20&offset=${pageParam}&limit=9`)
+                const response = await api.get(`/api/v1/posts/ranks?type=WEEKLY&offset=${pageParam}&limit=1`,{
+                    headers:{
+                        "Content-Type":"application/json",
+
+                    }
+                })
                 console.log(response.data)
-                return response.data.slicedData
+                return response.data
             } catch (error) {
                 console.error(error)
             }
@@ -75,7 +86,7 @@ export default function leftSection(){
     return(
         <div className={styles.leftSection}>
             <div className={styles.postTab}>
-                <div className={styles.searchBar}>
+                <div className={styles.searchBar} onClick={HandleSearch}>
                     <Image src={searchIcon} alt="search"></Image>
                     <span>포스트 검색...</span>
                 </div>
@@ -131,7 +142,7 @@ export default function leftSection(){
                    
                 </div>
           
-               
+               <Search/>
             </div>
             
          </div>

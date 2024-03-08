@@ -3,12 +3,13 @@
     right: 0;
     height: 100%;
     width: 0px;
-    background: rgba(225, 224, 224, 0.7);
-    backdrop-filter: blur(15px);
+    background: rgba(246, 246, 246, 0.51);
+    backdrop-filter: blur(20px);
     opacity: 95%;
     overflow-y: scroll;
     z-index: 9999;
 }
+
 .postContainer{
     top: 0;
     width: 100%;

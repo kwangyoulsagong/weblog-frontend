@@ -4,6 +4,7 @@ import styles from "./search.module.css"
 import Debounce from "./searchDebounce/debounce"
 import { useQuery } from "@tanstack/react-query"
 import axios from "axios"
+import api from "../config/apiConfig"
 type Value={
     postId:number
     title:string
@@ -12,6 +13,7 @@ type Value={
 }
 export default function Search(){
     const [search, setSearch]=useState("")
+    const accessToken=localStorage.getItem("accestoken")
     const handleInputChange=(e:any)=>{
         setSearch(e.target.value)
     }
@@ -23,15 +25,20 @@ export default function Search(){
             const selectedType = searchTypeSelect.value;
             let type;
             if (selectedType === "default") {
-              type = "tc";
+              type = "TAG_AND_CONTENT";
             } else if (selectedType === "paragraph") {
-              type = "c";
+              type = "CONTENT";
             } else if (selectedType === "tag") {
-              type = "t";
+              type = "TAG";
             }
             try{
            
-                const response = await axios.get(`http://localhost:8000/api/v1/search/posts?query=${autoCompleteSearch}&type=${type}&offset=0&limit=12`);
+                const response = await api.get(`/api/v1/search/posts?query=${autoCompleteSearch}&type=${type}&offset=0&limit=12`,{
+                  headers:{
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${accessToken}`
+                  }
+                });
                 const autoCompleteResults = response.data
     
                 console.log("AutoComplete Results:", autoCompleteResults);
