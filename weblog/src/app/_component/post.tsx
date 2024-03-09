@@ -72,25 +72,23 @@ export default function Post(){
   const router = useRouter();
 
     async function onHandlePostDetail() {
-      // try{
-      //   const response = await api.get(`/api/v1/posts/${postId}`, {
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //       Authorization: `Bearer ${accessToken}`,
-      //     },
-      //   });
-      //           console.log(response.data)
-      //           return response.data;
-      //           }catch(error){
-      //             console.log(error)
-      //       }
       try{
-        const response =await api.get<Post>(`/api/v1/posts/${1}`, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${accessToken}`
-        }
-      });
+        const response =await axios.get<Post>("http://localhost:3001/postDetail", {
+          params: {
+            post_id: 1// 'posId'를 'postId'로 수정
+          },
+        // headers: {
+        //   "Content-Type": "application/json",
+        //   Authorization: `Bearer ${accesstoken}`
+        // }
+      })
+      // try{
+      //   const response =await api.get<Post>(`/api/v1/posts/${3}`, {
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //     Authorization: `Bearer ${accessToken}`
+      //   }
+      // });
       console.log(response.data)
       return response.data;
       }catch(error){
@@ -194,30 +192,32 @@ export default function Post(){
                   <button className={styles.fullScreenBtn} onClick={onHandleFullSize}></button>
                 </div>
                   <div className={styles.postContainer}>
-                  <div className={styles.title}><h1>{dataPostDetail?.title}</h1></div> 
-                  <div className={styles.tagsContainer}>
-                      <Image src={tagImg} alt="tag"></Image>
-                      <span>태그:</span>
-                      {dataPostDetail?.tags.map((value:any,index:any)=>(
-                            <div key={index} className={styles.tagsIndex}>
-                              <span className={styles.tagCircle}>{value}</span>
-                          </div>
-                      ))}     
-                  </div>
-                  <button className={styles.likeBtn} onClick={onHandleLikeButton}>
-                  <Image src={img} alt="img"></Image>
-                  </button>
-                   <span className={styles.likeValue}>{likeCount}</span>
-                  <div className={styles.postBy}>
-                      <Image src={postImg} alt="postBY"></Image>
-                      <span>post:</span>
-                      <b>{dataPostDetail?.nickname}</b>
-                      <span>
-                      {dataPostDetail?.modifiedDate
-                        ? `수정됨: ${formatRelativeTime(dataPostDetail?.modifiedDate)}`
-                        : `작성됨: ${formatRelativeTime(dataPostDetail?.createdDate)}`}
-                    </span>
-                  </div>
+                    <div className={styles.headerContent}>
+                      <div className={styles.title}><h1>{dataPostDetail?.title}</h1></div> 
+                    <div className={styles.tagsContainer}>
+                        <Image src={tagImg} alt="tag"></Image>
+                        <span>태그:</span>
+                        {dataPostDetail?.tags.map((value:any,index:any)=>(
+                              <div key={index} className={styles.tagsIndex}>
+                                <span className={styles.tagCircle}>{value}</span>
+                            </div>
+                        ))}     
+                    </div>
+                    <button className={styles.likeBtn} onClick={onHandleLikeButton}>
+                    <Image src={img} alt="img"></Image>
+                    </button>
+                    <span className={styles.likeValue}>{likeCount}</span>
+                    <div className={styles.postBy}>
+                        <Image src={postImg} alt="postBY"></Image>
+                        <span>post:</span>
+                        <b>{dataPostDetail?.nickname}</b>
+                        <span>
+                        {dataPostDetail?.modifiedDate
+                          ? `수정됨: ${formatRelativeTime(dataPostDetail?.modifiedDate)}`
+                          : `작성됨: ${formatRelativeTime(dataPostDetail?.createdDate)}`}
+                      </span>
+                    </div>
+                    </div>
                   <div className={styles.ScrabContainer} ref={scrabRef}>
                     <div className={styles.scrabBox} dangerouslySetInnerHTML={{__html: dataPostDetail?.content}} ></div>
                   </div>

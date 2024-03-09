@@ -81,7 +81,7 @@ export default function myLeftSection (){
       // }
   
       try{
-        const response =await api.get("/api/v1/profiles/mine", {
+        const response =await axios.get("/api/v1/posts/mine", {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${accessToken}`

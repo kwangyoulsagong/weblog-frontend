@@ -2,6 +2,7 @@ import axios from "axios";
 import styles from "./comment.module.css";
 import { useState, useEffect } from "react";
 import profileImg from "../../asset/images/kwang.jpg"
+import api from "../config/apiConfig";
 
 interface Comment {
   profile: string;
@@ -31,14 +32,20 @@ export default function Comment() {
   const [replyIndex, setReplyIndex] = useState<number | null>(null);
   const [editCommentIndex, setEditCommentIndex] = useState<number | null>(null);
   const [editReplyIndex, setEditReplyIndex] = useState<number | null>(null);
-
+  const accessToken=localStorage.getItem("accestoken")
+  console.log(accessToken)
   useEffect(() => {
     fetchComments();
   }, []);
 
   const fetchComments = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/api/v1/comments");
+      const response = await axios.get(`/api/v1/comments/${1}`,{
+        headers:{
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`
+        }
+      });
       console.log(response.data);
       setComments(response.data);
     } catch (error) {
@@ -49,13 +56,18 @@ export default function Comment() {
   const handleCommentSubmit = async () => {
     if (commentText.trim() !== "") {
       try {
-        const response = await axios.post("http://localhost:8000/api/v1/comments", {
+        const response = await axios.post("/api/v1/comments", {
           content: commentText,
-          parentId: null,
-          postId: 22,
+          parentCommentId: null,
+          postId: 1,
+        },{
+          headers:{
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`
+          }
         });
-
-        if (response.status === 201) {
+        console.log(response.data)
+       
           const newComment = {
             id: response.data.id,
             profile: user.profile,
@@ -67,9 +79,7 @@ export default function Comment() {
 
           setComments([...comments, newComment]);
           setCommentText("");
-        } else {
-          console.error("Failed to submit comment");
-        }
+
       } catch (error) {
         console.error("Error submitting comment:", error);
       }
@@ -79,10 +89,15 @@ export default function Comment() {
   const handleReplySubmit = async (commentId: number) => {
     if (replyText.trim() !== "") {
       try {
-        const response = await axios.post("http://localhost:8000/api/v1/comments", {
+        const response = await api.post("/api/v1/comments", {
           content: replyText,
-          parentId: commentId,
-          postId: 22,
+          parentCommentId:1,
+          postId: 1,
+        },{
+          headers:{
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`
+          }
         });
 
         if (response.status === 201) {

@@ -10,6 +10,7 @@ import { useQuery } from "@tanstack/react-query"
 import axios from "axios"
 import settingImg from "@/asset/images/main/setting.png"
 import calendarImg from "@/asset/images/main/calendar.png"
+import api from "../config/apiConfig"
 type profileType={
     nickname:string
     imageUrl: string
@@ -18,10 +19,16 @@ type profileType={
 }
 
 export default function MyComponentProfile(){
-
+    const accessToken=localStorage.getItem("accestoken")
     async function onHandleProfile(){
         try{
-            const response= await axios.get("http://localhost:8000/api/v1/profiles/mine")
+            const response= await axios.get("api/v1/profiles/mine",{
+                headers:{
+                    "Content-Type":"application/json",
+                    Authorization: `Bearer ${accessToken}`,
+                }
+            })
+            console.log(response.data)
             return response.data;
         }
         catch(error){
