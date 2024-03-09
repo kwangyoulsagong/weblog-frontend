@@ -29,6 +29,10 @@ export default function LinkBar(){
         router.push(`/${nickname}/dashboard/mypost`)
         setBtnPressed(prev)
     }
+    const handleKnowledgeTree=(prev:string)=>{
+        router.push(`/${nickname}/dashboard/knowledgetree`)
+        setBtnPressed(prev)
+    }
     //네비게이션 바 
     return(
         <div className={styles.leftFixedSection}>
@@ -57,7 +61,7 @@ export default function LinkBar(){
                     <span>마이포스트</span>
                     <b className={styles.menuCircleGreen}>new</b>
                </div>
-               <div >
+               <div onClick={()=>handleKnowledgeTree("knowledgetree")}>
                     <Image src={treeImg} alt="treeImg"></Image>
                     <span>지식 나무</span>
                </div>

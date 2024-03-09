@@ -1,0 +1,36 @@
+.background{
+    width: inherit;
+    height: inherit;
+}
+.knowledgeLayout{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.headerMenu{
+margin-top: 75px;
+box-sizing: border-box;
+width: 70vw;
+height: 7.5vh;
+
+border: 1px solid #DFDFDF;
+border-radius: 15px;
+
+}
+.boardLayout{
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    column-gap: 50px;
+    row-gap: 30px;
+}
+.board{
+
+box-sizing: border-box;
+
+width: 319px;
+height: 300px;
+
+border: 1px solid #DFDFDF;
+border-radius: 20px;
+}
