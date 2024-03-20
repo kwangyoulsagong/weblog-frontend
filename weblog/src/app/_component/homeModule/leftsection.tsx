@@ -23,7 +23,7 @@ type Post ={
     createdDate: string;
     modifiedDate: string;
 }
-export default function leftSection(){
+export default function LeftSection(){
     const {isLogin,nickname}=useContext(AuthContext)
     const [datePostMenu, setDatePostMenu]=useState("주간")
     const [isSearchbar,setIsSearchbar]=useState(false)

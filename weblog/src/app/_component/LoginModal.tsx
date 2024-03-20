@@ -48,10 +48,11 @@ export default function LoginModal(){
     //         }
     //   })
     //   const data:authData= response.data;
-    //   console.log(data);
     //   if (data.accessToken && data.refreshToken) {
     //     localStorage.setItem("accestoken", data.accessToken);
     //     localStorage.setItem("refreshtoken", data.refreshToken);
+    //     localStorage.setItem("email", email);
+    //     localStorage.setItem("password", password);
     //     setIsLogin(true);
     //     setNickname(data.nickname)
     //     router.push(`/${data.nickname}/dashboard/home`)
