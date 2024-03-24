@@ -86,7 +86,7 @@ const Menu = () => {
       memo: postHtml,
       url: window.location.href,
       imageUrl:
-        "https://blog.kakaocdn.net/dn/clyrhv/btqXJVvfOgF/1lMKjoQo3iW0pyYDmV2HVK/img.jpg",
+        "https://velog.velcdn.com/images/blackbean99/post/c3689cf1-2755-43cb-907f-55344bfee194/image.png",
     };
     console.log(requestData);
     try {
@@ -97,6 +97,7 @@ const Menu = () => {
         },
       });
       console.log(response.data);
+      alert("저장되었습니다.");
     } catch (error) {
       console.log(error);
     }

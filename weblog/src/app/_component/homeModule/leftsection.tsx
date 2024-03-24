@@ -9,6 +9,8 @@ import { AuthContext } from "@/app/_component/Provider/authProvider"
 import { useContext, useEffect, useRef, useState } from "react"
 import { InfiniteData, useInfiniteQuery, useQuery } from "@tanstack/react-query"
 import { useInView } from "react-intersection-observer"
+import { useDispatch } from "react-redux"
+import { setPostId } from "@/app/slices/postSlice"
 import axios from "axios"
 import api from "@/app/config/apiConfig"
 import Search from "../search"
@@ -25,37 +27,37 @@ type Post ={
 }
 export default function LeftSection(){
     const {isLogin,nickname}=useContext(AuthContext)
-    const [datePostMenu, setDatePostMenu]=useState("주간")
+    const [datePostMenu, setDatePostMenu]=useState("WEEKLY")
     const [isSearchbar,setIsSearchbar]=useState(false)
+    const dispatch = useDispatch()
     const HandleSearch=()=>{
         setIsSearchbar(true)
     }
     const router=useRouter()
-
         //인기포스트 요청
         async function onHandleBestPostPreview({ pageParam }: { pageParam?: number }) {
-            // try {
-            //     const response = await api.get(`/api/v1/posts/ranks?type=WEEKLY&offset=${pageParam}&limit=1`,{
-            //         headers:{
-            //             "Content-Type":"application/json",
-
-            //         }
-            //     })
-            //     console.log(response.data)
-            //     return response.data
-            // } catch (error) {
-            //     console.error(error)
-            // }
             try {
-                const response = await axios.get(`http://localhost:8000/api/v1/posts/ranks?type=weekly&number=20&offset=${pageParam}&limit=12`)
+                const response = await api.get(`/api/v1/posts/ranks?type=${datePostMenu}&offset=${pageParam}&limit=12`,{
+                    headers:{
+                        "Content-Type":"application/json",
+
+                    }
+                })
                 console.log(response.data)
-                return response.data.slicedData
+                return response.data
             } catch (error) {
                 console.error(error)
             }
+            // try {
+            //     const response = await axios.get(`http://localhost:8000/api/v1/posts/ranks?type=weekly&number=20&offset=${pageParam}&limit=12`)
+            //     console.log(response.data)
+            //     return response.data.slicedData
+            // } catch (error) {
+            //     console.error(error)
+            // }
         }
         //리액트쿼리를 이용한 데이터 헨들 무한스크롤
-        const {data:bestPost, isLoading, isError, isSuccess, fetchNextPage, hasNextPage, isFetching  }=useInfiniteQuery<Post[],object,InfiniteData<Post[]>,[_1: string],number>({
+        const {data:bestPost, isLoading, isError, isSuccess,refetch, fetchNextPage, hasNextPage, isFetching  }=useInfiniteQuery<Post[],object,InfiniteData<Post[]>,[_1: string],number>({
             queryKey:["bestPostPreview"],
             queryFn: onHandleBestPostPreview,
             initialPageParam:0,
@@ -81,14 +83,17 @@ export default function LeftSection(){
             console.log(postid)
             if(isLogin){
                 router.push(`/${nickname}/dashboard/home/post`)
+                dispatch(setPostId(postid))
             }
             else{
                 router.push(`/dashboard/home/post`)
+                dispatch(setPostId(postid))
             }
             
         }
         const handlePostTab= (tab:any)=>{
             setDatePostMenu(tab)
+            refetch();  
         }
     return(
         <div className={styles.leftSection}>
@@ -110,9 +115,9 @@ export default function LeftSection(){
                     </div>
                 </div>
                 <div className={styles.popularTab}>
-                        <span>주간</span>
-                        <span>월간</span>
-                        <span>연간</span>
+                        <span onClick={()=>handlePostTab("WEEKLY")}>주간</span>
+                        <span onClick={()=>handlePostTab("MONTHLY")}>월간</span>
+                        <span onClick={()=>handlePostTab("YEARLY")}>연간</span>
                 </div>
             </div>
             {/* 포스트 컨테이너 */}
@@ -141,7 +146,7 @@ export default function LeftSection(){
                                     
                                  </div>
                             </div>
-                            <div ref={ref} style={{height: 50}}></div>
+                            {/* <div ref={ref} style={{height:50}}></div> */}
                     </div>
                     
                     ))
@@ -149,7 +154,7 @@ export default function LeftSection(){
                    
                 </div>
           
-               {isSearchbar&&<Search/>}
+                {isSearchbar && <Search setIsSearchbar={setIsSearchbar} />}
             </div>
             
          </div>

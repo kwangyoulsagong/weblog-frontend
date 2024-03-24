@@ -164,6 +164,7 @@ const PostPreview = ({ dataPost }) => {
         },
       });
       console.log(response.data);
+      localStorage.setItem("postId", postId);
       setDataPostDetail(response.data);
     } catch (error) {
       if (error.response) {
@@ -205,7 +206,7 @@ const PostPreview = ({ dataPost }) => {
             >
               <img
                 className="hello"
-                src={value.image_url}
+                src={value.imageUrl}
                 style={getImageBox()}
                 alt={`Preview ${index}`}
               />
@@ -231,7 +232,7 @@ const PostPreview = ({ dataPost }) => {
                 <img src={likeImg}></img>
               </button>
               <span className="likeCount" style={getLikeBox()}>
-                {value.like_count}
+                {value.likeCount}
               </span>
             </div>
           ))}

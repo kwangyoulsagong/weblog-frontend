@@ -1,18 +1,29 @@
 "use client"
-import { useState, useEffect} from "react"
+import { useContext,useState, useEffect, useRef} from "react"
 import styles from "./search.module.css"
 import Debounce from "./searchDebounce/debounce"
 import { useQuery } from "@tanstack/react-query"
 import axios from "axios"
 import api from "../config/apiConfig"
+import { useDispatch } from "react-redux"
+import { setPostId } from "@/app/slices/postSlice"
+import { useRouter } from "next/navigation"
+import { AuthContext } from "@/app/_component/Provider/authProvider"
 type Value={
     postId:number
     title:string
     tags:string
     nickname:string
 }
-export default function Search(){
+type SearchProps = {
+  setIsSearchbar: React.Dispatch<React.SetStateAction<boolean>>;
+};
+export default function Search({ setIsSearchbar }: SearchProps){
     const [search, setSearch]=useState("")
+    const {isLogin,nickname}=useContext(AuthContext)
+    const router=useRouter()
+    const dispatch = useDispatch()
+    const searchRef = useRef<HTMLDivElement>(null);
     const accessToken=localStorage.getItem("accestoken")
     const handleInputChange=(e:any)=>{
         setSearch(e.target.value)
@@ -109,11 +120,54 @@ export default function Search(){
         }
       };
       
+      const onHandlePost =(postid:number)=>{
+        console.log(postid)
+        if(isLogin){
+            router.push(`/${nickname}/dashboard/home/post`)
+            dispatch(setPostId(postid))
+            setIsSearchbar(false)
+        }
+        else{
+            router.push(`/dashboard/home/post`)
+            dispatch(setPostId(postid))
+            setIsSearchbar(false)
+        }
+        
+    }
+    const setExitBtn =()=>{
+      setIsSearchbar(false)
+    }
+    useEffect(() => {
+      const handleKeyDown = (event: KeyboardEvent) => {
+          if (event.key === "Escape") {
+              setIsSearchbar(false);
+          }
+      };
 
+      document.addEventListener("keydown", handleKeyDown);
+
+      return () => {
+          document.removeEventListener("keydown", handleKeyDown);
+      };
+  }, [setIsSearchbar]);
+    
+  const handleClickOutside = (event: MouseEvent) => {
+    if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
+        setIsSearchbar(false);
+    }
+};
+
+useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+    };
+}, [setIsSearchbar]);
 
     return(
         <div className={styles.modalBackground}>
-            <div className={styles.searchContainer}>
+            <div  className={styles.exit}  onClick={setExitBtn}>닫기</div>
+            <div ref={searchRef} className={styles.searchContainer}>
                 <div className={styles.searchBar}>
                     <select className={styles.select} id="searchTypeSelect">
                         <option value="default">제목+테그</option>
@@ -131,6 +185,7 @@ export default function Search(){
                 className={styles.autoCompleteItem}
                 onMouseOver={()=>onHandleSearchItemView(value)}
                 onMouseOut={onHandleSearchItemOut}
+                onClick={()=>onHandlePost(value.postId)}
               >
                 {value.title}
              

@@ -1,5 +1,5 @@
-import styles from "./knowledgetree.module.css"
-export default function knwoledgeTree(){
+import styles from "./trend.module.css"
+export default function Trend(){
     return(
         <div className={styles.background}>
             <div className={styles.knowledgeLayout}>

@@ -36,35 +36,41 @@ const formatRelativeTime = (dateString) => {
   }
 };
 const PostDetail = ({ dataPostDetail }) => {
-  console.log(dataPostDetail);
   const [img, setImg] = useState(unlikeImg);
-  const [likeCount, setLikeCount] = useState(dataPostDetail?.like || 0);
-  const [btnPressed, setBtnPressed] = useState(dataPostDetail?.like || false);
-
+  const [likeCount, setLikeCount] = useState(0);
+  const accessToken = localStorage.getItem("accesstoken");
+  console.log(accessToken);
+  useEffect(() => {
+    if (dataPostDetail) {
+      setLikeCount(dataPostDetail.likeCount || 0);
+      setImg(dataPostDetail.like ? likeImg : unlikeImg);
+    }
+  }, [dataPostDetail]);
   const onHandleLikeButton = async (postId) => {
     console.log(postId);
-    setLikeCount((prev) => {
-      if (!btnPressed) {
+    try {
+      const response = await api.patch(
+        `/api/v1/likes/${postId}`,
+        {},
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      );
+      if (response.data.isLiked) {
         setImg(likeImg);
-        setBtnPressed(true);
-        return prev + 1;
+        setLikeCount(likeCount + 1);
       } else {
         setImg(unlikeImg);
-        setBtnPressed(false);
-        return prev - 1;
+        setLikeCount(likeCount - 1);
       }
-    });
-    try {
-      const response = await api.get(`/api/like/${postId}`);
-      setLikeCount(response.data.like_count);
-      setBtnPressed(response.data.is_like);
     } catch (error) {
       console.log(error);
     }
   };
-  // useEffect(() => {
-  //   document.querySelector(".but").style.visibility = "hidden";
-  // }, []);
+
   return (
     <div className="postDetailBackground">
       <div className="postDetailContainer">
@@ -73,7 +79,7 @@ const PostDetail = ({ dataPostDetail }) => {
           <span>
             {dataPostDetail?.tags.map((tag, index) => (
               <span key={index} className="tag">
-                {tag.tagContent}
+                {tag}
               </span>
             ))}
           </span>

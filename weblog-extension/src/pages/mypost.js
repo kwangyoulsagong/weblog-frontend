@@ -39,29 +39,33 @@ const MyPost = ({ dataMyPostDetail }) => {
   const accessToken = localStorage.getItem("accesstoken");
   const [updateBtn, setUpdateBtn] = useState(false);
   const [img, setImg] = useState(unlikeImg);
-  const [likeCount, setLikeCount] = useState(dataMyPostDetail?.likeCount);
-  const [btnPressed, setBtnPressed] = useState(dataMyPostDetail?.like);
+  const [likeCount, setLikeCount] = useState(0);
+  useEffect(() => {
+    if (dataMyPostDetail) {
+      setLikeCount(dataMyPostDetail.likeCount || 0);
+      setImg(dataMyPostDetail.like ? likeImg : unlikeImg);
+    }
+  }, [dataMyPostDetail]);
   const onHandleLikeButton = async (postId) => {
-    setLikeCount((prev) => {
-      if (!btnPressed) {
+    console.log(postId);
+    try {
+      const response = await api.patch(
+        `/api/v1/likes/${postId}`,
+        {},
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      );
+      if (response.data.isLiked) {
         setImg(likeImg);
-        setBtnPressed(true);
-        return prev + 1;
+        setLikeCount(likeCount + 1);
       } else {
         setImg(unlikeImg);
-        setBtnPressed(false);
-        return prev - 1;
+        setLikeCount(likeCount - 1);
       }
-    });
-    try {
-      const response = await api.patch(`/api/v1/likes/${postId}`, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${accessToken}`,
-        },
-      });
-      setLikeCount(response.data?.like_count);
-      setBtnPressed(response.data?.is_like);
     } catch (error) {
       console.log(error);
     }
@@ -119,7 +123,7 @@ const MyPost = ({ dataMyPostDetail }) => {
           <span>
             {dataMyPostDetail?.tags.map((tag, index) => (
               <span key={index} className="tag">
-                {tag.tagContent}
+                {tag}
               </span>
             ))}
           </span>

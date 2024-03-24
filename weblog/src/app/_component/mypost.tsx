@@ -50,7 +50,7 @@ export default function MyPost(){
     // }
 
     try{
-      const response =await axios.get("/api/v1/posts/mine", {
+      const response =await api.get("/api/v1/posts/mine", {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${accessToken}`
