@@ -86,7 +86,7 @@ const Menu = () => {
       memo: postHtml,
       url: window.location.href,
       imageUrl:
-        "https://velog.velcdn.com/images/blackbean99/post/c3689cf1-2755-43cb-907f-55344bfee194/image.png",
+        "https://velog.velcdn.com/images/hi-rachel/post/3fb43759-6983-4538-b0c9-3e526d0fbf6f/image.gif",
     };
     console.log(requestData);
     try {
