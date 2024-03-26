@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef, useCallback } from "react";
+import React, { useState, useRef, useCallback, useEffect } from "react";
 import ReactFlow, {
   addEdge,
   Background,
@@ -22,17 +22,42 @@ import Image from "next/image";
 import { useQuery } from "@tanstack/react-query";
 import api from "../config/apiConfig";
 import CustomNode from "./customNodes/customNodes";
-
+import CustomTextNode from "./customNodes/customTextNodes";
+import axios from "axios";
 const initialNodes = [];
 const initialEdges = [];
 const customNodeTypes = {
   custom: CustomNode, // Custom Node 컴포넌트 추가
+  text: CustomTextNode,
 };
 
 export default function Home() {
   const [nodes, setNodes] = useState(initialNodes);
   const [edges, setEdges] = useState(initialEdges);
+  const [text, setText] = useState("");
+  const [showInput, setShowInput] = useState(false);
+  console.log(nodes);
   const wrapperRef = useRef(null);
+  const fetchBoxes = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:8000/api/v1/loadData",
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log(response.data);
+      setNodes(response.data.nodes || []);
+      setEdges(response.data.edges || []);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  useEffect(() => {
+    fetchBoxes();
+  }, []);
   async function onHandleBestPostPreview({ pageParam }) {
     try {
       const response = await api.get(
@@ -89,8 +114,67 @@ export default function Home() {
     setNodes((prevNodes) => [...prevNodes, newNode]);
   };
 
+  const handleText = () => {
+    const id = (nodes.length + 1).toString();
+    const newNode = {
+      id,
+      type: "text",
+      data: {
+        text: text,
+      },
+      position: {
+        x: event.clientX - wrapperRef.current.offsetLeft - 100,
+        y: event.clientY - wrapperRef.current.offsetTop - 100,
+      },
+    };
+    setNodes((prevNodes) => [...prevNodes, newNode]);
+    setShowInput(false);
+  };
+  const handleSave = async () => {
+    const boxes = {
+      nodes: nodes,
+      edges: edges,
+    };
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/api/v1/savedData",
+        boxes,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      return response.data;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const handleChange = (e) => {
+    const newText = e.target.value;
+    setText(newText);
+  };
+  const handleAdd = () => {
+    setShowInput(true);
+  };
+
   return (
     <div className={styles.background}>
+      {showInput && (
+        <div className={styles.input}>
+          <input value={text} onChange={handleChange}></input>
+          <button onClick={handleText} style={{ marginRight: "10px" }}>
+            Add Text
+          </button>
+        </div>
+      )}
+      <div className={styles.menu}>
+        <button onClick={handleAdd}>라벨추가</button>
+        <button onClick={handleSave} style={{ marginRight: "10px" }}>
+          저장
+        </button>
+      </div>
+
       <div className={styles.searchContainer}>
         <div className={styles.wrapperContainer}>
           {bestPost &&
@@ -145,7 +229,7 @@ export default function Home() {
         onConnect={onConnect}
         nodeTypes={customNodeTypes}
       >
-       <Background  />
+        <Background />
         <Controls />
         <MiniMap />
       </ReactFlow>
