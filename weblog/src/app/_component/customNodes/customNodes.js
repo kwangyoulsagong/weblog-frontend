@@ -1,13 +1,29 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./custom.module.css";
 import profileImg from "@/asset/images/main/kwang.jpg";
 import likesIcon from "@/asset/images/likestar.png";
 import Image from "next/image";
+import { AuthContext } from "@/app/_component/Provider/authProvider";
+import { useDispatch } from "react-redux";
 import { Handle } from "react-flow-renderer";
-
+import { useRouter } from "next/navigation";
+import { setPostId } from "@/app/slices/postSlice";
 const CustomNode = ({ data }) => {
+  const { isLogin, nickname } = useContext(AuthContext);
+  const dispatch = useDispatch();
+  const router = useRouter();
+  const onHandlePost = () => {
+    console.log(data.postId);
+    if (isLogin) {
+      router.push(`/${nickname}/dashboard/home/post`);
+      dispatch(setPostId(data.postId));
+    } else {
+      router.push(`/dashboard/home/post`);
+      dispatch(setPostId(data.pstId));
+    }
+  };
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} onClick={onHandlePost}>
       <Handle
         type="source"
         position="top"

@@ -36,25 +36,25 @@ export default function LeftSection(){
     const router=useRouter()
         //인기포스트 요청
         async function onHandleBestPostPreview({ pageParam }: { pageParam?: number }) {
-            try {
-                const response = await api.get(`/api/v1/posts/ranks?type=${datePostMenu}&offset=${pageParam}&limit=12`,{
-                    headers:{
-                        "Content-Type":"application/json",
-
-                    }
-                })
-                console.log(response.data)
-                return response.data
-            } catch (error) {
-                console.error(error)
-            }
             // try {
-            //     const response = await axios.get(`http://localhost:8000/api/v1/posts/ranks?type=weekly&number=20&offset=${pageParam}&limit=12`)
+            //     const response = await api.get(`/api/v1/posts/ranks?type=${datePostMenu}&offset=${pageParam}&limit=12`,{
+            //         headers:{
+            //             "Content-Type":"application/json",
+
+            //         }
+            //     })
             //     console.log(response.data)
-            //     return response.data.slicedData
+            //     return response.data
             // } catch (error) {
             //     console.error(error)
             // }
+            try {
+                const response = await axios.get(`http://localhost:8000/api/v1/posts/ranks?type=weekly&number=20&offset=${pageParam}&limit=12`)
+                console.log(response.data)
+                return response.data.slicedData
+            } catch (error) {
+                console.error(error)
+            }
         }
         //리액트쿼리를 이용한 데이터 헨들 무한스크롤
         const {data:bestPost, isLoading, isError, isSuccess,refetch, fetchNextPage, hasNextPage, isFetching  }=useInfiniteQuery<Post[],object,InfiniteData<Post[]>,[_1: string],number>({

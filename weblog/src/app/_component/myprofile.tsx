@@ -11,6 +11,8 @@ import axios from "axios"
 import settingImg from "@/asset/images/main/setting.png"
 import calendarImg from "@/asset/images/main/calendar.png"
 import api from "../config/apiConfig"
+import AWS from 'aws-sdk';
+import fs from 'fs';
 type profileType={
     nickname:string
     imageUrl: string
@@ -40,13 +42,34 @@ export default function MyComponentProfile(){
         queryKey:["profileKey"],
         queryFn:onHandleProfile,
     })
+    const handleProfileChange = async (event:any) => {
+        const file = event.target.files[0];
+        console.log(file)
+        if (file) {
+            try {
+                const formData = new FormData();
+                formData.append('file', file);
 
+                // 서버로 이미지 전송
+                const response = await axios.post('/api/uploadimage', formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                    },
+                });
+
+                console.log(response.data);
+            } catch (error) {
+                console.error('Error uploading image:', error);
+            }
+        }
+    };
     return(
         <div className={styles.container}>
              <div className={styles.background}>
                 <div className={styles.top}>
                     <div className={styles.myProfileContainer}>
                         <div className={styles.profiletop}>
+                        <input type="file" onChange={handleProfileChange} />
                             <div className={styles.profileCircle}>
                                 <Image src={profileImg} alt="profileImg"></Image>
                             </div>

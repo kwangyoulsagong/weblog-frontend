@@ -72,25 +72,26 @@ export default function Post(){
   const router = useRouter();
 
     async function onHandlePostDetail() {
-      // try{
-      //   const response =await axios.get<Post>("http://localhost:3001/postDetail", {
-      //     params: {
-      //       postId: 1// 'posId'를 'postId'로 수정
-      //     },
-      //   // headers: {
-      //   //   "Content-Type": "application/json",
-      //   //   Authorization: `Bearer ${accesstoken}`
-      //   // }
-      // })
       try{
-        const response =await api.get<Post>(`/api/v1/posts/${postId}`, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${accessToken}`
-        }
-      });
-      console.log(response.data)
-      return response.data;
+        const response =await axios.get<Post>("http://localhost:3001/postDetail", {
+          params: {
+            postId: 1// 'posId'를 'postId'로 수정
+          },
+        // headers: {
+        //   "Content-Type": "application/json",
+        //   Authorization: `Bearer ${accesstoken}`
+        // }
+      })
+      return response.data
+  //     try{
+  //       const response =await api.get<Post>(`/api/v1/posts/${postId}`, {
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         Authorization: `Bearer ${accessToken}`
+  //       }
+  //     });
+  //     console.log(response.data)
+  //     return response.data;
       }catch(error){
         console.log(error)
   }
